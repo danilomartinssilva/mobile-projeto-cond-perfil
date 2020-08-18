@@ -1,8 +1,8 @@
-import styled from 'styled-components/native'
-import {Platform} from 'react-native'
-import {colors} from '../../../theme'
-import InputForm from '../../../components/InputForm'
-import ButtonForm from '../../../components/ButtonForm'
+import styled from 'styled-components/native';
+import {Platform} from 'react-native';
+import {colors} from '../../../theme';
+import InputForm from '../../../components/InputForm';
+import ButtonForm from '../../../components/ButtonForm';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: true,
@@ -11,10 +11,15 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 })`
   flex: 1;
   background-color: ${colors.white};
-`
+`;
 export const TInput = styled(InputForm)`
   margin-horizontal: 16px;
-`
+`;
 export const TButton = styled(ButtonForm)`
   margin-horizontal: 16px;
-`
+`;
+export const TError = styled.Text`
+  font-size: 12px;
+  color: ${colors.primaryMiddle};
+  margin-horizontal: 16px;
+`;
