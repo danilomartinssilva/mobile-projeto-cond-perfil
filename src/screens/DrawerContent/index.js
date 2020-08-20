@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {
@@ -15,12 +15,28 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useDispatch, useSelector} from 'react-redux';
 import {logoffRequest} from '../../store/modules/auth/actions';
 import user_placeholder from '../../assets/user_placeholder.jpg';
+import Condominiums from '../../store/modules/condominiums';
+import {getProfile} from '../../services/helper';
+
 Icon.loadFont();
 export default function DrawContent(props) {
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    dispatch(Condominiums.loadCondominiumRequest());
+  }, []);
+  const condominiums = useSelector((state) => state.condominiums);
   const profile = useSelector((state) => state.profile);
-  if (__DEV__) console.tron.log('Profile', profile);
+
+  function handleGetNameCondominum(condominium_id) {
+    return (
+      condominiums &&
+      condominiums.items &&
+      condominiums.items.length &&
+      condominiums.items.find(
+        (condominium) => condominium.id === condominium_id,
+      ).name
+    );
+  }
 
   return (
     <View style={{flex: 1}}>
@@ -31,23 +47,35 @@ export default function DrawContent(props) {
               <Avatar.Image source={user_placeholder} size={50} />
               <View style={{marginLeft: 15, flexDirection: 'column'}}>
                 <Title style={styles.title}>{profile?.data?.name}</Title>
-                <Caption style={styles.caption}>
-                  @{String(profile?.data?.email).split('@')[0]}
-                </Caption>
+                {!!profile && !!profile.data && (
+                  <Caption style={styles.caption}>
+                    {getProfile(profile)}
+                  </Caption>
+                )}
+                {!!profile && !!profile.data && !!profile.data.roles.length && (
+                  <Caption style={styles.caption}>
+                    PERFIL - {profile.data.roles[0].name}
+                  </Caption>
+                )}
               </View>
             </View>
           </View>
 
           <Drawer.Section style={styles.drawerSection}>
-            <DrawerItem
-              icon={({color, size}) => (
-                <Icon name="home-outline" color={color} size={size} />
+            {!!profile.data &&
+              profile.data.roles
+                .map((role) => role.name)
+                .includes('MASTER') && (
+                <DrawerItem
+                  icon={({color, size}) => (
+                    <Icon name="home-outline" color={color} size={size} />
+                  )}
+                  label="Condominios"
+                  onPress={() => {
+                    props.navigation.navigate('CondominiumsStack');
+                  }}
+                />
               )}
-              label="Condominios"
-              onPress={() => {
-                props.navigation.navigate('CondominiumsStack');
-              }}
-            />
             <DrawerItem
               icon={({color, size}) => (
                 <Icon name="home-outline" color={color} size={size} />

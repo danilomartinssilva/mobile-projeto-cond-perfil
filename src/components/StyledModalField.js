@@ -23,7 +23,7 @@ import {
 } from 'react-native-paper';
 
 import DismissKeyboard from '../components/DismissKeyboard';
-import StyledAvatarText from '../components/StyledAvatarText';
+
 import StyledListEmpty from '../components/StyledListEmpty';
 import StyledSearchBarGroup from '../components/StyledSearchBarGroup';
 import {colors, images, spacing} from '../theme';
@@ -163,11 +163,6 @@ const StyledModalField = (props) => {
 
     if (item.description) {
       itemProps.description = item.description;
-    }
-
-    if (avatar) {
-      const left = () => <StyledAvatarText label={item.label[0]} />;
-      itemProps = {...itemProps, left};
     }
 
     if (mode === 'simple') {

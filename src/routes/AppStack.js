@@ -74,7 +74,16 @@ function AppStack() {
       <Drawer.Screen name="EnquetesScreen" component={EnquetesScreen} />
       <Drawer.Screen name="BoletosStack" component={BoletosStack} />
       <Drawer.Screen name="EventosStack" component={EventosStack} />
-      <Drawer.Screen name="CondominiumsStack" component={CondominiumsStack} />
+      {profile &&
+        profile.data &&
+        profile.data.roles &&
+        profile.data.roles.length &&
+        profile.data.roles.map((role) => role.name).includes('MASTER') && (
+          <Drawer.Screen
+            name="CondominiumsStack"
+            component={CondominiumsStack}
+          />
+        )}
 
       <Drawer.Screen name="ReservaScreen" component={ReservaScreen} />
     </Drawer.Navigator>

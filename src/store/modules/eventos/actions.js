@@ -33,6 +33,23 @@ export function loadEventRequest() {
     type: '@event/LOAD_REQUEST',
   };
 }
+export function getAllRequest() {
+  return {
+    type: '@event/GET_ALL_REQUEST',
+  };
+}
+export function getAllSucess(items) {
+  return {
+    type: '@event/GET_ALL_SUCESS',
+    items,
+  };
+}
+export function getAllFailure(failed) {
+  return {
+    type: '@event/GET_ALL_FAILURE',
+    failed,
+  };
+}
 export function loadEventSuccess(items) {
   return {
     type: '@event/LOAD_SUCCESS',
@@ -48,6 +65,24 @@ export function loadEventFailure(failed) {
 export function addEventFailure(failed) {
   return {
     type: '@event/ADD_FAILURE',
+    failed,
+  };
+}
+export function updateEventRequest(event) {
+  return {
+    type: '@event/UPDATE_REQUEST',
+    event,
+  };
+}
+export function updateEventSucess(event) {
+  return {
+    type: '@event/UPDATE_SUCESS',
+    event,
+  };
+}
+export function updateEventFailure(failed) {
+  return {
+    type: '@event/UPDATE_FAILURE',
     failed,
   };
 }

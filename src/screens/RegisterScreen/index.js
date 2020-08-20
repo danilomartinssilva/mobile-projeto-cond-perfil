@@ -1,20 +1,28 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import {Container, Title, TInput, TButton, ContainerButton} from './styles';
 import DismissKeyboard from '../../components/DismissKeyboard';
 import {Formik} from 'formik';
 import Auth from '../../store/modules/auth/';
+import Condominiums from '../../store/modules/condominiums';
+import {pickerFilterData} from '../../services/helper';
 
 import * as Yup from 'yup';
 import InputFormMask from '../../components/InputFormMask';
 import {values} from 'lodash';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useStore, useSelector} from 'react-redux';
+import StyledModalField from '../../components/StyledModalField';
 export default function RegisterScreen() {
   const useEmail = useRef();
   const usePassword = useRef();
   const useCPF = useRef();
   const usePasswordRepeat = useRef();
   const dispatch = useDispatch();
+  const store = useStore();
+  const condominiums = useSelector((state) => state.condominiums);
+  useEffect(() => {
+    dispatch(Condominiums.loadCondominiumRequest());
+  }, []);
   return (
     <DismissKeyboard>
       <Container>
@@ -34,12 +42,15 @@ export default function RegisterScreen() {
               .required('O camo email é obrigatório')
               .email('O campo deve obdecer o formato de email'),
             cpf: Yup.string().required('O campo cpf é obrigatório'),
+            condominium_id: Yup.string().required(
+              'O campo condomínio é obrigatório',
+            ),
             password: Yup.string().required('O campo senha é obrigatório'),
             repeat_password: Yup.string().required(
               'O campo confirmacao de senha é obrigatório',
             ),
           })}>
-          {({handleChange, values, errors, handleSubmit}) => (
+          {({handleChange, values, errors, handleSubmit, setValues}) => (
             <ScrollView>
               <TInput
                 label="Nome"
@@ -76,6 +87,18 @@ export default function RegisterScreen() {
                 label="CPF *"
                 style={{marginHorizontal: 16}}
               /> */}
+              <StyledModalField
+                selectedValue={null}
+                label="Condomínio"
+                errors={errors.condominium_id}
+                placeholder="Selecione um condomínio"
+                title="Selecione um condomínio"
+                onChangeValue={(condominium_id) =>
+                  setValues({...values, condominium_id: condominium_id})
+                }
+                data={pickerFilterData(condominiums.items, 'id', 'name')}
+              />
+
               <InputFormMask
                 type={'cpf'}
                 messageError={errors?.cpf}
