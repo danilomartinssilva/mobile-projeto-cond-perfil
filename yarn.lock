@@ -3055,6 +3055,13 @@ expo-constants@~9.1.1:
     fbjs "1.0.0"
     uuid "^3.3.2"
 
+expo-document-picker@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/expo-document-picker/-/expo-document-picker-8.3.0.tgz#cd2a8e2f981c200cff7372f6178561eab10dd0db"
+  integrity sha512-/H96/jNdZdf9XXKoNVkACgtmL3OfRoNcspQuWKbYUgOGxpSTPgsg9OQ3Our2MP4maQRxPTxV8qPFv/HWqbkSig==
+  dependencies:
+    uuid "^3.3.2"
+
 expo-file-system@~9.0.1:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-9.0.1.tgz#50a6a0b29fbc45413de9f7d38c0695503bf03d7e"

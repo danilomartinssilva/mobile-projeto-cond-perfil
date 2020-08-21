@@ -4,13 +4,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {View, Text} from 'react-native';
 import DrawerContent from '../screens/DrawerContent';
-import RegrasScreen from '../screens/RegrasScreen';
 import BoletosScreen from '../screens/BoletosScreen';
 import EventosListScreen from '../screens/Eventos/List';
 import EventosCreateScreen from '../screens/Eventos/Create';
 import {useStore, useSelector} from 'react-redux';
 import CondominiumsListScreen from '../screens/CondominiumScreen/List';
 import CondominiumsCreateScreen from '../screens/CondominiumScreen/Create';
+import RegrasCreateScreen from '../screens/Regras/Create';
+import RegrasListScreen from '../screens/Regras/List';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
@@ -26,8 +27,9 @@ const ReservaScreen = () => (
 );
 function RegrasStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen component={RegrasScreen} name="RegrasScreen" />
+    <Stack.Navigator initialRouteName="RegrasCreateScreen">
+      <Stack.Screen component={RegrasCreateScreen} name="RegrasCreateScreen" />
+      <Stack.Screen component={RegrasListScreen} name="RegrasListScreen" />
     </Stack.Navigator>
   );
 }

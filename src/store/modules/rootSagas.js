@@ -3,6 +3,7 @@ import auth from './auth/sagas';
 import profile from './profile/sagas';
 import events from './eventos/sagas';
 import condominiums from './condominiums/sagas';
+import regras from './regras/sagas';
 export default function* rootSaga() {
-  return yield all([auth, profile, events, condominiums]);
+  return yield all([auth, profile, events, condominiums, regras]);
 }

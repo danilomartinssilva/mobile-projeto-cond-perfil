@@ -187,7 +187,7 @@ const StyledModalField = (props) => {
     <StyledListEmpty
       title={'Buscamos por toda parte!'}
       body={'Infelizmente, não encontramos nada.'}
-      image={images.empty_search}
+      /*  image={images.empty_search} */
     />
   );
 
