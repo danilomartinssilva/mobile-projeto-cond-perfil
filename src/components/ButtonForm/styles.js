@@ -3,12 +3,10 @@ import {Dimensions, StyleSheet} from 'react-native';
 const {width} = Dimensions.get('window');
 import {colors} from '../../theme';
 export const Container = styled.TouchableOpacity`
-  width: ${width - 40}px;
-
   height: 40px;
   background: ${(props) =>
     props.type === 'submit' ? `${colors.primary}` : `${colors.white}`};
-  align-self: center;
+  align-self: stretch;
   justify-content: center;
   align-items: center;
   border-color: ${colors.gray};

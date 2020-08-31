@@ -3,6 +3,7 @@ import {dimensions, colors, spacing} from '../../../theme';
 
 export const Container = styled.View`
   flex: 1;
+  background-color: ${colors.primary};
 `;
 
 export const Card = styled.TouchableOpacity`
@@ -21,10 +22,12 @@ export const TitleEventText = styled.Text`
   font-size: 15px;
   font-weight: bold;
   margin: 4px;
+  color: ${colors.white};
 `;
 export const InfoEventText = styled.Text`
   font-size: 12px;
   margin: 4px;
+  color: ${colors.white};
 `;
 export const OptionsContainer = styled.View`
   width: ${dimensions.width / 5}px;

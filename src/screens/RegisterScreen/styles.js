@@ -14,10 +14,11 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   width: ${dimensions.width}px;
   justify-content: center;
   padding-top: 80px;
-  background-color: ${colors.white};
+  background-color: ${colors.primary};
 `;
 export const Title = styled.Text`
   font-size: 14px;
+  color: ${colors.white};
 
   margin: 16px;
   line-height: 36px;

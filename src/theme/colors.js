@@ -1,4 +1,4 @@
-const primary = '#134FA6';
+const primary = '#315664';
 const dark = '#000';
 const white = '#FFF';
 const gray = '#9999';

@@ -10,7 +10,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   keyboardVerticalOffset: 34,
 })`
   flex: 1;
-  background-color: ${colors.white};
+  background-color: ${colors.primary};
 `;
 export const TInput = styled(InputForm)`
   margin-horizontal: 16px;
@@ -22,4 +22,24 @@ export const TError = styled.Text`
   font-size: 12px;
   color: ${colors.primaryMiddle};
   margin-horizontal: 16px;
+`;
+
+export const Title = styled.Text`
+  color: ${colors.white};
+
+  font-size: 18px;
+
+  margin: 16px;
+`;
+export const Description = styled.Text`
+  color: ${colors.white};
+  margin-left: 16px;
+
+  font-size: 15px;
+`;
+export const Separator = styled.View`
+  align-self: stretch;
+  height: 1px;
+  background-color: ${colors.white};
+  margin: 20px;
 `;

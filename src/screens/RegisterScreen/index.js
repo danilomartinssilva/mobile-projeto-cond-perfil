@@ -105,7 +105,7 @@ export default function RegisterScreen() {
                 value={values.cpf}
                 onChangeText={handleChange('cpf')}
                 label={'CPF *:'}
-                style={{marginHorizontal: 10}}
+                style={{marginHorizontal: 16}}
               />
               <TInput
                 secureTextEntry

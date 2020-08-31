@@ -19,11 +19,10 @@ export function* login({payload}) {
         data: signed.data,
       });
       toaster('Usuário logado com sucesso!');
-      RootNavigation.navigate('LoginScreen');
+
       //RootNavigation.navigate('AppStack');
       RootNavigation.navigate('AppStack', {
-        screen: 'RegrasScreen',
-        params: {user: 'jane'},
+        screen: 'HomeScreen',
       });
       /**
        * Inicio no do Onesignal

@@ -3,9 +3,10 @@ import api from '../../../services/api';
 import toast from '../../../services/toast';
 import responder from '../../../services/responder';
 import {goBack} from '../../../services/RootNavigation';
-export function* store({event}) {
+import regras from '.';
+export function* store({regra}) {
   try {
-    const response = yield call(api.post, 'events', event);
+    const response = yield call(api.post, 'laws', regra);
 
     yield put({
       type: '@regra/ADD_SUCCESS',
@@ -24,7 +25,7 @@ export function* upload({content}) {
   try {
     const formData = new FormData();
     formData.append('file', content);
-    if (__DEV__) console.tron.log(content);
+
     const response = yield call(api.post, 'files', formData, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded;',
@@ -36,7 +37,6 @@ export function* upload({content}) {
       document: response.data,
     });
   } catch (failed) {
-    if (__DEV__) console.tron.log('Failed', failed);
     yield put({type: '@regras/ADD_DOCUMENT_FAILURE', failed});
 
     const message = responder.failed(failed);
@@ -71,22 +71,16 @@ export function* destroy({id}) {
     toast(message);
   }
 }
-export function* list({event}) {
+export function* list() {
   try {
-    const profile = yield select((state) => state.profile);
-    const roles = profile.data.roles[0].name;
-    const response = yield call(
-      api.get,
-      roles === 'SINDICO' || roles === 'MASTER' ? 'eventsAll' : 'events',
-      event,
-    );
+    //const profile = yield select((state) => state.profile);
+    //const roles = profile.data.roles[0].name;
+    const response = yield call(api.get, 'laws');
 
     yield put({
       type: '@regra/LOAD_SUCCESS',
       items: response.data,
     });
-
-    toast(response.message);
   } catch (failed) {
     yield put({type: '@regra/LOAD_FAILURE', failed});
     const message = responder.failed(failed);
@@ -110,10 +104,10 @@ export function* list({event}) {
   }
 } */
 export default all([
-  takeLatest('@regra/ADD_REQUEST', store),
-  takeLatest('@regra/LOAD_REQUEST', list),
-  takeLatest('@regra/DESTROY_REQUEST', destroy),
-  takeLatest('@regra/UPDATE_REQUEST', update),
+  takeLatest('@regras/ADD_REQUEST', store),
+  takeLatest('@regras/LOAD_REQUEST', list),
+  takeLatest('@regras/DESTROY_REQUEST', destroy),
+  takeLatest('@regras/UPDATE_REQUEST', update),
   takeLatest('@regras/ADD_DOCUMENT_REQUEST', upload),
   /*  takeLatest('@regra/GET_ALL_REQUEST', listAll), */
 ]);

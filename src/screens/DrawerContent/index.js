@@ -62,6 +62,15 @@ export default function DrawContent(props) {
           </View>
 
           <Drawer.Section style={styles.drawerSection}>
+            <DrawerItem
+              icon={({color, size}) => (
+                <Icon name="home-outline" color={color} size={size} />
+              )}
+              label="Home"
+              onPress={() => {
+                props.navigation.navigate('HomeStack');
+              }}
+            />
             {!!profile.data &&
               profile.data.roles
                 .map((role) => role.name)
@@ -76,15 +85,35 @@ export default function DrawContent(props) {
                   }}
                 />
               )}
-            <DrawerItem
-              icon={({color, size}) => (
-                <Icon name="home-outline" color={color} size={size} />
+            {!!profile.data &&
+              profile.data.roles
+                .map((role) => role.name)
+                .includes('MASTER') && (
+                <DrawerItem
+                  icon={({color, size}) => (
+                    <Icon name="home-outline" color={color} size={size} />
+                  )}
+                  label="Balanços"
+                  onPress={() => {
+                    props.navigation.navigate('BalancesStack');
+                  }}
+                />
               )}
-              label="Home"
-              onPress={() => {
-                props.navigation.navigate('Home');
-              }}
-            />
+            {!!profile.data &&
+              profile.data.roles
+                .map((role) => role.name)
+                .includes('MASTER') && (
+                <DrawerItem
+                  icon={({color, size}) => (
+                    <Icon name="home-outline" color={color} size={size} />
+                  )}
+                  label="Convenções"
+                  onPress={() => {
+                    props.navigation.navigate('ConventionsStack');
+                  }}
+                />
+              )}
+
             <DrawerItem
               icon={({color, size}) => (
                 <Icon name="account-outline" color={color} size={size} />

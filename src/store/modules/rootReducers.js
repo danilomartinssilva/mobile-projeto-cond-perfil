@@ -4,6 +4,11 @@ import profile from './profile/reducer';
 import events from './eventos/reducer';
 import condominiums from './condominiums/reducer';
 import regras from './regras/reducer';
+import balances from './balances/reducer';
+import files from './files/reducer';
+import conventions from './conventions/reducer';
+import regulaments from './regulaments/reducer';
+import minutes from './minutes/reducer';
 
 export default combineReducers({
   auth,
@@ -11,4 +16,9 @@ export default combineReducers({
   events,
   condominiums,
   regras,
+  balances,
+  files,
+  conventions,
+  regulaments,
+  minutes,
 });

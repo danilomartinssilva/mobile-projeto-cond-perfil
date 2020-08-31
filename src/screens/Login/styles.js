@@ -13,21 +13,31 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   flex: 1;
   width: ${dimensions.width}px;
   justify-content: center;
-  background-color: ${colors.white};
+  background-color: ${colors.primary};
 `;
 export const Title = styled.Text`
   font-size: 18px;
   font-weight: bold;
   margin: 16px;
   line-height: 36px;
+  color: ${colors.white};
 `;
 
 export const TButton = styled(ButtonForm)`
-  margin-horizontal: 50px;
+  margin-horizontal: 24px;
 `;
 export const TInput = styled(InputForm)`
   margin-horizontal: 16px;
 `;
 export const ContainerButton = styled.View`
   flex-direction: column;
+`;
+
+export const Logo = styled.Image.attrs({
+  resizeMode: 'contain',
+})`
+  height: 50px;
+  width: 180px;
+  align-self: center;
+  margin: 16px;
 `;

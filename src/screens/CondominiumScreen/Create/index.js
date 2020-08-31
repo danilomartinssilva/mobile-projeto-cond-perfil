@@ -1,6 +1,14 @@
 import React, {useLayoutEffect} from 'react';
 import {View, Text} from 'react-native';
-import {Container, TInput, TButton, TError} from './styles';
+import {
+  Container,
+  TInput,
+  TButton,
+  TError,
+  Separator,
+  Title,
+  Description,
+} from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Formik} from 'formik';
 import Condominiums from '../../../store/modules/condominiums';
@@ -30,6 +38,12 @@ export default function CondominiumsCreateScreen({navigation}) {
   }, [navigation]);
   return (
     <Container>
+      <Title>Condomínios</Title>
+      <Separator />
+      <Description>
+        Para cadastrar um condomínio preencha os campos abaixo
+      </Description>
+      <Separator />
       <Formik
         onSubmit={(values) => {
           dispatch(Condominiums.AddCondominiumtRequest(values));

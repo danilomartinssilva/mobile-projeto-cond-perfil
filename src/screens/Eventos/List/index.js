@@ -1,5 +1,12 @@
 import React, {useLayoutEffect, useEffect} from 'react';
-import {View, Text, FlatList, TouchableOpacity, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Alert,
+  Image,
+} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -13,15 +20,21 @@ import {
   TitleEventText,
   InfoEventText,
   OptionsContainer,
+  ContainerTitle,
+  Title,
+  InfoDescriptionContainer,
+  Description,
 } from './styles';
 import {useSelector, useStore, useDispatch} from 'react-redux';
 import Events from '../../../store/modules/eventos';
 import {getProfile} from '../../../services/helper';
+import reservas_icon from '../../../assets/icons/reservas-ico.png';
 
 export default function EventosListScreen({navigation}) {
   const events = useSelector((state) => state.events);
   const profile = useSelector((state) => state.profile);
   const store = useStore();
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (
@@ -83,7 +96,11 @@ export default function EventosListScreen({navigation}) {
               },
             ]);
           }}>
-          <FeatherIcon name="clock" size={20} style={{margin: 4}} />
+          <FeatherIcon
+            name="clock"
+            size={20}
+            style={{margin: 4, color: colors.white}}
+          />
         </TouchableOpacity>
       );
     } else if (item.status === 'approved') {
@@ -119,7 +136,11 @@ export default function EventosListScreen({navigation}) {
               },
             ]);
           }}>
-          <FeatherIcon name="check-circle" size={20} style={{margin: 4}} />
+          <FeatherIcon
+            name="check-circle"
+            size={20}
+            style={{margin: 4, color: colors.white}}
+          />
         </TouchableOpacity>
       );
     } else {
@@ -163,6 +184,13 @@ export default function EventosListScreen({navigation}) {
 
   return (
     <Container>
+      <ContainerTitle>
+        <Image source={reservas_icon} />
+        <InfoDescriptionContainer>
+          <Title>Eventos</Title>
+          <Description>Confira as convenções do seu condomínio</Description>
+        </InfoDescriptionContainer>
+      </ContainerTitle>
       <FlatList
         keyExtractor={(item, index) => index.toString()}
         data={events.items}
@@ -203,7 +231,11 @@ export default function EventosListScreen({navigation}) {
                   /> */}
 
               <TouchableOpacity>
-                <Ionicons name="search" size={20} style={{margin: 4}} />
+                <Ionicons
+                  name="search"
+                  size={20}
+                  style={{margin: 4, color: colors.white}}
+                />
               </TouchableOpacity>
               <TouchableOpacity>
                 <Ionicons
@@ -227,7 +259,7 @@ export default function EventosListScreen({navigation}) {
                     );
                   }}
                   size={20}
-                  style={{margin: 4}}
+                  style={{margin: 4, color: colors.white}}
                 />
               </TouchableOpacity>
             </OptionsContainer>

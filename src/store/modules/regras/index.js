@@ -1,14 +1,14 @@
 import {
-  addEventRequest,
-  loadEventRequest,
+  addRegraRequest,
+  loadRegraRequest,
   destroyEventRequest,
   getAllRequest,
   updateEventRequest,
   addDocumentRequest,
 } from './actions';
 export default {
-  addEventRequest,
-  loadEventRequest,
+  addRegraRequest,
+  loadRegraRequest,
   destroyEventRequest,
   getAllRequest,
   updateEventRequest,

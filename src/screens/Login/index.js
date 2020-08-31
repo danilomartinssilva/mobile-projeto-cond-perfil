@@ -1,11 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
-import {Container, Title, TInput, TButton, ContainerButton} from './styles';
+import {
+  Container,
+  Title,
+  TInput,
+  TButton,
+  ContainerButton,
+  Logo,
+} from './styles';
 import DismissKeyboard from '../../components/DismissKeyboard';
 import Formik from 'formik';
 import {useDispatch, useSelector} from 'react-redux';
 import Auth from '../../store/modules/auth';
 import {navigationRef} from '../../services/RootNavigation';
+import logo from '../../assets/logo.png';
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState(undefined);
   const [password, setPassword] = useState(undefined);
@@ -23,7 +31,7 @@ export default function LoginScreen({navigation}) {
   return (
     <DismissKeyboard>
       <Container>
-        <Title>Bem vindo novamente</Title>
+        <Logo source={logo} />
 
         <TInput
           value={email}

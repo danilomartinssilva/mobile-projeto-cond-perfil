@@ -42,8 +42,6 @@ export function* list({event}) {
       type: '@condominium/LOAD_SUCCESS',
       items: response.data,
     });
-
-    toast(response.message);
   } catch (failed) {
     yield put({type: '@condominium/LOAD_FAILURE', failed});
     const message = responder.failed(failed);
