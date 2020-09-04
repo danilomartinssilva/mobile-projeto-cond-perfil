@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
+import React, {useState, useEffect} from 'react'
+import {View, Text} from 'react-native'
 import {
   Container,
   Title,
@@ -7,27 +7,21 @@ import {
   TButton,
   ContainerButton,
   Logo,
-} from './styles';
-import DismissKeyboard from '../../components/DismissKeyboard';
-import Formik from 'formik';
-import {useDispatch, useSelector} from 'react-redux';
-import Auth from '../../store/modules/auth';
-import {navigationRef} from '../../services/RootNavigation';
-import logo from '../../assets/logo.png';
-export default function LoginScreen({navigation}) {
-  const [email, setEmail] = useState(undefined);
-  const [password, setPassword] = useState(undefined);
-  const auth = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-
-  /*   useEffect(() => {
-    if (auth.signed) {
-      navigation.navigate('AppStack');
-    }
-  }, [auth]); */
+} from './styles'
+import DismissKeyboard from '../../components/DismissKeyboard'
+import Formik from 'formik'
+import {useDispatch, useSelector} from 'react-redux'
+import Auth from '../../store/modules/auth'
+import {navigationRef} from '../../services/RootNavigation'
+import logo from '../../assets/logo.png'
+export default function LoginScreen ({navigation}) {
+  const [email, setEmail] = useState(undefined)
+  const [password, setPassword] = useState(undefined)
+  const auth = useSelector(state => state.auth)
+  const dispatch = useDispatch()
   const handleLogin = () => {
-    dispatch(Auth.loginRequest(email, password));
-  };
+    dispatch(Auth.loginRequest(email, password))
+  }
   return (
     <DismissKeyboard>
       <Container>
@@ -35,24 +29,24 @@ export default function LoginScreen({navigation}) {
 
         <TInput
           value={email}
-          textContentType="emailAddress"
-          autoCapitalize="none"
-          placeholder="Email"
-          label="Email"
-          keyboardType="email-address"
-          onChangeText={(email) => setEmail(email)}
+          textContentType='emailAddress'
+          autoCapitalize='none'
+          placeholder='Email'
+          label='Email'
+          keyboardType='email-address'
+          onChangeText={email => setEmail(email)}
         />
         <TInput
           value={password}
-          placeholder="Senha"
-          label="Senha"
+          placeholder='Senha'
+          label='Senha'
           secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
+          onChangeText={password => setPassword(password)}
         />
         <ContainerButton>
           <TButton
             onPress={() => handleLogin()}
-            type="submit"
+            type='submit'
             style={{margin: 16}}>
             Login
           </TButton>
@@ -62,5 +56,5 @@ export default function LoginScreen({navigation}) {
         </ContainerButton>
       </Container>
     </DismissKeyboard>
-  );
+  )
 }

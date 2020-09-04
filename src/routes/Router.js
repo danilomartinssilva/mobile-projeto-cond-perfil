@@ -1,22 +1,21 @@
-import 'react-native-gesture-handler';
-import React from 'react';
+import 'react-native-gesture-handler'
+import React from 'react'
 
-import {NavigationContainer} from '@react-navigation/native';
-import {navigationRef} from '../services/RootNavigation';
+import {NavigationContainer} from '@react-navigation/native'
+import {navigationRef} from '../services/RootNavigation'
 
-import AuthStack from './AuthStack';
-import AppStack from './AppStack';
-import {useStore} from 'react-redux';
-import {createStackNavigator} from '@react-navigation/stack';
-import {Button} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-const RootStack = createStackNavigator();
+import AuthStack from './AuthStack'
+import AppStack from './AppStack'
+import {useStore} from 'react-redux'
+import {createStackNavigator} from '@react-navigation/stack'
+import {Button} from 'react-native'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+const RootStack = createStackNavigator()
 
-export default function Routes() {
-  const store = useStore();
-  const {auth} = store.getState();
+export default function Routes () {
+  const store = useStore()
+  const {auth} = store.getState()
 
-  if (__DEV__) console.tron.log('AUTH', auth);
   return (
     <NavigationContainer ref={navigationRef}>
       <RootStack.Navigator
@@ -38,5 +37,5 @@ export default function Routes() {
         />
       </RootStack.Navigator>
     </NavigationContainer>
-  );
+  )
 }

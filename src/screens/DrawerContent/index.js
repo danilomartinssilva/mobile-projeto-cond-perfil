@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
+import React, {useEffect} from 'react'
+import {View, Text, StyleSheet} from 'react-native'
+import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer'
 import {
   useTheme,
   Avatar,
@@ -10,32 +10,31 @@ import {
   Drawer,
   TouchableRipple,
   Switch,
-} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useDispatch, useSelector} from 'react-redux';
-import {logoffRequest} from '../../store/modules/auth/actions';
-import user_placeholder from '../../assets/user_placeholder.jpg';
-import Condominiums from '../../store/modules/condominiums';
-import {getProfile} from '../../services/helper';
+} from 'react-native-paper'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import {useDispatch, useSelector} from 'react-redux'
+import {logoffRequest} from '../../store/modules/auth/actions'
+import user_placeholder from '../../assets/user_placeholder.jpg'
+import Condominiums from '../../store/modules/condominiums'
+import {getProfile} from '../../services/helper'
 
-Icon.loadFont();
-export default function DrawContent(props) {
-  const dispatch = useDispatch();
+Icon.loadFont()
+export default function DrawContent (props) {
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(Condominiums.loadCondominiumRequest());
-  }, []);
-  const condominiums = useSelector((state) => state.condominiums);
-  const profile = useSelector((state) => state.profile);
+    dispatch(Condominiums.loadCondominiumRequest())
+  }, [])
+  const condominiums = useSelector(state => state.condominiums)
+  const profile = useSelector(state => state.profile)
 
-  function handleGetNameCondominum(condominium_id) {
+  function handleGetNameCondominum (condominium_id) {
     return (
       condominiums &&
       condominiums.items &&
       condominiums.items.length &&
-      condominiums.items.find(
-        (condominium) => condominium.id === condominium_id,
-      ).name
-    );
+      condominiums.items.find(condominium => condominium.id === condominium_id)
+        .name
+    )
   }
 
   return (
@@ -64,99 +63,93 @@ export default function DrawContent(props) {
           <Drawer.Section style={styles.drawerSection}>
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="home-outline" color={color} size={size} />
+                <Icon name='home-outline' color={color} size={size} />
               )}
-              label="Home"
+              label='Home'
               onPress={() => {
-                props.navigation.navigate('HomeStack');
+                props.navigation.navigate('HomeStack')
               }}
             />
             {!!profile.data &&
-              profile.data.roles
-                .map((role) => role.name)
-                .includes('MASTER') && (
+              profile.data.roles.map(role => role.name).includes('MASTER') && (
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="home-outline" color={color} size={size} />
+                    <Icon name='home-outline' color={color} size={size} />
                   )}
-                  label="Condominios"
+                  label='Condominios'
                   onPress={() => {
-                    props.navigation.navigate('CondominiumsStack');
+                    props.navigation.navigate('CondominiumsStack')
                   }}
                 />
               )}
             {!!profile.data &&
-              profile.data.roles
-                .map((role) => role.name)
-                .includes('MASTER') && (
+              profile.data.roles.map(role => role.name).includes('MASTER') && (
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="home-outline" color={color} size={size} />
+                    <Icon name='home-outline' color={color} size={size} />
                   )}
-                  label="Balanços"
+                  label='Balanços'
                   onPress={() => {
-                    props.navigation.navigate('BalancesStack');
+                    props.navigation.navigate('BalancesStack')
                   }}
                 />
               )}
             {!!profile.data &&
-              profile.data.roles
-                .map((role) => role.name)
-                .includes('MASTER') && (
+              profile.data.roles.map(role => role.name).includes('MASTER') && (
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="home-outline" color={color} size={size} />
+                    <Icon name='home-outline' color={color} size={size} />
                   )}
-                  label="Convenções"
+                  label='Convenções'
                   onPress={() => {
-                    props.navigation.navigate('ConventionsStack');
+                    props.navigation.navigate('ConventionsStack')
                   }}
                 />
               )}
 
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="account-outline" color={color} size={size} />
+                <Icon name='account-outline' color={color} size={size} />
               )}
-              label="Minha-conta"
+              label='Minha-conta'
               onPress={() => {
-                props.navigation.navigate('Profile');
+                props.navigation.navigate('Profile')
               }}
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="barcode" color={color} size={size} />
+                <Icon name='barcode' color={color} size={size} />
               )}
-              label="Boletos"
+              label='Boletos'
               onPress={() => {
-                props.navigation.navigate('BoletosStack');
+                props.navigation.navigate('BoletosStack')
+              }}
+            />
+            <DrawerItem
+              /*   icon={({color, size}) => (
+                <Icon name='ios-add' color={color} size={size} />
+              )} */
+              label='Enquetes'
+              onPress={() => {
+                props.navigation.navigate('SurveyStack')
               }}
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="bookmark-outline" color={color} size={size} />
+                <Icon name='bookmark-outline' color={color} size={size} />
               )}
-              label="Eventos"
+              label='Eventos'
               onPress={() => {
-                props.navigation.navigate('EventosStack');
+                props.navigation.navigate('EventosStack')
               }}
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="bookmark-outline" color={color} size={size} />
+                <Icon name='bookmark-outline' color={color} size={size} />
               )}
-              label="Regras"
+              label='Regras'
               onPress={() => {
-                props.navigation.navigate('RegrasStack');
-              }}
-            />
-            <DrawerItem
-              icon={({color, size}) => (
-                <Icon name="bookmark-outline" color={color} size={size} />
-              )}
-              label="Enquetes"
-              onPress={() => {
-                props.navigation.navigate('EnquetesScreen');
+                props.navigation.navigate('RegrasStack')
               }}
             />
           </Drawer.Section>
@@ -165,16 +158,16 @@ export default function DrawContent(props) {
       <Drawer.Section style={styles.bottomDrawerSection}>
         <DrawerItem
           icon={({color, size}) => (
-            <Icon name="exit-to-app" color={color} size={size} />
+            <Icon name='exit-to-app' color={color} size={size} />
           )}
-          label="Sair"
+          label='Sair'
           onPress={() => {
-            dispatch(logoffRequest());
+            dispatch(logoffRequest())
           }}
         />
       </Drawer.Section>
     </View>
-  );
+  )
 }
 const styles = StyleSheet.create({
   drawerContent: {
@@ -220,4 +213,4 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
   },
-});
+})

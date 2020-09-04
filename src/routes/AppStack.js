@@ -27,8 +27,19 @@ import RegulamentosShowScreen from '../screens/RegulamentsScreen/Show';
 import AtasListScreen from '../screens/AtasScreen/List';
 import AtasShowScreen from '../screens/AtasScreen/Show';
 import AtasCreateScreen from '../screens/AtasScreen/Create';
+import SurveysCreateScreen from '../screens/Surveys/Create';
+import SurveysListScreen from '../screens/Surveys/List';
+import SurveyShowScreen from '../screens/Surveys/Show';
+
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
+const SurveyStack = () => (
+  <Stack.Navigator initialRouteName="SurveysListScreen">
+    <Stack.Screen component={SurveysCreateScreen} name="SurveysCreateScreen" />
+    <Stack.Screen component={SurveysListScreen} name="SurveysListScreen" />
+    <Stack.Screen component={SurveyShowScreen} name="SurveyShowScreen" />
+  </Stack.Navigator>
+);
 
 const BalancesStack = () => (
   <Stack.Navigator initialRouteName="BalancesListScreen">
@@ -61,8 +72,6 @@ const RegulamentsStack = () => (
       component={RegulamentosShowScreen}
       name="RegulamentosShowScreen"
     />
-    {/*     <Stack.Screen component={BalancesListScreen} name="BalancesListScreen" /> */}
-    {/*     <Stack.Screen component={BalancesShowScreen} name="BalancesShowScreen" /> */}
   </Stack.Navigator>
 );
 const ConventionsStack = () => (
@@ -179,6 +188,7 @@ function AppStack() {
       drawerContent={(props) => <DrawerContent {...props} />}>
       <Drawer.Screen name="RegrasStack" component={RegrasStack} />
       <Drawer.Screen name="HomeStack" component={HomeStack} />
+      <Drawer.Screen name="SurveyStack" component={SurveyStack} />
       <Drawer.Screen name="BalancesStack" component={BalancesStack} />
       <Drawer.Screen name="ConventionsStack" component={ConventionsStack} />
       <Drawer.Screen name="RegulamentsStack" component={RegulamentsStack} />

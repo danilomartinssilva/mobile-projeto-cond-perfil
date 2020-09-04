@@ -126,6 +126,18 @@ export default function HomeScreen({navigation}) {
           </ContainerItemMenuInfo>
         </ContainerMenu>
         <ContainerMenu>
+          <Image source={enquete_icon} />
+          <ContainerItemMenuInfo
+            onPress={() => {
+              navigation.navigate('SurveyStack', {
+                screen: 'SurveysListScreen',
+              });
+            }}>
+            <Title>Enquete</Title>
+            <Description>Dados de cadastro</Description>
+          </ContainerItemMenuInfo>
+        </ContainerMenu>
+        <ContainerMenu>
           <Image source={usuario_icon} />
           <ContainerItemMenuInfo>
             <Title>Minha conta</Title>
