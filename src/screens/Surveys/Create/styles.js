@@ -35,7 +35,7 @@ export const Separator = styled.View`
 
 export const ContainerTitle = styled.View`
   flex-direction: row;
-  height: 60px;
+  height: 80px;
   align-self: stretch;
   border-bottom-width: 1px;
   border-color: white;
