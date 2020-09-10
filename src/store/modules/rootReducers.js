@@ -10,6 +10,9 @@ import conventions from './conventions/reducer'
 import regulaments from './regulaments/reducer'
 import minutes from './minutes/reducer'
 import surveys from './surveys/reducer'
+import notifications from './notifications/reducer'
+import privatenotices from './privatenotices/reducer'
+import users from './users/reducer'
 
 export default combineReducers({
   auth,
@@ -23,4 +26,7 @@ export default combineReducers({
   regulaments,
   minutes,
   surveys,
+  notifications,
+  privatenotices,
+  users,
 })

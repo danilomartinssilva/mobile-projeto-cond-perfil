@@ -4,6 +4,7 @@ import {dimensions} from '../../theme';
 import ButtonForm from '../../components/ButtonForm';
 import InputForm from '../../components/InputForm';
 import {colors} from '../../theme';
+import {fonts} from '../../theme/fonts';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
   behavior: Platform.OS === 'ios' ? 'padding' : undefined,
@@ -21,6 +22,7 @@ export const Title = styled.Text`
   margin: 16px;
   line-height: 36px;
   color: ${colors.white};
+  font-family: ${fonts.bold};
 `;
 
 export const TButton = styled(ButtonForm)`

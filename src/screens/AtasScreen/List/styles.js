@@ -1,14 +1,15 @@
 import styled from 'styled-components/native';
 import {dimensions, colors, spacing} from '../../../theme';
+import {fonts} from '../../../theme/fonts';
 
 export const Container = styled.View`
   flex: 1;
   background-color: ${colors.primary};
-  padding: 16px;
 `;
 
 export const Card = styled.TouchableOpacity`
-  width: ${dimensions.width}px;
+  align-self: stretch;
+
   height: 120px;
   border-bottom-width: 0.5px;
   border-color: ${colors.gray};
@@ -18,16 +19,19 @@ export const Card = styled.TouchableOpacity`
 export const ContainerInfo = styled.View`
   flex-direction: column;
   margin: ${spacing.xs}px;
+  flex-wrap: wrap;
 `;
 export const TitleEventText = styled.Text`
   font-size: 15px;
   font-weight: bold;
   margin: 4px;
   color: ${colors.white};
+  font-family: ${fonts.bold};
 `;
 export const InfoEventText = styled.Text`
   font-size: 12px;
   margin: 4px;
+  font-family: ${fonts.regular};
   color: ${colors.white};
 `;
 export const OptionsContainer = styled.View`
@@ -53,9 +57,11 @@ export const InfoDescriptionContainer = styled.View`
 `;
 export const Title = styled.Text`
   font-size: 21px;
+  font-family: ${fonts.bold};
   color: white;
 `;
 export const Description = styled.Text`
   font-size: 15px;
+  font-family: ${fonts.regular};
   color: white;
 `;

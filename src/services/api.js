@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const DEFAULT_API_CONFIG = {
-  //url: 'http://192.168.100.85:3333',
+  url: 'http://192.168.100.85:3333',
   //url: 'http://localhost:3333',
-  url: 'http://165.227.83.46:3333/',
+  //url: 'http://165.227.83.46:3333/',
   //url: 'http://10.0.2.2:3333',
   timeout: 8000,
 };

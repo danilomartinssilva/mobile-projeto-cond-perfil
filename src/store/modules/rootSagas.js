@@ -10,6 +10,9 @@ import conventions from './conventions/sagas'
 import regulaments from './regulaments/sagas'
 import minutes from './minutes/sagas'
 import surveys from './surveys/sagas'
+import notifications from './notifications/sagas'
+import privatenotices from './privatenotices/sagas'
+import users from './users/sagas'
 export default function * rootSaga () {
   return yield all([
     auth,
@@ -23,5 +26,8 @@ export default function * rootSaga () {
     regulaments,
     minutes,
     surveys,
+    notifications,
+    privatenotices,
+    users,
   ])
 }

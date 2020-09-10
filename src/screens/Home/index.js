@@ -144,6 +144,30 @@ export default function HomeScreen({navigation}) {
             <Description>Dados de cadastro</Description>
           </ContainerItemMenuInfo>
         </ContainerMenu>
+        <ContainerMenu>
+          <Image source={regulamentos_icon} />
+          <ContainerItemMenuInfo
+            onPress={() => {
+              navigation.navigate('NotificationStack', {
+                screen: 'NoticeCreateScreen',
+              });
+            }}>
+            <Title>Caixa de Entrada</Title>
+            <Description>Minha caixa de entrada</Description>
+          </ContainerItemMenuInfo>
+        </ContainerMenu>
+        <ContainerMenu>
+          <Image source={regulamentos_icon} />
+          <ContainerItemMenuInfo
+            onPress={() => {
+              navigation.navigate('NotificationStack', {
+                screen: 'NotificationsListScreen',
+              });
+            }}>
+            <Title>Notificações</Title>
+            <Description>Notificações</Description>
+          </ContainerItemMenuInfo>
+        </ContainerMenu>
       </ScrollView>
     </Container>
   );

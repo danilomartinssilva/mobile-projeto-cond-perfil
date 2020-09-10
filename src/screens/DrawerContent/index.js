@@ -17,6 +17,7 @@ import {logoffRequest} from '../../store/modules/auth/actions'
 import user_placeholder from '../../assets/user_placeholder.jpg'
 import Condominiums from '../../store/modules/condominiums'
 import {getProfile} from '../../services/helper'
+import {fonts} from '../../theme/fonts'
 
 Icon.loadFont()
 export default function DrawContent (props) {
@@ -79,6 +80,18 @@ export default function DrawContent (props) {
                   label='Condominios'
                   onPress={() => {
                     props.navigation.navigate('CondominiumsStack')
+                  }}
+                />
+              )}
+            {!!profile.data &&
+              profile.data.roles.map(role => role.name).includes('MASTER') && (
+                <DrawerItem
+                  icon={({color, size}) => (
+                    <Icon name='account-outline' color={color} size={size} />
+                  )}
+                  label='Usuários'
+                  onPress={() => {
+                    props.navigation.navigate('UserStack')
                   }}
                 />
               )}
@@ -153,19 +166,30 @@ export default function DrawContent (props) {
               }}
             />
           </Drawer.Section>
+          <Drawer.Section style={styles.bottomDrawerSection}>
+            <DrawerItem
+              icon={({color, size}) => (
+                <Icon name='exit-to-app' color={color} size={size} />
+              )}
+              label='Sair'
+              onPress={() => {
+                dispatch(logoffRequest())
+              }}
+            />
+          </Drawer.Section>
         </View>
       </DrawerContentScrollView>
-      <Drawer.Section style={styles.bottomDrawerSection}>
+      {/* <Drawer.Section style={styles.bottomDrawerSection}>
         <DrawerItem
           icon={({color, size}) => (
-            <Icon name='exit-to-app' color={color} size={size} />
+            <Icon name="exit-to-app" color={color} size={size} />
           )}
-          label='Sair'
+          label="Sair"
           onPress={() => {
-            dispatch(logoffRequest())
+            dispatch(logoffRequest());
           }}
         />
-      </Drawer.Section>
+      </Drawer.Section> */}
     </View>
   )
 }
@@ -180,6 +204,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 3,
     fontWeight: 'bold',
+    fontFamily: fonts.bold,
   },
   caption: {
     fontSize: 14,

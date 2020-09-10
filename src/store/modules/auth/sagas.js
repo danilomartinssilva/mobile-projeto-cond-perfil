@@ -9,6 +9,7 @@ import * as RootNavigation from '../../../services/RootNavigation'
 export function * login ({payload}) {
   try {
     const signin = yield call(api.post, 'login', payload)
+
     if (signin && signin.data) {
       const {token} = signin.data
       api.defaults.headers.Authorization = `Bearer ${token}`
@@ -18,7 +19,6 @@ export function * login ({payload}) {
         token: token,
         data: signed.data,
       })
-      toaster('Usuário logado com sucesso!')
 
       RootNavigation.navigate('AppStack', {
         screen: 'HomeStack',
@@ -46,7 +46,8 @@ export function * login ({payload}) {
         type: '@AUTH/loginFailure',
         err: 'Falha na autenticação, verifique seus dados ',
       })
-      toaster('Falha na autenticação, verifique seus dados')
+
+      toaster(responder.failed(failed))
     }
   }
 }

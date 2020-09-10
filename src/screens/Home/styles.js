@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import {colors, dimensions} from '../../theme';
+import {fonts} from '../../theme/fonts';
 
 export const Container = styled.View`
   flex: 1;
@@ -27,6 +28,7 @@ export const Title = styled.Text`
   margin: 16px;
 
   font-size: 18px;
+  font-family: ${fonts.bold};
 
   margin-bottom: 8px;
   margin-left: 16px;
@@ -34,6 +36,7 @@ export const Title = styled.Text`
 export const Description = styled.Text`
   color: ${colors.white};
   margin-left: 16px;
+  font-family: ${fonts.regular};
 
   font-size: 12px;
 `;

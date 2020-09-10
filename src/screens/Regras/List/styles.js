@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import {dimensions, colors, spacing} from '../../../theme';
+import {fonts} from '../../../theme/fonts';
 
 export const Container = styled.View`
   flex: 1;
@@ -23,11 +24,13 @@ export const TitleEventText = styled.Text`
   font-weight: bold;
   margin: 4px;
   color: ${colors.white};
+  font-family: ${fonts.bold};
 `;
 export const InfoEventText = styled.Text`
   font-size: 12px;
   margin: 4px;
   color: ${colors.white};
+  font-family: ${fonts.regular};
 `;
 export const OptionsContainer = styled.View`
   width: ${dimensions.width / 5}px;
