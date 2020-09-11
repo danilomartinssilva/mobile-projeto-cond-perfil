@@ -78,10 +78,25 @@ export function* list() {
     toast(message);
   }
 }
+export function* getAll() {
+  try {
+    const response = yield call(api.get, 'minutesAll');
+
+    yield put({
+      type: '@minutes/LOAD_SUCCESS',
+      items: response.data,
+    });
+  } catch (failed) {
+    yield put({type: '@minutes/LOAD_FAILURE', failed});
+    const message = responder.failed(failed);
+    toast(message);
+  }
+}
 export default all([
   takeLatest('@minutes/ADD_REQUEST', store),
   takeLatest('@minutes/LOAD_REQUEST', list),
   takeLatest('@minutes/DESTROY_REQUEST', destroy),
   takeLatest('@minutes/UPDATE_REQUEST', update),
   takeLatest('@minutes/SHOW_REQUEST', findOne),
+  takeLatest('@minutes/GET_ALL_REQUEST', getAll),
 ]);

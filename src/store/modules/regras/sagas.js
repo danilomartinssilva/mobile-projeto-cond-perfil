@@ -3,14 +3,15 @@ import api from '../../../services/api';
 import toast from '../../../services/toast';
 import responder from '../../../services/responder';
 import {goBack} from '../../../services/RootNavigation';
-import regras from '.';
+
 export function* store({regra}) {
+  if (__DEV__) console.tron.log('REGRA', regra);
   try {
     const response = yield call(api.post, 'laws', regra);
 
     yield put({
       type: '@regra/ADD_SUCCESS',
-      event: response.data,
+      regra: response.data,
     });
 
     toast(response.message);
@@ -73,8 +74,6 @@ export function* destroy({id}) {
 }
 export function* list() {
   try {
-    //const profile = yield select((state) => state.profile);
-    //const roles = profile.data.roles[0].name;
     const response = yield call(api.get, 'laws');
 
     yield put({
@@ -87,27 +86,26 @@ export function* list() {
     toast(message);
   }
 }
-/* export function* listAll({event}) {
+export function* getAll() {
   try {
-    const response = yield call(api.get, 'eventsAll', event);
+    const response = yield call(api.get, 'laws');
 
     yield put({
-      type: '@regra/LOAD_SUCESS',
+      type: '@regra/LOAD_SUCCESS',
       items: response.data,
     });
-
-    toast(response.message);
   } catch (failed) {
-    yield put({type: '@regra/GET_ALL_FAILURE', failed});
+    yield put({type: '@regra/LOAD_FAILURE', failed});
     const message = responder.failed(failed);
     toast(message);
   }
-} */
+}
+
 export default all([
   takeLatest('@regras/ADD_REQUEST', store),
   takeLatest('@regras/LOAD_REQUEST', list),
+  takeLatest('@regras/GET_ALL_REQUEST', getAll),
   takeLatest('@regras/DESTROY_REQUEST', destroy),
   takeLatest('@regras/UPDATE_REQUEST', update),
   takeLatest('@regras/ADD_DOCUMENT_REQUEST', upload),
-  /*  takeLatest('@regra/GET_ALL_REQUEST', listAll), */
 ]);

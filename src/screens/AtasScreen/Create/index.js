@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useEffect} from 'react';
 import {View, Text, ScrollView, Image} from 'react-native';
 import {
   Container,
@@ -29,14 +29,22 @@ import {values} from 'lodash';
 import * as Yup from 'yup';
 import {useDispatch, useSelector} from 'react-redux';
 import {getDate, format, parseISO} from 'date-fns';
+import Condominiums from '../../../store/modules/condominiums';
 import api from '../../../services/api';
 import Axios from 'axios';
+import StyledModalField from '../../../components/StyledModalField';
+import {pickerFilterData} from '../../../services/helper';
 
 export default function AtasCreateScreen({navigation}) {
   const dispatch = useDispatch();
-  const {token} = useSelector((state) => state.auth);
+
   const profile = useSelector((state) => state.profile);
-  const files = useSelector((state) => state.files);
+
+  useEffect(() => {
+    Condominiums.loadCondominiumRequest();
+  }, []);
+  const condominiums = useSelector((state) => state.condominiums);
+
   async function handleSelectFile(props) {
     const file = await DocumentPicker.getDocumentAsync({
       type: 'application/pdf',
@@ -113,9 +121,25 @@ export default function AtasCreateScreen({navigation}) {
           validateOnChange={false}
           initialValues={{
             description: '',
+            name: '',
           }}>
           {(props) => (
             <>
+              <StyledModalField
+                selectedValue={null}
+                label="Condomínio"
+                errors={props.errors.condominium_id}
+                placeholder="Selecione um condomínio"
+                title="Selecione um condomínio"
+                onChangeValue={(condominium_id) =>
+                  props.setValues({
+                    ...props.values,
+                    condominium_id: condominium_id,
+                  })
+                }
+                data={pickerFilterData(condominiums.items, 'id', 'name')}
+              />
+
               <TInput
                 messageError={props.errors.name}
                 label="Nome"

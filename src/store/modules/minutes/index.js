@@ -4,6 +4,7 @@ import {
   updateMinuteRequest,
   destroyMinuteRequest,
   showMinuteRequest,
+  getAllRequest,
 } from './actions';
 export default {
   addMinuteRequest,
@@ -11,4 +12,5 @@ export default {
   updateMinuteRequest,
   destroyMinuteRequest,
   showMinuteRequest,
+  getAllRequest,
 };

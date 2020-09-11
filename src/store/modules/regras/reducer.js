@@ -12,6 +12,8 @@ export default function reducer(state = INITIAL_STATE, action) {
       case '@regra/DESTROY_REQUEST':
       case '@regra/UPDATE_REQUEST':
       case '@regras/ADD_DOCUMENT_REQUEST':
+      case '@regras/GET_ALL_REQUEST':
+
       case '@regra/LOAD_REQUEST': {
         draft.loading = true;
         break;

@@ -36,7 +36,10 @@ export default function AtasListScreen({navigation}) {
   const store = useStore();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(Minutes.loadMinuteRequest());
+    if (__DEV__) console.tron.log(getProfile(profile));
+    getProfile(profile) === 'MASTER'
+      ? dispatch(Minutes.getAllRequest())
+      : dispatch(Minutes.loadMinuteRequest());
   }, []);
   useLayoutEffect(() => {
     navigation.setOptions({

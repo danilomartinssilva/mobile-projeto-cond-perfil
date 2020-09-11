@@ -13,6 +13,7 @@ export default function reducer(state = INITIAL_STATE, action) {
       case '@minutes/DESTROY_REQUEST':
       case '@minutes/UPDATE_REQUEST':
       case '@minutes/SHOW_REQUEST':
+      case '@minutes/GET_ALL_REQUEST':
 
       case '@minutes/LOAD_REQUEST': {
         draft.loading = true;

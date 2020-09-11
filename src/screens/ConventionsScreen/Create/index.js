@@ -45,7 +45,7 @@ export default function ConventionsCreateScreen({navigation}) {
 
     props.setFieldValue('file', file);
   }
-  async function handleUploadFile({file, name, description}) {
+  async function handleUploadFile({file, name, description, condominium_id}) {
     try {
       const data = {
         ...file,
@@ -68,7 +68,7 @@ export default function ConventionsCreateScreen({navigation}) {
           file_id: response.data.id,
           description: description,
           name: name,
-          condominium_id: profile.data.profiles.condominium_id,
+          condominium_id: condominium_id,
         }),
       );
     } catch (err) {

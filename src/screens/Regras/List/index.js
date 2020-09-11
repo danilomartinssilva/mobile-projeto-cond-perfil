@@ -24,7 +24,9 @@ export default function RegrasListScreen({navigation}) {
   const store = useStore();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(Regras.loadRegraRequest());
+    getProfile(profile) === 'MASTER'
+      ? dispatch(Regras.getAllRequest())
+      : dispatch(Regras.loadRegraRequest());
   }, []);
   useLayoutEffect(() => {
     navigation.setOptions({

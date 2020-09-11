@@ -39,18 +39,7 @@ export function getAllRequest() {
     type: '@minutes/GET_ALL_REQUEST',
   };
 }
-export function getAllSucess(items) {
-  return {
-    type: '@minutes/GET_ALL_SUCESS',
-    items,
-  };
-}
-export function getAllFailure(failed) {
-  return {
-    type: '@minutes/GET_ALL_FAILURE',
-    failed,
-  };
-}
+
 export function loadMinuteSuccess(items) {
   return {
     type: '@minutes/LOAD_SUCCESS',

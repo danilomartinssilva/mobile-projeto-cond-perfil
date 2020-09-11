@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useEffect} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import {
   Container,
@@ -28,11 +28,17 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getDate, format, parseISO} from 'date-fns';
 import api from '../../../services/api';
 import Axios from 'axios';
-
+import Condominiums from '../../../store/modules/condominiums';
+import StyledModalField from '../../../components/StyledModalField';
+import {pickerFilterData} from '../../../services/helper';
 export default function RegrasCreateScreen({navigation}) {
   const dispatch = useDispatch();
   const {token} = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
+  useEffect(() => {
+    Condominiums.loadCondominiumRequest();
+  }, []);
+  const condominiums = useSelector((state) => state.condominiums);
   async function handleSelectFile(props) {
     const file = await DocumentPicker.getDocumentAsync({
       type: 'application/pdf',
@@ -42,7 +48,7 @@ export default function RegrasCreateScreen({navigation}) {
     props.setFieldValue('file', file);
     if (__DEV__) console.tron.log(props.values);
   }
-  async function handleUploadFile({file, name, description}) {
+  async function handleUploadFile({file, name, description, condominium_id}) {
     try {
       const data = {
         ...file,
@@ -67,7 +73,7 @@ export default function RegrasCreateScreen({navigation}) {
           file_id: response.data.id,
           description: description,
           name: name,
-          condominium_id: profile.data.profiles.condominium_id,
+          condominium_id,
         }),
       );
     } catch (err) {
@@ -98,17 +104,7 @@ export default function RegrasCreateScreen({navigation}) {
         <Separator />
         <Formik
           onSubmit={(values) => {
-            /*  const data = {
-            ...values,
-            start_date_event: format(
-              new Date(parseDate(values.start_date_event)),
-              'yyy-MM-dd HH:mm:ss',
-            ),
-          }; */
-
             handleUploadFile(values);
-
-            /*  dispatch(Events.addEventRequest(data)); */
           }}
           validationSchema={Yup.object().shape({
             name: Yup.string().required('O campo nome é obrigatório'),
@@ -124,6 +120,20 @@ export default function RegrasCreateScreen({navigation}) {
           }}>
           {(props) => (
             <>
+              <StyledModalField
+                selectedValue={null}
+                label="Condomínio"
+                errors={props.errors.condominium_id}
+                placeholder="Selecione um condomínio"
+                title="Selecione um condomínio"
+                onChangeValue={(condominium_id) =>
+                  props.setValues({
+                    ...props.values,
+                    condominium_id: condominium_id,
+                  })
+                }
+                data={pickerFilterData(condominiums.items, 'id', 'name')}
+              />
               <TInput
                 messageError={props.errors.name}
                 label="Nome"
