@@ -1,5 +1,5 @@
 import React, {useLayoutEffect, useEffect} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Image} from 'react-native';
 import {
   Container,
   TInput,
@@ -12,6 +12,8 @@ import {
   Separator,
   Title,
   Description,
+  ContainerTitle,
+  InfoDescriptionContainer,
 } from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Formik} from 'formik';
@@ -31,6 +33,8 @@ import Axios from 'axios';
 import Condominiums from '../../../store/modules/condominiums';
 import StyledModalField from '../../../components/StyledModalField';
 import {pickerFilterData} from '../../../services/helper';
+import regras_icons from '../../../assets/icons/regras-ico.png';
+
 export default function RegrasCreateScreen({navigation}) {
   const dispatch = useDispatch();
   const {token} = useSelector((state) => state.auth);
@@ -95,13 +99,14 @@ export default function RegrasCreateScreen({navigation}) {
   }, [navigation]);
   return (
     <Container>
+      <ContainerTitle>
+        <Image source={regras_icons} />
+        <InfoDescriptionContainer>
+          <Title>Regras</Title>
+          <Description>Informativos</Description>
+        </InfoDescriptionContainer>
+      </ContainerTitle>
       <ScrollView>
-        <Title>Regras</Title>
-        <Separator />
-        <Description>
-          Para cadastrar regras preencha os campos abaixo
-        </Description>
-        <Separator />
         <Formik
           onSubmit={(values) => {
             handleUploadFile(values);

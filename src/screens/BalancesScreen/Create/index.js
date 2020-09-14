@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useEffect} from 'react';
 import {View, Text, ScrollView, Image} from 'react-native';
 import {
   Container,
@@ -16,6 +16,10 @@ import {
 } from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Formik} from 'formik';
+import Condominiums from '../../../store/modules/condominiums';
+import {pickerFilterData} from '../../../services/helper';
+import StyledModalField from '../../../components/StyledModalField';
+
 import balances_icon from '../../../assets/icons/balancos-ico.png';
 import Balances from '../../../store/modules/balances';
 import Files from '../../../store/modules/files';
@@ -37,6 +41,10 @@ export default function BalancesCreateScreen({navigation}) {
   const {token} = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
   const files = useSelector((state) => state.files);
+  useEffect(() => {
+    Condominiums.loadCondominiumRequest();
+  }, []);
+  const condominiums = useSelector((state) => state.condominiums);
   async function handleSelectFile(props) {
     const file = await DocumentPicker.getDocumentAsync({
       type: 'application/pdf',
@@ -45,7 +53,7 @@ export default function BalancesCreateScreen({navigation}) {
 
     props.setFieldValue('file', file);
   }
-  async function handleUploadFile({file, name, description}) {
+  async function handleUploadFile({file, name, description, condominium_id}) {
     try {
       const data = {
         ...file,
@@ -68,12 +76,10 @@ export default function BalancesCreateScreen({navigation}) {
           file_id: response.data.id,
           description: description,
           name: name,
-          condominium_id: profile.data.profiles.condominium_id,
+          condominium_id,
         }),
       );
-    } catch (err) {
-      if (__DEV__) console.tron.log(err);
-    }
+    } catch (err) {}
   }
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -95,7 +101,7 @@ export default function BalancesCreateScreen({navigation}) {
           <Image source={balances_icon} />
           <InfoDescriptionContainer>
             <Title>Balanços</Title>
-            <Description>Confira as convenções do seu condomínio</Description>
+            <Description>Prestação de Contas</Description>
           </InfoDescriptionContainer>
         </ContainerTitle>
         <Formik
@@ -105,7 +111,9 @@ export default function BalancesCreateScreen({navigation}) {
           validationSchema={Yup.object().shape({
             name: Yup.string().required('O campo nome é obrigatório'),
             file: Yup.string().required('O campo arquivo é obrigatório'),
-
+            condominium_id: Yup.string().required(
+              'O campo condomínio é obrigatório',
+            ),
             description: Yup.string().required(
               'O campo descrição é obrigatório',
             ),
@@ -116,6 +124,20 @@ export default function BalancesCreateScreen({navigation}) {
           }}>
           {(props) => (
             <>
+              <StyledModalField
+                selectedValue={null}
+                label="Condomínio"
+                errors={props.errors.condominium_id}
+                placeholder="Selecione um condomínio"
+                title="Selecione um condomínio"
+                onChangeValue={(condominium_id) =>
+                  props.setValues({
+                    ...props.values,
+                    condominium_id: condominium_id,
+                  })
+                }
+                data={pickerFilterData(condominiums.items, 'id', 'name')}
+              />
               <TInput
                 messageError={props.errors.name}
                 label="Nome"

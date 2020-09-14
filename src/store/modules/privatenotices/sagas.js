@@ -9,14 +9,14 @@ export function* store({privateNotice}) {
     const response = yield call(api.post, 'notices', privateNotice);
 
     yield put({
-      type: '@privateNotices/ADD_SUCCESS',
+      type: '@privatenotices/ADD_SUCCESS',
       privateNotice: response.data,
     });
 
     toast(response.message);
     goBack();
   } catch (failed) {
-    yield put({type: '@privateNotices/ADD_FAILURE', failed});
+    yield put({type: '@privatenotices/ADD_FAILURE', failed});
     const message = responder.failed(failed);
     toast(message);
   }
@@ -31,11 +31,11 @@ export function* update({privateNotices}) {
     );
 
     yield put({
-      type: '@privateNotices/UPDATE_SUCESS',
+      type: '@privatenotices/UPDATE_SUCESS',
       notification: response.data,
     });
   } catch (failed) {
-    yield put({type: '@privateNotices/UPDATE_FAILURE', failed});
+    yield put({type: '@privatenotices/UPDATE_FAILURE', failed});
     const message = responder.failed(failed);
     toast(message);
   }
@@ -45,7 +45,7 @@ export function* destroy({id}) {
     const response = yield call(api.delete, 'notifications/' + id);
 
     yield put({
-      type: '@privateNotices/DESTROY_SUCESS',
+      type: '@privatenotices/DESTROY_SUCESS',
       id: id,
     });
   } catch (failed) {
@@ -59,11 +59,11 @@ export function* findOne({id}) {
     const response = yield call(api.get, `notifications/${id}`);
 
     yield put({
-      type: '@privateNotices/SHOW_SUCESS',
+      type: '@privatenotices/SHOW_SUCESS',
       notification: response.data,
     });
   } catch (failed) {
-    yield put({type: '@privateNotices/SHOW_FAILURE', failed});
+    yield put({type: '@privatenotices/SHOW_FAILURE', failed});
     const message = responder.failed(failed);
     toast(message);
   }
@@ -73,21 +73,21 @@ export function* list() {
     const response = yield call(api.get, 'balances');
 
     yield put({
-      type: '@privateNotices/LOAD_SUCCESS',
+      type: '@privatenotices/LOAD_SUCCESS',
       items: response.data,
     });
 
     toast(response.message);
   } catch (failed) {
-    yield put({type: '@privateNotices/LOAD_FAILURE', failed});
+    yield put({type: '@privatenotices/LOAD_FAILURE', failed});
     const message = responder.failed(failed);
     toast(message);
   }
 }
 export default all([
-  takeLatest('@privateNotices/ADD_REQUEST', store),
-  takeLatest('@privateNotices/LOAD_REQUEST', list),
-  takeLatest('@privateNotices/DESTROY_REQUEST', destroy),
-  takeLatest('@privateNotices/UPDATE_REQUEST', update),
-  takeLatest('@privateNotices/SHOW_REQUEST', findOne),
+  takeLatest('@privatenotices/ADD_REQUEST', store),
+  takeLatest('@privatenotices/LOAD_REQUEST', list),
+  takeLatest('@privatenotices/DESTROY_REQUEST', destroy),
+  takeLatest('@privatenotices/UPDATE_REQUEST', update),
+  takeLatest('@privatenotices/SHOW_REQUEST', findOne),
 ]);

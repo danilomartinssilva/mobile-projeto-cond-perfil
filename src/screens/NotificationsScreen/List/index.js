@@ -30,13 +30,16 @@ import Notifications from '../../../store/modules/notifications';
 import {getProfile} from '../../../services/helper';
 import convencoes_icon from '../../../assets/icons/convencoes-ico.png';
 
-export default function NotificationsListScreen({navigation}) {
+export default function PrivateNoticeListScreen({navigation}) {
   const notifications = useSelector((state) => state.notifications);
   const profile = useSelector((state) => state.profile);
   const store = useStore();
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(Notifications.loadNotificationRequest());
+    getProfile(profile) === 'MASTER'
+      ? dispatch(Notifications.getAllRequest())
+      : dispatch(Notifications.loadNotificationRequest());
   }, []);
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -76,28 +79,73 @@ export default function NotificationsListScreen({navigation}) {
               <InfoEventText>
                 Data de modificação: {formatDate(item.updated_at)}
               </InfoEventText>
+              <InfoEventText>
+                Status:{' '}
+                {item.status === 'waiting'
+                  ? 'Aguardando'
+                  : item.status === 'active'
+                  ? 'active'
+                  : 'inativo'}
+              </InfoEventText>
             </ContainerInfo>
-            <OptionsContainer>
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('ConventionsShowScreen', {
-                    id: item.id,
-                  })
-                }>
-                <Ionicons
-                  name="document-outline"
-                  size={20}
-                  style={{margin: 4}}
-                />
-              </TouchableOpacity>
-            </OptionsContainer>
+            {getProfile(profile) === 'MASTER' && (
+              <OptionsContainer>
+                <TouchableOpacity
+                  onPress={() =>
+                    Alert.alert(
+                      'Notificação',
+                      'O que deseja fazer com a notificação?',
+                      [
+                        {
+                          text: 'Tornar ativa',
+                          onPress: () => {
+                            dispatch(
+                              Notifications.updateNotificationsRequest({
+                                id: item.id,
+                                status: 'active',
+                              }),
+                            );
+                          },
+                        },
+                        {
+                          text: 'Tornar inativa',
+                          onPress: () => {
+                            dispatch(
+                              Notifications.updateNotificationsRequest({
+                                id: item.id,
+                                status: 'inactive',
+                              }),
+                            );
+                          },
+                        },
+                        {
+                          text: 'Excluir',
+                          onPress: () => {
+                            dispatch(
+                              Notifications.destroyNotificationRequest(item.id),
+                            );
+                          },
+                        },
+                        {
+                          text: 'Cancelar',
+                        },
+                      ],
+                    )
+                  }>
+                  <Ionicons
+                    name="md-settings"
+                    size={20}
+                    style={{margin: 4, color: 'white'}}
+                  />
+                </TouchableOpacity>
+              </OptionsContainer>
+            )}
           </Card>
         )}
       />
-      {(getProfile(profile) === 'SINDICO' ||
-        getProfile(profile) === 'MASTER') && (
+      {getProfile(profile) === 'MASTER' && (
         <FAB
-          onPress={() => navigation.navigate('ConventionsCreateScreen')}
+          onPress={() => navigation.navigate('NotificationsCreateScreen')}
           style={{
             position: 'absolute',
             margin: 16,

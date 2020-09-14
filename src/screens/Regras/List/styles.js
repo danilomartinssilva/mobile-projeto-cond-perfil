@@ -39,3 +39,26 @@ export const OptionsContainer = styled.View`
 
   flex-direction: row;
 `;
+export const ContainerTitle = styled.View`
+  flex-direction: row;
+  height: 60px;
+  align-self: stretch;
+  border-bottom-width: 1px;
+  border-color: white;
+  align-items: center;
+  padding: 8px;
+`;
+export const InfoDescriptionContainer = styled.View`
+  flex-direction: column;
+  margin: 8px;
+`;
+export const Title = styled.Text`
+  font-size: 21px;
+  color: white;
+  font-family: ${fonts.bold};
+`;
+export const Description = styled.Text`
+  font-size: 15px;
+  color: white;
+  font-family: ${fonts.regular};
+`;

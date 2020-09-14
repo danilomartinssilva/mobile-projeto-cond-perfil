@@ -54,23 +54,33 @@ export const TUploadFile = styled.Text`
   font-weight: bold;
 `;
 
-export const Title = styled.Text`
-  color: ${colors.white};
-
-  font-size: 18px;
-  font-family: ${fonts.bold};
-  margin: 16px;
-`;
-export const Description = styled.Text`
-  color: ${colors.white};
-  margin-left: 16px;
-  font-family: ${fonts.regular};
-
-  font-size: 15px;
-`;
 export const Separator = styled.View`
   align-self: stretch;
   height: 1px;
   background-color: ${colors.white};
   margin: 20px;
+`;
+
+export const ContainerTitle = styled.View`
+  flex-direction: row;
+  height: 60px;
+  align-self: stretch;
+  border-bottom-width: 1px;
+  border-color: white;
+  align-items: center;
+  padding: 8px;
+`;
+export const InfoDescriptionContainer = styled.View`
+  flex-direction: column;
+  margin: 8px;
+`;
+export const Title = styled.Text`
+  font-size: 21px;
+  color: white;
+  font-family: ${fonts.bold};
+`;
+export const Description = styled.Text`
+  font-size: 15px;
+  color: white;
+  font-family: ${fonts.regular};
 `;

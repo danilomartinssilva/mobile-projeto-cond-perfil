@@ -70,7 +70,23 @@ export function* findOne({id}) {
 }
 export function* list() {
   try {
-    const response = yield call(api.get, 'balances');
+    const response = yield call(api.get, 'notifications');
+
+    yield put({
+      type: '@notifications/LOAD_SUCCESS',
+      items: response.data,
+    });
+
+    toast(response.message);
+  } catch (failed) {
+    yield put({type: '@notifications/LOAD_FAILURE', failed});
+    const message = responder.failed(failed);
+    toast(message);
+  }
+}
+export function* listAll() {
+  try {
+    const response = yield call(api.get, 'notificationsAll');
 
     yield put({
       type: '@notifications/LOAD_SUCCESS',
@@ -87,6 +103,7 @@ export function* list() {
 export default all([
   takeLatest('@notifications/ADD_REQUEST', store),
   takeLatest('@notifications/LOAD_REQUEST', list),
+  takeLatest('@notifications/GET_ALL_REQUEST', listAll),
   takeLatest('@notifications/DESTROY_REQUEST', destroy),
   takeLatest('@notifications/UPDATE_REQUEST', update),
   takeLatest('@notifications/SHOW_REQUEST', findOne),

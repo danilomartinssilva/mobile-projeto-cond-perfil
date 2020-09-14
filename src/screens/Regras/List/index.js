@@ -1,5 +1,12 @@
 import React, {useLayoutEffect, useEffect} from 'react';
-import {View, Text, FlatList, TouchableOpacity, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Alert,
+  Image,
+} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -13,10 +20,15 @@ import {
   TitleEventText,
   InfoEventText,
   OptionsContainer,
+  ContainerTitle,
+  InfoDescriptionContainer,
+  Title,
+  Description,
 } from './styles';
 import {useSelector, useStore, useDispatch} from 'react-redux';
 import Regras from '../../../store/modules/regras';
 import {getProfile} from '../../../services/helper';
+import regras_icons from '../../../assets/icons/regras-ico.png';
 
 export default function RegrasListScreen({navigation}) {
   const regras = useSelector((state) => state.regras);
@@ -48,6 +60,13 @@ export default function RegrasListScreen({navigation}) {
 
   return (
     <Container>
+      <ContainerTitle>
+        <Image source={regras_icons} />
+        <InfoDescriptionContainer>
+          <Title>Regras</Title>
+          <Description>Informativoss</Description>
+        </InfoDescriptionContainer>
+      </ContainerTitle>
       <FlatList
         keyExtractor={(item, index) => index.toString()}
         data={regras.items}
@@ -70,7 +89,26 @@ export default function RegrasListScreen({navigation}) {
                 <Ionicons
                   name="document-outline"
                   size={20}
-                  style={{margin: 4}}
+                  style={{margin: 4, color: 'white'}}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  Alert.alert('Regras', 'O que deseja fazer?', [
+                    {
+                      text: 'Excluir Regra',
+                      onPress: () =>
+                        dispatch(Regras.destroyRegraRequest(item.id)),
+                    },
+                    {
+                      text: 'Cancelar',
+                    },
+                  ])
+                }>
+                <Ionicons
+                  name="md-settings"
+                  size={20}
+                  style={{margin: 4, color: 'white'}}
                 />
               </TouchableOpacity>
             </OptionsContainer>

@@ -63,7 +63,7 @@ export default function BalancesListScreen({navigation}) {
         <Image source={balances_icon} />
         <InfoDescriptionContainer>
           <Title>Balanços</Title>
-          <Description>Confira as convenções do seu condomínio</Description>
+          <Description>Prestação de Contas</Description>
         </InfoDescriptionContainer>
       </ContainerTitle>
       <FlatList
@@ -88,15 +88,36 @@ export default function BalancesListScreen({navigation}) {
                 <Ionicons
                   name="document-outline"
                   size={20}
-                  style={{margin: 4}}
+                  style={{margin: 4, color: 'white'}}
                 />
               </TouchableOpacity>
             </OptionsContainer>
+            {getProfile(profile) === 'MASTER' && (
+              <OptionsContainer>
+                <TouchableOpacity
+                  onPress={() =>
+                    Alert.alert('Balanços', 'O que deseja fazer?', [
+                      {
+                        text: 'Excluir',
+                        onPress: () => Balances.destroyBalanceRequest(item.id),
+                      },
+                      {
+                        text: 'Cancelar',
+                      },
+                    ])
+                  }>
+                  <Ionicons
+                    name="md-settings"
+                    size={20}
+                    style={{margin: 4, color: 'white'}}
+                  />
+                </TouchableOpacity>
+              </OptionsContainer>
+            )}
           </Card>
         )}
       />
-      {(getProfile(profile) === 'SINDICO' ||
-        getProfile(profile) === 'MASTER') && (
+      {getProfile(profile) === 'MASTER' && (
         <FAB
           onPress={() => navigation.navigate('BalancesCreateScreen')}
           style={{

@@ -20,8 +20,6 @@ import {Formik} from 'formik';
 import Notifications from '../../../store/modules/notifications';
 import Condominiums from '../../../store/modules/condominiums';
 
-import _ from 'lodash';
-
 import * as Yup from 'yup';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -30,9 +28,7 @@ import StyledModalField from '../../../components/StyledModalField';
 import {pickerFilterData} from '../../../services/helper';
 export default function NotificationsCreateScreen({navigation}) {
   const dispatch = useDispatch();
-  const {token} = useSelector((state) => state.auth);
-  const profile = useSelector((state) => state.profile);
-  const files = useSelector((state) => state.files);
+
   const condominiums = useSelector((state) => state.condominiums);
 
   useEffect(() => {
@@ -41,7 +37,7 @@ export default function NotificationsCreateScreen({navigation}) {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Notificações',
+      title: 'Notificações do Condomínio',
       headerLeft: () => (
         <MaterialIcons
           name="menu"
@@ -52,14 +48,17 @@ export default function NotificationsCreateScreen({navigation}) {
       ),
     });
   }, [navigation]);
+
   return (
     <Container>
       <ScrollView>
         <ContainerTitle>
           <Image source={convencoes_icon} />
           <InfoDescriptionContainer>
-            <Title>Notificações</Title>
-            <Description>Confira as notificações do seu condomínio</Description>
+            <Title>Mensagens</Title>
+            <Description>
+              Criar uma nova mensagem para um usuário do condomínio
+            </Description>
           </InfoDescriptionContainer>
         </ContainerTitle>
         <Formik

@@ -1,6 +1,7 @@
 import {
   addNotificationRequest,
   loadNotificationRequest,
+  getAllRequest,
   destroyNotificationRequest,
   updateNotificationsRequest,
   showNotificationRequest,
@@ -10,5 +11,7 @@ export default {
   destroyNotificationRequest,
   updateNotificationsRequest,
   loadNotificationRequest,
+  getAllRequest,
+
   showNotificationRequest,
 };

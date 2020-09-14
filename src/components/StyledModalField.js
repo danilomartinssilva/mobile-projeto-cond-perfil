@@ -279,7 +279,7 @@ const StyledModalField = (props) => {
 const styles = StyleSheet.create({
   appbar: {
     elevation: 0,
-    backgroundColor: colors.primaryLight,
+    backgroundColor: colors.primary,
   },
   container: {
     backgroundColor: colors.white,

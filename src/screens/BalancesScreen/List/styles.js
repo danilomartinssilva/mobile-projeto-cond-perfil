@@ -18,7 +18,8 @@ export const Card = styled.TouchableOpacity`
 `;
 export const ContainerInfo = styled.View`
   flex-direction: column;
-  margin: ${spacing.xs}px;
+
+  flex: 1;
 `;
 export const TitleEventText = styled.Text`
   font-size: 15px;
@@ -34,7 +35,7 @@ export const InfoEventText = styled.Text`
   font-family: ${fonts.regular};
 `;
 export const OptionsContainer = styled.View`
-  width: ${dimensions.width / 5}px;
+  width: ${dimensions.width / 7}px;
   align-items: center;
   justify-content: center;
 

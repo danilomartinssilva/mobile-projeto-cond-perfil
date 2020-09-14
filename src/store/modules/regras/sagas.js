@@ -46,7 +46,7 @@ export function* upload({content}) {
 }
 export function* update({event}) {
   try {
-    const response = yield call(api.put, 'regras/' + event.id, event);
+    const response = yield call(api.put, 'laws/' + event.id, event);
 
     yield put({
       type: '@regra/UPDATE_SUCESS',
@@ -60,7 +60,7 @@ export function* update({event}) {
 }
 export function* destroy({id}) {
   try {
-    const response = yield call(api.delete, 'regras/' + id);
+    const response = yield call(api.delete, 'laws/' + id);
 
     yield put({
       type: '@regra/DESTROY_SUCESS',

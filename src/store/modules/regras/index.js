@@ -1,16 +1,16 @@
 import {
   addRegraRequest,
   loadRegraRequest,
-  destroyEventRequest,
+  destroyRegraRequest,
   getAllRequest,
-  updateEventRequest,
+  updateRegraRequest,
   addDocumentRequest,
 } from './actions';
 export default {
   addRegraRequest,
   loadRegraRequest,
-  destroyEventRequest,
+  destroyRegraRequest,
   getAllRequest,
-  updateEventRequest,
+  updateRegraRequest,
   addDocumentRequest,
 };

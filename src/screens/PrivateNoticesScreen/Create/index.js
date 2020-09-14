@@ -19,7 +19,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Formik} from 'formik';
 import PrivateNotifications from '../../../store/modules/privatenotices';
 import Condominiums from '../../../store/modules/condominiums';
-
+import Users from '../../../store/modules/users';
 import _ from 'lodash';
 
 import * as Yup from 'yup';
@@ -28,16 +28,29 @@ import {useDispatch, useSelector} from 'react-redux';
 import convencoes_icon from '../../../assets/icons/convencoes-ico.png';
 import StyledModalField from '../../../components/StyledModalField';
 import {pickerFilterData} from '../../../services/helper';
-export default function NoticeCreateScreen({navigation}) {
+
+export default function PrivateNoticeNoticeCreateScreen({navigation}) {
   const dispatch = useDispatch();
   const {token} = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
   const files = useSelector((state) => state.files);
   const condominiums = useSelector((state) => state.condominiums);
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(Condominiums.loadCondominiumRequest());
   }, []);
+
+  function handlePickerUsers(condominium_id) {
+    const filtered = users.items.filter(
+      (user) =>
+        user.profiles &&
+        user.profiles.condominium_id &&
+        user.profiles.condominium_id === condominium_id,
+    );
+
+    return filtered;
+  }
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -99,17 +112,21 @@ export default function NoticeCreateScreen({navigation}) {
               />
               <StyledModalField
                 selectedValue={null}
-                label="Condomínio"
-                errors={props.errors.condominium_id}
-                placeholder="Selecione um condomínio"
-                title="Selecione um condomínio"
-                onChangeValue={(condominium_id) =>
+                label="Usuário"
+                errors={props.errors.user_id}
+                placeholder="Selecione um usuário"
+                title="Selecione um usuário"
+                onChangeValue={(user_id) =>
                   props.setValues({
                     ...props.values,
-                    condominium_id: condominium_id,
+                    user_id: user_id,
                   })
                 }
-                data={pickerFilterData(condominiums.items, 'id', 'name')}
+                data={pickerFilterData(
+                  handlePickerUsers(props.values.condominium_id),
+                  'id',
+                  'name',
+                )}
               />
 
               <TButton onPress={() => props.handleSubmit()} type="submit">
