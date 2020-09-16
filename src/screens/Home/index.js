@@ -109,8 +109,8 @@ export default function HomeScreen({navigation}) {
                 screen: 'RegrasListScreen',
               })
             }>
-            <Title>Regras</Title>
-            <Description>Regras comuns de todo o condomínio</Description>
+            <Title>Informativos</Title>
+            <Description>Informativos de todo o condomínio</Description>
           </ContainerItemMenuInfo>
         </ContainerMenu>
         <ContainerMenu>

@@ -29,7 +29,7 @@ export default function EventosCreateScreen({navigation}) {
   const dispatch = useDispatch();
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Adicionar Evento',
+      title: 'Adicionar Reserva',
       headerLeft: () => (
         <MaterialIcons
           name="menu"
@@ -45,8 +45,8 @@ export default function EventosCreateScreen({navigation}) {
       <ContainerTitle>
         <Image source={reservas_icon} />
         <InfoDescriptionContainer>
-          <Title>Eventos</Title>
-          <Description>Confira as convenções do seu condomínio</Description>
+          <Title>Reservas</Title>
+          <Description>Adicione uma nova reserva</Description>
         </InfoDescriptionContainer>
       </ContainerTitle>
 

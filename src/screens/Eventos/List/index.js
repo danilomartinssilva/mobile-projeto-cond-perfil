@@ -47,7 +47,7 @@ export default function EventosListScreen({navigation}) {
   }, []);
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Eventos',
+      title: 'Reservas',
       headerLeft: () => (
         <MaterialIcons
           name="menu"
@@ -187,8 +187,8 @@ export default function EventosListScreen({navigation}) {
       <ContainerTitle>
         <Image source={reservas_icon} />
         <InfoDescriptionContainer>
-          <Title>Eventos</Title>
-          <Description>Confira as convenções do seu condomínio</Description>
+          <Title>Reservas</Title>
+          <Description>Confira as reservas do seu condomínio</Description>
         </InfoDescriptionContainer>
       </ContainerTitle>
       <FlatList

@@ -30,6 +30,8 @@ export function* update({minute}) {
       type: '@minutes/UPDATE_SUCESS',
       minute: response.data,
     });
+    toast('Dados alterados com sucesso');
+    goBack();
   } catch (failed) {
     yield put({type: '@minutes/UPDATE_FAILURE', failed});
     const message = responder.failed(failed);
