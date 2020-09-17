@@ -93,30 +93,32 @@ export default function AtasListScreen({navigation}) {
                   style={{margin: 4, color: 'white'}}
                 />
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() =>
-                  Alert.alert('Atas', 'O que deseja fazer?', [
-                    {
-                      text: 'Excluir',
-                      onPress: () =>
-                        dispatch(Minutes.destroyMinuteRequest(item.id)),
-                    },
-                    {
-                      text: 'Editar',
-                      onPress: () =>
-                        navigation.navigate('AtasEditScreen', {minute: item}),
-                    },
-                    {
-                      text: 'Cancelar',
-                    },
-                  ])
-                }>
-                <Ionicons
-                  name="md-settings"
-                  size={20}
-                  style={{margin: 4, color: 'white'}}
-                />
-              </TouchableOpacity>
+              {getProfile(profile) === 'MASTER' && (
+                <TouchableOpacity
+                  onPress={() =>
+                    Alert.alert('Atas', 'O que deseja fazer?', [
+                      {
+                        text: 'Excluir',
+                        onPress: () =>
+                          dispatch(Minutes.destroyMinuteRequest(item.id)),
+                      },
+                      {
+                        text: 'Editar',
+                        onPress: () =>
+                          navigation.navigate('AtasEditScreen', {minute: item}),
+                      },
+                      {
+                        text: 'Cancelar',
+                      },
+                    ])
+                  }>
+                  <Ionicons
+                    name="md-settings"
+                    size={20}
+                    style={{margin: 4, color: 'white'}}
+                  />
+                </TouchableOpacity>
+              )}
             </OptionsContainer>
           </Card>
         )}

@@ -30,6 +30,8 @@ export function* update({balance}) {
       type: '@balances/UPDATE_SUCESS',
       balance: response.data,
     });
+    toast(`Dados atualizados com sucesso`);
+    goBack();
   } catch (failed) {
     yield put({type: '@balances/UPDATE_FAILURE', failed});
     const message = responder.failed(failed);
@@ -72,8 +74,6 @@ export function* list() {
       type: '@balances/LOAD_SUCCESS',
       items: response.data,
     });
-
-    toast(response.message);
   } catch (failed) {
     yield put({type: '@balances/LOAD_FAILURE', failed});
     const message = responder.failed(failed);

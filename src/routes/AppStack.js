@@ -36,6 +36,8 @@ import NoticeCreateScreen from '../screens/PrivateNoticesScreen/Create';
 import UsersListScreen from '../screens/UsersScreen/List';
 import ShowUserScreen from '../screens/UsersScreen/Show';
 import AtasEditScreen from '../screens/AtasScreen/Edit';
+import BalancesEditScreen from '../screens/BalancesScreen/Edit';
+import AccountShowScreen from '../screens/AccountScreen/Show';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -84,6 +86,12 @@ const BalancesStack = () => (
     />
     <Stack.Screen component={BalancesListScreen} name="BalancesListScreen" />
     <Stack.Screen component={BalancesShowScreen} name="BalancesShowScreen" />
+    <Stack.Screen component={BalancesEditScreen} name="BalancesEditScreen" />
+  </Stack.Navigator>
+);
+const AccountStack = () => (
+  <Stack.Navigator initialRouteName="AccountShowScreen">
+    <Stack.Screen component={AccountShowScreen} name="AccountShowScreen" />
   </Stack.Navigator>
 );
 const AtasStack = () => (
@@ -223,6 +231,7 @@ function AppStack() {
       initialRouteName="HomeStack"
       drawerContent={(props) => <DrawerContent {...props} />}>
       <Drawer.Screen name="RegrasStack" component={RegrasStack} />
+      <Drawer.Screen name="AccountStack" component={AccountStack} />
       <Drawer.Screen name="HomeStack" component={HomeStack} />
       <Drawer.Screen name="SurveyStack" component={SurveyStack} />
       <Drawer.Screen name="BalancesStack" component={BalancesStack} />

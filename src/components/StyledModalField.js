@@ -221,7 +221,7 @@ const StyledModalField = (props) => {
           messageError={errors}
           value={getLabelSelected(values)}
           label={label}
-          style={{marginHorizontal: 10}}></InputForm>
+          style={{marginHorizontal: 16}}></InputForm>
       </TouchableOpacity>
 
       <Modal

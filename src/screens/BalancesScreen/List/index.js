@@ -91,15 +91,21 @@ export default function BalancesListScreen({navigation}) {
                   style={{margin: 4, color: 'white'}}
                 />
               </TouchableOpacity>
-            </OptionsContainer>
-            {getProfile(profile) === 'MASTER' && (
-              <OptionsContainer>
+              {getProfile(profile) === 'MASTER' && (
                 <TouchableOpacity
                   onPress={() =>
                     Alert.alert('Balanços', 'O que deseja fazer?', [
                       {
                         text: 'Excluir',
-                        onPress: () => Balances.destroyBalanceRequest(item.id),
+                        onPress: () =>
+                          dispatch(Balances.destroyBalanceRequest(item.id)),
+                      },
+                      {
+                        text: 'Editar',
+                        onPress: () =>
+                          navigation.navigate('BalancesEditScreen', {
+                            balance: item,
+                          }),
                       },
                       {
                         text: 'Cancelar',
@@ -112,8 +118,8 @@ export default function BalancesListScreen({navigation}) {
                     style={{margin: 4, color: 'white'}}
                   />
                 </TouchableOpacity>
-              </OptionsContainer>
-            )}
+              )}
+            </OptionsContainer>
           </Card>
         )}
       />

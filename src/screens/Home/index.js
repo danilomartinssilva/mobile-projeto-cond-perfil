@@ -139,7 +139,12 @@ export default function HomeScreen({navigation}) {
         </ContainerMenu>
         <ContainerMenu>
           <Image source={usuario_icon} />
-          <ContainerItemMenuInfo>
+          <ContainerItemMenuInfo
+            onPress={() =>
+              navigation.navigate('AccountStack', {
+                screen: 'AccountShowScreen',
+              })
+            }>
             <Title>Minha conta</Title>
             <Description>Dados de cadastro</Description>
           </ContainerItemMenuInfo>
