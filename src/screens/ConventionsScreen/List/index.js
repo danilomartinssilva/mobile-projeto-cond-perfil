@@ -87,15 +87,47 @@ export default function ConventionsListScreen({navigation}) {
                 <Ionicons
                   name="document-outline"
                   size={20}
-                  style={{margin: 4}}
+                  style={{margin: 4, color: 'white'}}
                 />
               </TouchableOpacity>
+              {getProfile(profile) === 'MASTER' && (
+                <TouchableOpacity
+                  onPress={() =>
+                    Alert.alert('Convenções', 'O que deseja fazer?', [
+                      {
+                        text: 'Excluir',
+                        onPress: () => {
+                          dispatch(
+                            Conventions.destroyConventionRequest(item.id),
+                          );
+                        },
+                      },
+                      {
+                        text: 'Editar',
+                        onPress: () => {
+                          navigation.navigate('ConventionsEditScreen', {
+                            convention: item,
+                          });
+                        },
+                      },
+                      {
+                        text: 'Cancelar',
+                        onPress: () => {},
+                      },
+                    ])
+                  }>
+                  <Ionicons
+                    name="md-settings"
+                    size={20}
+                    style={{margin: 4, color: 'white'}}
+                  />
+                </TouchableOpacity>
+              )}
             </OptionsContainer>
           </Card>
         )}
       />
-      {(getProfile(profile) === 'SINDICO' ||
-        getProfile(profile) === 'MASTER') && (
+      {getProfile(profile) === 'MASTER' && (
         <FAB
           onPress={() => navigation.navigate('ConventionsCreateScreen')}
           style={{

@@ -63,48 +63,70 @@ export default function EventosListScreen({navigation}) {
     return convertDate;
   }
   function renderStatusItem(item) {
-    if (item.status === 'waiting') {
-      return (
-        <TouchableOpacity
-          onPress={() => {
-            Alert.alert('Aprovacao de evento', 'Deseja aprovar este evento', [
-              {
-                text: 'Sim, aprovar',
-                onPress: () => {
-                  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'approved',
-                    }),
-                  );
-                },
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          Alert.alert('Eventos', 'O que deseja fazer?', [
+            {
+              text: 'Aprovar Evento',
+              onPress: () => {
+                dispatch(
+                  Events.updateEventRequest({
+                    id: item.id,
+                    status: 'approved',
+                  }),
+                );
               },
-              {
-                text: 'Nao, alterar',
-                onPress: () => {},
+            },
+            {
+              text: 'Excluir Evento',
+              onPress: () => {
+                dispatch(Events.destroyEventRequest(item.id));
               },
-              {
-                text: 'Cancelar Evento',
-                onPress: () => {
-                  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'cancelled',
-                    }),
-                  );
-                },
+            },
+            {
+              text: 'Cancelar Evento',
+              onPress: () => {
+                dispatch(
+                  Events.updateEventRequest({
+                    id: item.id,
+                    status: 'cancelled',
+                  }),
+                );
               },
-            ]);
-          }}>
-          <FeatherIcon
-            name="clock"
-            size={20}
-            style={{margin: 4, color: colors.white}}
-          />
-        </TouchableOpacity>
-      );
-    } else if (item.status === 'approved') {
-      return (
+            },
+            {
+              text: 'Modificar para aguardando',
+              onPress: () => {
+                dispatch(
+                  Events.updateEventRequest({
+                    id: item.id,
+                    status: 'waiting',
+                  }),
+                );
+              },
+            },
+            {
+              text: 'Sair',
+              onPress: () => {},
+            },
+          ]);
+        }}>
+        <FeatherIcon
+          name={
+            item.status === 'waiting'
+              ? 'clock'
+              : item.status == 'cancelled'
+              ? 'x-circle'
+              : 'check-circle'
+          }
+          size={20}
+          style={{margin: 4, color: colors.white}}
+        />
+      </TouchableOpacity>
+    );
+
+    /*  return (
         <TouchableOpacity
           onPress={() => {
             Alert.alert('Cancelar Evento', 'Deseja cancelar este evento', [
@@ -143,8 +165,8 @@ export default function EventosListScreen({navigation}) {
           />
         </TouchableOpacity>
       );
-    } else {
-      return (
+   */
+    /*   return (
         <TouchableOpacity
           onPress={() => {
             Alert.alert('Aprovar Evento', 'Deseja aprovar este evento', [
@@ -178,8 +200,7 @@ export default function EventosListScreen({navigation}) {
           }}>
           <FeatherIcon name="x-circle" size={20} style={{margin: 4}} />
         </TouchableOpacity>
-      );
-    }
+      ); */
   }
 
   return (

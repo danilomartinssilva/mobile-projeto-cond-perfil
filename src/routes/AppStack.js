@@ -38,6 +38,7 @@ import ShowUserScreen from '../screens/UsersScreen/Show';
 import AtasEditScreen from '../screens/AtasScreen/Edit';
 import BalancesEditScreen from '../screens/BalancesScreen/Edit';
 import AccountShowScreen from '../screens/AccountScreen/Show';
+import ConventionsEditScreen from '../screens/ConventionsScreen/Edit';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -128,6 +129,10 @@ const ConventionsStack = () => (
     <Stack.Screen
       component={ConventionsCreateScreen}
       name="ConventionsCreateScreen"
+    />
+    <Stack.Screen
+      component={ConventionsEditScreen}
+      name="ConventionsEditScreen"
     />
     <Stack.Screen
       component={ConventionsListScreen}

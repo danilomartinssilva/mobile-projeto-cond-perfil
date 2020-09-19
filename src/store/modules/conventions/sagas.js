@@ -34,6 +34,8 @@ export function* update({convention}) {
       type: '@convention/UPDATE_SUCESS',
       convention: response.data,
     });
+    toast('Atualização feita com sucesso');
+    goBack();
   } catch (failed) {
     yield put({type: '@convention/UPDATE_FAILURE', failed});
     const message = responder.failed(failed);

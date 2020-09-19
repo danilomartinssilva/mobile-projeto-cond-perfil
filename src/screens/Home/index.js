@@ -1,5 +1,5 @@
-import React, {useLayoutEffect} from 'react';
-import {View, Text, ScrollView, Image} from 'react-native';
+import React, {useLayoutEffect} from 'react'
+import {View, Text, ScrollView, Image} from 'react-native'
 import {
   Container,
   Title,
@@ -8,38 +8,37 @@ import {
   Separator,
   ContainerItemMenuInfo,
   ContainerMenu,
-} from './styles';
-import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import logo from '../../assets/logo.png';
-import atas_icon from '../../assets/icons/atas-ico.png';
-import balancos_icon from '../../assets/icons/balancos-ico.png';
-import convencoes_icon from '../../assets/icons/convencoes-ico.png';
-import enquete_icon from '../../assets/icons/enquete-ico.png';
-import home_icon from '../../assets/icons/home-ico.png';
-import regras_icon from '../../assets/icons/regras-ico.png';
-import regulamentos_icon from '../../assets/icons/regulamento-ico.png';
-import reservas_icon from '../../assets/icons/reservas-ico.png';
-import usuario_icon from '../../assets/icons/usuario-ico.png';
-import barcode_icon from '../../assets/icons/barcode-ico.png';
+} from './styles'
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import logo from '../../assets/logo.png'
+import atas_icon from '../../assets/icons/atas-ico.png'
+import balancos_icon from '../../assets/icons/balancos-ico.png'
+import convencoes_icon from '../../assets/icons/convencoes-ico.png'
+import enquete_icon from '../../assets/icons/enquete-ico.png'
+import home_icon from '../../assets/icons/home-ico.png'
+import regras_icon from '../../assets/icons/regras-ico.png'
+import regulamentos_icon from '../../assets/icons/regulamento-ico.png'
+import reservas_icon from '../../assets/icons/reservas-ico.png'
+import usuario_icon from '../../assets/icons/usuario-ico.png'
+import barcode_icon from '../../assets/icons/barcode-ico.png'
 
-export default function HomeScreen({navigation}) {
+export default function HomeScreen ({navigation}) {
   useLayoutEffect(() => {
     navigation.setOptions({
       /*     title: 'Adicionar Regra', */
       headerLeft: () => (
         <MaterialIcons
-          name="menu"
+          name='menu'
           size={28}
           style={{margin: 8, paddingRight: 10}}
           onPress={() => navigation.openDrawer()}
         />
       ),
-    });
-  }, [navigation]);
+    })
+  }, [navigation])
   return (
     <Container>
       <ScrollView>
-        <Logo source={logo} />
         <ContainerMenu>
           <Image source={atas_icon} />
           <ContainerItemMenuInfo
@@ -119,7 +118,7 @@ export default function HomeScreen({navigation}) {
             onPress={() => {
               navigation.navigate('RegulamentsStack', {
                 screen: 'RegulamentsListScreen',
-              });
+              })
             }}>
             <Title>Regulamentos</Title>
             <Description>Normas e regulamentos de condomínio</Description>
@@ -131,7 +130,7 @@ export default function HomeScreen({navigation}) {
             onPress={() => {
               navigation.navigate('SurveyStack', {
                 screen: 'SurveysListScreen',
-              });
+              })
             }}>
             <Title>Enquete</Title>
             <Description>Dados de cadastro</Description>
@@ -155,7 +154,7 @@ export default function HomeScreen({navigation}) {
             onPress={() => {
               navigation.navigate('NotificationStack', {
                 screen: 'NoticeCreateScreen',
-              });
+              })
             }}>
             <Title>Caixa de Entrada</Title>
             <Description>Minha caixa de entrada</Description>
@@ -167,7 +166,7 @@ export default function HomeScreen({navigation}) {
             onPress={() => {
               navigation.navigate('NotificationStack', {
                 screen: 'NotificationsListScreen',
-              });
+              })
             }}>
             <Title>Notificações</Title>
             <Description>Notificações</Description>
@@ -175,5 +174,5 @@ export default function HomeScreen({navigation}) {
         </ContainerMenu>
       </ScrollView>
     </Container>
-  );
+  )
 }
