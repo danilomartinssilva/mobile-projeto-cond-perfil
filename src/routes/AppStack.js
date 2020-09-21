@@ -32,20 +32,67 @@ import SurveysListScreen from '../screens/Surveys/List';
 import SurveyShowScreen from '../screens/Surveys/Show';
 import NotificationsCreateScreen from '../screens/NotificationsScreen/Create';
 import NotificationsListScreen from '../screens/NotificationsScreen/List';
-import NoticeCreateScreen from '../screens/PrivateNoticesScreen/Create';
+import PrivateNoticeCreateScreen from '../screens/PrivateNoticesScreen/Create';
 import UsersListScreen from '../screens/UsersScreen/List';
 import ShowUserScreen from '../screens/UsersScreen/Show';
 import AtasEditScreen from '../screens/AtasScreen/Edit';
 import BalancesEditScreen from '../screens/BalancesScreen/Edit';
 import AccountShowScreen from '../screens/AccountScreen/Show';
 import ConventionsEditScreen from '../screens/ConventionsScreen/Edit';
+import PrivateNoticeListScreen from '../screens/PrivateNoticesScreen/List';
+import SugestionsListScreen from '../screens/SugestionsScreen/List';
+import SugestionsCreateScreen from '../screens/SugestionsScreen/Create';
+import SugestionShowScreen from '../screens/SugestionsScreen/Show';
+import AccountEditScreen from '../screens/AccountScreen/Edit';
+import ManualsCreateScreen from '../screens/ManualsScreen/Create';
+import ManualsListScreen from '../screens/ManualsScreen/List';
+import ManualsShowScreen from '../screens/ManualsScreen/Show';
+import ManualsEditScreen from '../screens/ManualsScreen/Edit';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
+const SugestionStack = () => {
+  return (
+    <Stack.Navigator initialRouteName="SugestionsListScreen">
+      <Stack.Screen
+        component={SugestionsListScreen}
+        name="SugestionsListScreen"
+      />
+      <Stack.Screen
+        component={SugestionsCreateScreen}
+        name="SugestionsCreateScreen"
+      />
+      <Stack.Screen
+        component={SugestionShowScreen}
+        name="SugestionShowScreen"
+      />
+    </Stack.Navigator>
+  );
+};
 const PrivateNoticeStack = () => {
   return (
-    <Stack.Navigator initialRouteName="NoticeCreateScreen">
-      <Stack.Screen component={NoticeCreateScreen} name="NoticeCreateScreen" />
+    <Stack.Navigator initialRouteName="PrivateNoticeListScreen">
+      <Stack.Screen
+        component={PrivateNoticeCreateScreen}
+        name="PrivateNoticeCreateScreen"
+      />
+      <Stack.Screen
+        component={PrivateNoticeListScreen}
+        name="PrivateNoticeListScreen"
+      />
+    </Stack.Navigator>
+  );
+};
+const ManualsStack = () => {
+  return (
+    <Stack.Navigator initialRouteName="ManualsListScreen">
+      <Stack.Screen
+        component={ManualsCreateScreen}
+        name="ManualsCreateScreen"
+      />
+      <Stack.Screen component={ManualsEditScreen} name="ManualsEditScreen" />
+      <Stack.Screen component={ManualsListScreen} name="ManualsListScreen" />
+      <Stack.Screen component={ManualsShowScreen} name="ManualsShowScreen" />
     </Stack.Navigator>
   );
 };
@@ -93,6 +140,7 @@ const BalancesStack = () => (
 const AccountStack = () => (
   <Stack.Navigator initialRouteName="AccountShowScreen">
     <Stack.Screen component={AccountShowScreen} name="AccountShowScreen" />
+    <Stack.Screen component={AccountEditScreen} name="AccountEditScreen" />
   </Stack.Navigator>
 );
 const AtasStack = () => (
@@ -249,6 +297,8 @@ function AppStack() {
       <Drawer.Screen name="PrivateNoticeStack" component={PrivateNoticeStack} />
       <Drawer.Screen name="NotificationStack" component={NotificationStack} />
       <Drawer.Screen name="UserStack" component={UserStack} />
+      <Drawer.Screen name="SugestionStack" component={SugestionStack} />
+      <Drawer.Screen name="ManualsStack" component={ManualsStack} />
       {profile &&
         profile.data &&
         profile.data.roles &&

@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useEffect, useState} from 'react';
+import React, {useLayoutEffect, useEffect, useState} from 'react'
 import {
   View,
   Text,
@@ -6,16 +6,16 @@ import {
   TouchableOpacity,
   Alert,
   Images,
-} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+} from 'react-native'
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import {dimensions, colors, spacing} from '../../../theme';
-import {format, parseISO} from 'date-fns';
-import PDFView from 'react-native-view-pdf';
+import FeatherIcon from 'react-native-vector-icons/Feather'
+import {dimensions, colors, spacing} from '../../../theme'
+import {format, parseISO} from 'date-fns'
+import PDFView from 'react-native-view-pdf'
 
-import {FAB} from 'react-native-paper';
+import {FAB} from 'react-native-paper'
 import {
   Container,
   Card,
@@ -28,38 +28,38 @@ import {
   Title,
   Description,
   TButton,
-} from './styles';
-import {useSelector, useStore, useDispatch} from 'react-redux';
-import Users from '../../../store/modules/users';
-import {getProfile} from '../../../services/helper';
-import api from '../../../services/api';
-import WebView from 'react-native-webview';
+} from './styles'
+import {useSelector, useStore, useDispatch} from 'react-redux'
+import Users from '../../../store/modules/users'
+import {getProfile} from '../../../services/helper'
+import api from '../../../services/api'
+import WebView from 'react-native-webview'
 
-export default function ShowUserScreen({navigation, route}) {
-  const users = useSelector((state) => state.users);
+export default function ShowUserScreen ({navigation, route}) {
+  const users = useSelector(state => state.users)
 
-  const dispatch = useDispatch();
-  const {id} = route.params;
+  const dispatch = useDispatch()
+  const {id} = route.params
 
   useEffect(() => {
-    dispatch(Users.showUserRequest(id));
-  }, []);
+    dispatch(Users.showUserRequest(id))
+  }, [])
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'Realize sua votação',
       headerLeft: () => (
         <MaterialIcons
-          name="menu"
+          name='menu'
           size={28}
           style={{margin: 8, paddingRight: 10}}
           onPress={() => navigation.openDrawer()}
         />
       ),
-    });
-  }, [navigation]);
-  function formatDate(date) {
-    let convertDate = format(parseISO(date), 'd-MM-yyyy');
-    return convertDate;
+    })
+  }, [navigation])
+  function formatDate (date) {
+    let convertDate = format(parseISO(date), 'd-MM-yyyy')
+    return convertDate
   }
 
   return (
@@ -84,7 +84,7 @@ export default function ShowUserScreen({navigation, route}) {
           <Card>
             <ContainerInfo>
               <TitleEventText>
-                Perfil: {users.detail.roles[0].name}
+                Perfil: {users?.detail?.roles[0]?.name}
               </TitleEventText>
             </ContainerInfo>
           </Card>
@@ -164,10 +164,10 @@ export default function ShowUserScreen({navigation, route}) {
             {
               text: 'Cancelar',
             },
-          ]);
+          ])
         }}>
         Alterar perfil
       </TButton>
     </Container>
-  );
+  )
 }

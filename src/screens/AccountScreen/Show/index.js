@@ -100,7 +100,9 @@ export default function AccountShowScreen({navigation}) {
           </Card>
         </>
       )}
-      <TButton onPress={() => alert('Em breve!')}>Alterar dados</TButton>
+      <TButton onPress={() => navigation.navigate('AccountEditScreen')}>
+        Alterar dados
+      </TButton>
       <TButton onPress={() => navigation.goBack()}>Voltar</TButton>
     </Container>
   );

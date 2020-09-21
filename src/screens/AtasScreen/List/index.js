@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useEffect} from 'react';
+import React, {useLayoutEffect, useEffect} from 'react'
 import {
   View,
   Text,
@@ -6,14 +6,14 @@ import {
   TouchableOpacity,
   Alert,
   Image,
-} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import {dimensions, colors, spacing} from '../../../theme';
+} from 'react-native'
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import FeatherIcon from 'react-native-vector-icons/Feather'
+import {dimensions, colors, spacing} from '../../../theme'
 
-import {format, parseISO} from 'date-fns';
-import {FAB} from 'react-native-paper';
+import {format, parseISO} from 'date-fns'
+import {FAB} from 'react-native-paper'
 import {
   Container,
   Card,
@@ -25,38 +25,38 @@ import {
   InfoDescriptionContainer,
   Title,
   Description,
-} from './styles';
-import {useSelector, useStore, useDispatch} from 'react-redux';
-import Minutes from '../../../store/modules/minutes';
-import {getProfile} from '../../../services/helper';
-import atas_icon from '../../../assets/icons/atas-ico.png';
-export default function AtasListScreen({navigation}) {
-  const minutes = useSelector((state) => state.minutes);
-  const profile = useSelector((state) => state.profile);
-  const store = useStore();
-  const dispatch = useDispatch();
+} from './styles'
+import {useSelector, useStore, useDispatch} from 'react-redux'
+import Minutes from '../../../store/modules/minutes'
+import {getProfile} from '../../../services/helper'
+import atas_icon from '../../../assets/icons/atas-ico.png'
+export default function AtasListScreen ({navigation}) {
+  const minutes = useSelector(state => state.minutes)
+  const profile = useSelector(state => state.profile)
+  const store = useStore()
+  const dispatch = useDispatch()
   useEffect(() => {
-    if (__DEV__) console.tron.log(getProfile(profile));
+    if (__DEV__) console.tron.log(getProfile(profile))
     getProfile(profile) === 'MASTER'
       ? dispatch(Minutes.getAllRequest())
-      : dispatch(Minutes.loadMinuteRequest());
-  }, []);
+      : dispatch(Minutes.loadMinuteRequest())
+  }, [])
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'Atas ',
       headerLeft: () => (
         <MaterialIcons
-          name="menu"
+          name='menu'
           size={28}
           style={{margin: 8, paddingRight: 10}}
           onPress={() => navigation.openDrawer()}
         />
       ),
-    });
-  }, [navigation]);
-  function formatDate(date) {
-    let convertDate = format(parseISO(date), 'd-MM-yyyy');
-    return convertDate;
+    })
+  }, [navigation])
+  function formatDate (date) {
+    let convertDate = format(parseISO(date), 'd-MM-yyyy')
+    return convertDate
   }
 
   return (
@@ -88,7 +88,7 @@ export default function AtasListScreen({navigation}) {
                   })
                 }>
                 <Ionicons
-                  name="document-outline"
+                  name='document-outline'
                   size={20}
                   style={{margin: 4, color: 'white'}}
                 />
@@ -113,7 +113,7 @@ export default function AtasListScreen({navigation}) {
                     ])
                   }>
                   <Ionicons
-                    name="md-settings"
+                    name='md-settings'
                     size={20}
                     style={{margin: 4, color: 'white'}}
                   />
@@ -123,8 +123,7 @@ export default function AtasListScreen({navigation}) {
           </Card>
         )}
       />
-      {(getProfile(profile) === 'SINDICO' ||
-        getProfile(profile) === 'MASTER') && (
+      {getProfile(profile) === 'MASTER' && (
         <FAB
           onPress={() => navigation.navigate('AtasCreateScreen')}
           style={{
@@ -134,9 +133,9 @@ export default function AtasListScreen({navigation}) {
             bottom: 50,
           }}
           small
-          icon="plus"
+          icon='plus'
         />
       )}
     </Container>
-  );
+  )
 }

@@ -1,21 +1,21 @@
 import styled from 'styled-components/native'
 import {dimensions, colors, spacing} from '../../../theme'
 import {fonts} from '../../../theme/fonts'
+import ButtonForm from '../../../components/ButtonForm'
 
 export const Container = styled.View`
   flex: 1;
   background-color: ${colors.primary};
-  padding: 16px;
 `
 
 export const Card = styled.TouchableOpacity`
-  width: ${dimensions.width}px;
-  height: 140px;
-  padding-right: 8px;
+  align-self: stretch;
+  height: 40px;
   border-bottom-width: 0.5px;
   border-color: ${colors.gray};
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  margin: 8px;
 `
 export const ContainerInfo = styled.View`
   flex-direction: column;
@@ -24,18 +24,17 @@ export const ContainerInfo = styled.View`
 export const TitleEventText = styled.Text`
   font-size: 15px;
   font-weight: bold;
-  margin: 4px;
+  margin: 8px;
   color: ${colors.white};
   font-family: ${fonts.bold};
 `
 export const InfoEventText = styled.Text`
-  font-size: 12px;
+  font-size: 14px;
   margin: 4px;
-  color: ${colors.white};
   font-family: ${fonts.regular};
 `
 export const OptionsContainer = styled.View`
-  width: ${dimensions.width / 3.5}px;
+  width: ${dimensions.width / 5}px;
   align-items: center;
   justify-content: center;
 
@@ -44,7 +43,8 @@ export const OptionsContainer = styled.View`
 
 export const ContainerTitle = styled.View`
   flex-direction: row;
-  height: 60px;
+  height: 80px;
+  flex-wrap: wrap;
   align-self: stretch;
   border-bottom-width: 1px;
   border-color: white;
@@ -64,4 +64,8 @@ export const Description = styled.Text`
   font-size: 15px;
   color: white;
   font-family: ${fonts.regular};
+`
+export const TButton = styled(ButtonForm)`
+  margin-horizontal: 16px;
+  margin-bottom: 16px;
 `

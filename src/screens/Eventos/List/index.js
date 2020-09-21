@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useEffect} from 'react';
+import React, {useLayoutEffect, useEffect} from 'react'
 import {
   View,
   Text,
@@ -6,13 +6,13 @@ import {
   TouchableOpacity,
   Alert,
   Image,
-} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import {dimensions, colors, spacing} from '../../../theme';
-import {format, parseISO} from 'date-fns';
-import {FAB} from 'react-native-paper';
+} from 'react-native'
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import FeatherIcon from 'react-native-vector-icons/Feather'
+import {dimensions, colors, spacing} from '../../../theme'
+import {format, parseISO} from 'date-fns'
+import {FAB} from 'react-native-paper'
 import {
   Container,
   Card,
@@ -24,45 +24,45 @@ import {
   Title,
   InfoDescriptionContainer,
   Description,
-} from './styles';
-import {useSelector, useStore, useDispatch} from 'react-redux';
-import Events from '../../../store/modules/eventos';
-import {getProfile} from '../../../services/helper';
-import reservas_icon from '../../../assets/icons/reservas-ico.png';
+} from './styles'
+import {useSelector, useStore, useDispatch} from 'react-redux'
+import Events from '../../../store/modules/eventos'
+import {getProfile} from '../../../services/helper'
+import reservas_icon from '../../../assets/icons/reservas-ico.png'
 
-export default function EventosListScreen({navigation}) {
-  const events = useSelector((state) => state.events);
-  const profile = useSelector((state) => state.profile);
-  const store = useStore();
+export default function EventosListScreen ({navigation}) {
+  const events = useSelector(state => state.events)
+  const profile = useSelector(state => state.profile)
+  const store = useStore()
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
     if (
       !store.getState().events ||
       !store.getState().events.items ||
       !store.getState().events.items.length
     ) {
-      dispatch(Events.loadEventRequest());
+      dispatch(Events.loadEventRequest())
     }
-  }, []);
+  }, [])
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'Reservas',
       headerLeft: () => (
         <MaterialIcons
-          name="menu"
+          name='menu'
           size={28}
           style={{margin: 8, paddingRight: 10}}
           onPress={() => navigation.openDrawer()}
         />
       ),
-    });
-  }, [navigation]);
-  function formatDate(date) {
-    let convertDate = format(parseISO(date), 'd-MM-yyyy');
-    return convertDate;
+    })
+  }, [navigation])
+  function formatDate (date) {
+    let convertDate = format(parseISO(date), 'd-MM-yyyy')
+    return convertDate
   }
-  function renderStatusItem(item) {
+  function renderStatusItem (item) {
     return (
       <TouchableOpacity
         onPress={() => {
@@ -75,13 +75,13 @@ export default function EventosListScreen({navigation}) {
                     id: item.id,
                     status: 'approved',
                   }),
-                );
+                )
               },
             },
             {
               text: 'Excluir Evento',
               onPress: () => {
-                dispatch(Events.destroyEventRequest(item.id));
+                dispatch(Events.destroyEventRequest(item.id))
               },
             },
             {
@@ -92,7 +92,7 @@ export default function EventosListScreen({navigation}) {
                     id: item.id,
                     status: 'cancelled',
                   }),
-                );
+                )
               },
             },
             {
@@ -103,14 +103,14 @@ export default function EventosListScreen({navigation}) {
                     id: item.id,
                     status: 'waiting',
                   }),
-                );
+                )
               },
             },
             {
               text: 'Sair',
               onPress: () => {},
             },
-          ]);
+          ])
         }}>
         <FeatherIcon
           name={
@@ -124,83 +124,7 @@ export default function EventosListScreen({navigation}) {
           style={{margin: 4, color: colors.white}}
         />
       </TouchableOpacity>
-    );
-
-    /*  return (
-        <TouchableOpacity
-          onPress={() => {
-            Alert.alert('Cancelar Evento', 'Deseja cancelar este evento', [
-              {
-                text: 'Sim, cancelar',
-                onPress: () => {
-                  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'cancelled',
-                    }),
-                  );
-                },
-              },
-              {
-                text: 'Nao, alterar',
-                onPress: () => {},
-              },
-              {
-                text: 'Cancelar Evento',
-                onPress: () => {
-                  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'cancelled',
-                    }),
-                  );
-                },
-              },
-            ]);
-          }}>
-          <FeatherIcon
-            name="check-circle"
-            size={20}
-            style={{margin: 4, color: colors.white}}
-          />
-        </TouchableOpacity>
-      );
-   */
-    /*   return (
-        <TouchableOpacity
-          onPress={() => {
-            Alert.alert('Aprovar Evento', 'Deseja aprovar este evento', [
-              {
-                text: 'Sim, cancelar',
-                onPress: () => {
-                  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'approved',
-                    }),
-                  );
-                },
-              },
-              {
-                text: 'Nao, alterar',
-                onPress: () => {},
-              },
-              {
-                text: 'Aprovar Evento',
-                onPress: () => {
-                  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'cancelled',
-                    }),
-                  );
-                },
-              },
-            ]);
-          }}>
-          <FeatherIcon name="x-circle" size={20} style={{margin: 4}} />
-        </TouchableOpacity>
-      ); */
+    )
   }
 
   return (
@@ -228,39 +152,28 @@ export default function EventosListScreen({navigation}) {
                 <InfoEventText>Morador: {item.user.name}</InfoEventText>
               )}
 
-              <InfoEventText>Status:{item.status}</InfoEventText>
+              <InfoEventText>Status: {item.status}</InfoEventText>
             </ContainerInfo>
             <OptionsContainer>
-              {(getProfile(profile) === 'SINDICO' ||
-                getProfile(profile) === 'MASTER') && (
+              {getProfile(profile) === 'MASTER' ? (
                 <>{renderStatusItem(item)}</>
-              )}
-              {/* {item.status === 'waiting' ? (
-                <TouchableOpacity onPress = {()=>{
-                  dispatch(Events.updateEventRequest({...item,status:"approved"}))
-                }}>
-                  <FeatherIcon name="circle" size={20} style={{margin: 4}} />
-                </TouchableOpacity>
               ) : (
-                <TouchableOpacity onPress = {()=>{
-                  dispatch(Events.updateEventRequest({...item,status:"approved"}))
-                }}>
-                  <FeatherIcon
-                    name="check-circle"
-                    size={20}
-                    style={{margin: 4}}
-                  /> */}
+                <FeatherIcon
+                  name={
+                    item.status === 'waiting'
+                      ? 'clock'
+                      : item.status == 'cancelled'
+                      ? 'x-circle'
+                      : 'check-circle'
+                  }
+                  size={20}
+                  style={{color: colors.white}}
+                />
+              )}
 
               <TouchableOpacity>
                 <Ionicons
-                  name="search"
-                  size={20}
-                  style={{margin: 4, color: colors.white}}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Ionicons
-                  name="ios-trash"
+                  name='ios-trash'
                   onPress={() => {
                     Alert.alert(
                       'Remover agendamento',
@@ -269,7 +182,7 @@ export default function EventosListScreen({navigation}) {
                         {
                           text: 'Sim',
                           onPress: () => {
-                            dispatch(Events.destroyEventRequest(item.id));
+                            dispatch(Events.destroyEventRequest(item.id))
                           },
                         },
                         {
@@ -277,16 +190,17 @@ export default function EventosListScreen({navigation}) {
                           onPress: () => {},
                         },
                       ],
-                    );
+                    )
                   }}
                   size={20}
-                  style={{margin: 4, color: colors.white}}
+                  style={{color: colors.white}}
                 />
               </TouchableOpacity>
             </OptionsContainer>
           </Card>
         )}
       />
+
       <FAB
         onPress={() => navigation.navigate('EventosCreateScreen')}
         style={{
@@ -296,8 +210,8 @@ export default function EventosListScreen({navigation}) {
           bottom: 50,
         }}
         small
-        icon="plus"
+        icon='plus'
       />
     </Container>
-  );
+  )
 }

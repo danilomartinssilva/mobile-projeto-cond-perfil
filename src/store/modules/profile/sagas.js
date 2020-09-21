@@ -4,12 +4,12 @@ import toast from '../../../services/toast';
 import responder from '../../../services/responder';
 import {goBack} from '../../../services/RootNavigation';
 
-export function* update({payload}) {
+export function* update({data: profile}) {
   try {
-    const {data} = payload;
-    const response = yield call(api.put, 'minha-conta', data);
-    yield put({type: '@profile/UPDATE_SUCCESS', payload: response.data});
-    /*  NavigationService.goBack(); */
+    const response = yield call(api.put, 'profile', profile);
+    yield put({type: '@profile/UPDATE_SUCCESS', data: response.data});
+    toast('Dados alterados com sucesso');
+    goBack();
   } catch (failed) {
     yield put({type: '@profile/UPDATE_FAILURE', failed});
     const message = responder.failed(failed);

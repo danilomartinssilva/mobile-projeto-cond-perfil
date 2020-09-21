@@ -11,6 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {dimensions, colors, spacing} from '../../../theme';
+
 import {format, parseISO} from 'date-fns';
 import {FAB} from 'react-native-paper';
 import {
@@ -26,23 +27,23 @@ import {
   Description,
 } from './styles';
 import {useSelector, useStore, useDispatch} from 'react-redux';
-import Regras from '../../../store/modules/regras';
+import Manuals from '../../../store/modules/manuals';
 import {getProfile} from '../../../services/helper';
-import regras_icons from '../../../assets/icons/regras-ico.png';
-
-export default function RegrasListScreen({navigation}) {
-  const regras = useSelector((state) => state.regras);
+import atas_icon from '../../../assets/icons/atas-ico.png';
+export default function ManualsListScreen({navigation}) {
+  const manuals = useSelector((state) => state.manuals);
   const profile = useSelector((state) => state.profile);
   const store = useStore();
   const dispatch = useDispatch();
   useEffect(() => {
     getProfile(profile) === 'MASTER'
-      ? dispatch(Regras.getAllRequest())
-      : dispatch(Regras.loadRegraRequest());
+      ? dispatch(Manuals.getAllRequest())
+      : dispatch(Manuals.loadManualRequest());
   }, []);
+
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Informativos do Condomínio',
+      title: 'Manuais ',
       headerLeft: () => (
         <MaterialIcons
           name="menu"
@@ -61,15 +62,15 @@ export default function RegrasListScreen({navigation}) {
   return (
     <Container>
       <ContainerTitle>
-        <Image source={regras_icons} />
+        <Image source={atas_icon} />
         <InfoDescriptionContainer>
-          <Title>Informativoss</Title>
-          <Description>Informativos do condomínio</Description>
+          <Title>Manuais</Title>
+          <Description>Relação dos manuais de seu condomínio</Description>
         </InfoDescriptionContainer>
       </ContainerTitle>
       <FlatList
         keyExtractor={(item, index) => index.toString()}
-        data={regras.items}
+        data={manuals.items}
         renderItem={({item, index}) => (
           <Card>
             <ContainerInfo>
@@ -82,7 +83,7 @@ export default function RegrasListScreen({navigation}) {
             <OptionsContainer>
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate('RegrasShowScreen', {
+                  navigation.navigate('ManualsShowScreen', {
                     id: item.id,
                   })
                 }>
@@ -92,32 +93,41 @@ export default function RegrasListScreen({navigation}) {
                   style={{margin: 4, color: 'white'}}
                 />
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() =>
-                  Alert.alert('Regras', 'O que deseja fazer?', [
-                    {
-                      text: 'Excluir Regra',
-                      onPress: () =>
-                        dispatch(Regras.destroyRegraRequest(item.id)),
-                    },
-                    {
-                      text: 'Cancelar',
-                    },
-                  ])
-                }>
-                <Ionicons
-                  name="md-settings"
-                  size={20}
-                  style={{margin: 4, color: 'white'}}
-                />
-              </TouchableOpacity>
+              {getProfile(profile) === 'MASTER' && (
+                <TouchableOpacity
+                  onPress={() =>
+                    Alert.alert('Atas', 'O que deseja fazer?', [
+                      {
+                        text: 'Excluir',
+                        onPress: () =>
+                          dispatch(Manuals.destroyManualRequest(item.id)),
+                      },
+                      {
+                        text: 'Editar',
+                        onPress: () =>
+                          navigation.navigate('ManualsEditScreen', {
+                            manual: item,
+                          }),
+                      },
+                      {
+                        text: 'Cancelar',
+                      },
+                    ])
+                  }>
+                  <Ionicons
+                    name="md-settings"
+                    size={20}
+                    style={{margin: 4, color: 'white'}}
+                  />
+                </TouchableOpacity>
+              )}
             </OptionsContainer>
           </Card>
         )}
       />
       {getProfile(profile) === 'MASTER' && (
         <FAB
-          onPress={() => navigation.navigate('RegrasCreateScreen')}
+          onPress={() => navigation.navigate('ManualsCreateScreen')}
           style={{
             position: 'absolute',
             margin: 16,

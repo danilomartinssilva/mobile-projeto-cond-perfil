@@ -107,9 +107,9 @@ export default function DrawContent(props) {
                 .includes('MASTER') && (
                 <DrawerItem
                   icon={({color, size}) => (
-                    <Icon name="information" color={color} size={size} />
+                    <Icon name="calculator" color={color} size={size} />
                   )}
-                  label="Balanços"
+                  label="Prestação de Conta"
                   onPress={() => {
                     props.navigation.navigate('BalancesStack');
                   }}
@@ -172,9 +172,18 @@ export default function DrawContent(props) {
               icon={({color, size}) => (
                 <Icon name="bookmark-outline" color={color} size={size} />
               )}
-              label="Regras"
+              label="Informativos"
               onPress={() => {
                 props.navigation.navigate('RegrasStack');
+              }}
+            />
+            <DrawerItem
+              icon={({color, size}) => (
+                <Icon name="card-text-outline" color={color} size={size} />
+              )}
+              label="Manuais"
+              onPress={() => {
+                props.navigation.navigate('ManualsStack');
               }}
             />
           </Drawer.Section>
