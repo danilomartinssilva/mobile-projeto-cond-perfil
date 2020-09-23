@@ -1,3 +1,15 @@
-import {logoffRequest, loginRequest, registerRequest} from './actions';
+import {
+  logoffRequest,
+  loginRequest,
+  registerRequest,
+  confirmMailRequest,
+  resetPasswordRequest,
+} from './actions';
 
-export default {logoffRequest, loginRequest, registerRequest};
+export default {
+  logoffRequest,
+  loginRequest,
+  registerRequest,
+  confirmMailRequest,
+  resetPasswordRequest,
+};

@@ -52,3 +52,35 @@ export function registerFailure(error) {
     error,
   };
 }
+export function confirmMailRequest(email) {
+  return {
+    type: '@AUTH/confirmRequest',
+    email,
+  };
+}
+
+export function confirmMailFailure(err) {
+  return {
+    type: '@AUTH/confirmFailure',
+    err,
+  };
+}
+
+export function resetPasswordRequest(password, token) {
+  return {
+    type: '@AUTH/resetPasswordRequest',
+    password,
+    token,
+  };
+}
+export function resetPasswordSucess() {
+  return {
+    type: '@AUTH/resetPasswordSucess',
+  };
+}
+export function resetPasswordFailure(err) {
+  return {
+    type: '@AUTH/resetPasswordFailure',
+    err,
+  };
+}

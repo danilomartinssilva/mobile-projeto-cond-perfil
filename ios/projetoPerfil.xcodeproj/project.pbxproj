@@ -8,26 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* projetoPerfilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* projetoPerfilTests.m */; };
+		06DEE92B1EC34530971B95D1 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14719D36A3A94BCCB46642ED /* Ubuntu-Medium.ttf */; };
+		111B1AD8906E4CC884AD0A37 /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0CF13E4740845838BFC6453 /* Ubuntu-Italic.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		269C449F0A74431B9B054F6E /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6187ADE1347045748E535044 /* Ubuntu-Regular.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* projetoPerfilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* projetoPerfilTests.m */; };
+		4E3E6B9B13F443CBB5B39494 /* Ubuntu-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35DC22C6AE994C9FB805404A /* Ubuntu-LightItalic.ttf */; };
 		64FE608738B3F91AACF305F2 /* libPods-projetoPerfil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD77F063727529797A1556C /* libPods-projetoPerfil.a */; };
 		6A0F5B9BF3C054BA2B67A3CD /* libPods-projetoPerfil-projetoPerfilTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C696FF611AE47C9ACDAB6C /* libPods-projetoPerfil-projetoPerfilTests.a */; };
+		6A4C974DDC454AC2A264DE34 /* Ubuntu-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2566152A739E48E39A7EE153 /* Ubuntu-MediumItalic.ttf */; };
 		788A443A21583F4396C72659 /* libPods-projetoPerfil-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F412534CBA9EB29BE8C5634 /* libPods-projetoPerfil-tvOS.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8385EFB389B7301BC72DE7DE /* libPods-projetoPerfil-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F220B2208A8CC1F4F9531A /* libPods-projetoPerfil-tvOSTests.a */; };
 		87608FE8ACC545E3A2277AC0 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C94DA8A6821E4A5680CCC0A6 /* Ubuntu-Bold.ttf */; };
 		DC728F376F85485AB4A9BB40 /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BECF5A65A1C6429CB182B3C2 /* Ubuntu-BoldItalic.ttf */; };
-		111B1AD8906E4CC884AD0A37 /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0CF13E4740845838BFC6453 /* Ubuntu-Italic.ttf */; };
 		FD43D275CB0847C18F3E9FAB /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE7A0E68867E49BD9BAA95A2 /* Ubuntu-Light.ttf */; };
-		4E3E6B9B13F443CBB5B39494 /* Ubuntu-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35DC22C6AE994C9FB805404A /* Ubuntu-LightItalic.ttf */; };
-		06DEE92B1EC34530971B95D1 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14719D36A3A94BCCB46642ED /* Ubuntu-Medium.ttf */; };
-		6A4C974DDC454AC2A264DE34 /* Ubuntu-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2566152A739E48E39A7EE153 /* Ubuntu-MediumItalic.ttf */; };
-		269C449F0A74431B9B054F6E /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6187ADE1347045748E535044 /* Ubuntu-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,22 +55,26 @@
 		09BAE64C65BB0F6104E6FC92 /* Pods-projetoPerfil-projetoPerfilTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projetoPerfil-projetoPerfilTests.debug.xcconfig"; path = "Target Support Files/Pods-projetoPerfil-projetoPerfilTests/Pods-projetoPerfil-projetoPerfilTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0B9476C266E540648182D27E /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		10ED626796C94EF7A2D1E21F /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* projetoPerfil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = projetoPerfil.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Perfil Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Perfil Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = projetoPerfil/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = projetoPerfil/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = projetoPerfil/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = projetoPerfil/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = projetoPerfil/main.m; sourceTree = "<group>"; };
+		14719D36A3A94BCCB46642ED /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Medium.ttf"; path = "../src/assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		1AD8010FDE7747918C003A0F /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		2566152A739E48E39A7EE153 /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-MediumItalic.ttf"; path = "../src/assets/fonts/Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
 		2B82C7B633E0298EA03EB0BD /* Pods-projetoPerfil-projetoPerfilTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projetoPerfil-projetoPerfilTests.release.xcconfig"; path = "Target Support Files/Pods-projetoPerfil-projetoPerfilTests/Pods-projetoPerfil-projetoPerfilTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* projetoPerfil-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "projetoPerfil-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* projetoPerfil-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "projetoPerfil-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		340D4A7318EA42818A92FAC3 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		35DC22C6AE994C9FB805404A /* Ubuntu-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-LightItalic.ttf"; path = "../src/assets/fonts/Ubuntu-LightItalic.ttf"; sourceTree = "<group>"; };
 		4B793F06E0F174A70DAACF3E /* Pods-projetoPerfil-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projetoPerfil-tvOS.release.xcconfig"; path = "Target Support Files/Pods-projetoPerfil-tvOS/Pods-projetoPerfil-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		4F112458ADD54119B2F07080 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		50964453100726D7D5E2920D /* Pods-projetoPerfil-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projetoPerfil-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-projetoPerfil-tvOSTests/Pods-projetoPerfil-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		50C696FF611AE47C9ACDAB6C /* libPods-projetoPerfil-projetoPerfilTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-projetoPerfil-projetoPerfilTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF5AF800D8146AB82C5BB27 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		6187ADE1347045748E535044 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Regular.ttf"; path = "../src/assets/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
 		693B1DF748D87B5B5C69A473 /* Pods-projetoPerfil-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projetoPerfil-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-projetoPerfil-tvOS/Pods-projetoPerfil-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6AD77F063727529797A1556C /* libPods-projetoPerfil.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-projetoPerfil.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F220B2208A8CC1F4F9531A /* libPods-projetoPerfil-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-projetoPerfil-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,21 +88,17 @@
 		A729E8BA4D14AEFB664F7853 /* Pods-projetoPerfil-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projetoPerfil-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-projetoPerfil-tvOSTests/Pods-projetoPerfil-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ACA5C4C2A769E429CD22DAAD /* Pods-projetoPerfil.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projetoPerfil.release.xcconfig"; path = "Target Support Files/Pods-projetoPerfil/Pods-projetoPerfil.release.xcconfig"; sourceTree = "<group>"; };
 		B60D9D673C044BD3A87A6F83 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		BE7A0E68867E49BD9BAA95A2 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../src/assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
+		BECF5A65A1C6429CB182B3C2 /* Ubuntu-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-BoldItalic.ttf"; path = "../src/assets/fonts/Ubuntu-BoldItalic.ttf"; sourceTree = "<group>"; };
 		C09E8D34B6818B45DEE99AFC /* Pods-projetoPerfil.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-projetoPerfil.debug.xcconfig"; path = "Target Support Files/Pods-projetoPerfil/Pods-projetoPerfil.debug.xcconfig"; sourceTree = "<group>"; };
 		C09FB81C5309477BB56BAF97 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		C94DA8A6821E4A5680CCC0A6 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Bold.ttf"; path = "../src/assets/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
+		E0CF13E4740845838BFC6453 /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../src/assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EDAF0A2BAFE24AA2B842A52F /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		F5023F7EC04E476694226270 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		F5CB2E9E8CEC4D1083530C4A /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		C94DA8A6821E4A5680CCC0A6 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Bold.ttf"; path = "../src/assets/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BECF5A65A1C6429CB182B3C2 /* Ubuntu-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Ubuntu-BoldItalic.ttf"; path = "../src/assets/fonts/Ubuntu-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E0CF13E4740845838BFC6453 /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Italic.ttf"; path = "../src/assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BE7A0E68867E49BD9BAA95A2 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Light.ttf"; path = "../src/assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		35DC22C6AE994C9FB805404A /* Ubuntu-LightItalic.ttf */ = {isa = PBXFileReference; name = "Ubuntu-LightItalic.ttf"; path = "../src/assets/fonts/Ubuntu-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		14719D36A3A94BCCB46642ED /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Medium.ttf"; path = "../src/assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2566152A739E48E39A7EE153 /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Ubuntu-MediumItalic.ttf"; path = "../src/assets/fonts/Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6187ADE1347045748E535044 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; name = "Ubuntu-Regular.ttf"; path = "../src/assets/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,7 +207,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* projetoPerfil.app */,
+				13B07F961A680F5B00A75B9A /* Perfil Mobile.app */,
 				00E356EE1AD99517003FC87E /* projetoPerfilTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* projetoPerfil-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* projetoPerfil-tvOSTests.xctest */,
@@ -302,7 +302,7 @@
 			);
 			name = projetoPerfil;
 			productName = projetoPerfil;
-			productReference = 13B07F961A680F5B00A75B9A /* projetoPerfil.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Perfil Mobile.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* projetoPerfil-tvOS */ = {
@@ -799,8 +799,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = projetoPerfil;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.mapples.perfil-mobile";
+				PRODUCT_NAME = "Perfil Mobile";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -821,8 +821,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = projetoPerfil;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.mapples.perfil-mobile";
+				PRODUCT_NAME = "Perfil Mobile";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

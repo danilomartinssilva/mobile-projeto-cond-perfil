@@ -22,11 +22,20 @@ export default function auth(state = INITIAL_STATE, action) {
     case '@AUTH/loginFailure':
       return {isBusy: false, token: null, signed: false, failed: action.err};
     case '@AUTH/logoffRequest':
+    case '@AUTH/confirmRequest':
+    case '@AUTH/resetPasswordRequest':
       return {...state, isBusy: true};
+
+    case '@AUTH/resetPasswordSucess':
+    case '@AUTH/confirmSucess':
+      return {...state, isBusy: false};
+
     case '@AUTH/logoffSuccess':
       return {token: null, isBusy: false, signed: false, failed: null};
     case '@AUTH/logoffFailure':
     case '@AUTH/registerFailure':
+    case '@AUTH/confirmFailure':
+    case '@AUTH/resetPasswordFailure':
       return {token: null, isBusy: false, signed: false, failed: action.err};
     default:
       return state;

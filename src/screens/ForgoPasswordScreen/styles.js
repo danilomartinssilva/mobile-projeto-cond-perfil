@@ -24,16 +24,6 @@ export const Title = styled.Text`
   color: ${colors.white};
   font-family: ${fonts.bold};
 `;
-export const TitleEsqueceuSenha = styled.Text`
-  font-size: 14px;
-
-  margin-top: 16px;
-
-  color: ${colors.white};
-  text-decoration: underline white;
-  align-self: center;
-  font-family: ${fonts.light};
-`;
 
 export const TButton = styled(ButtonForm)`
   margin-horizontal: 24px;

@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text} from 'react-native';
 import {
   Container,
   Title,
   TInput,
   TButton,
   ContainerButton,
-  TitleEsqueceuSenha,
   Logo,
 } from './styles';
 import DismissKeyboard from '../../components/DismissKeyboard';
@@ -15,13 +14,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import Auth from '../../store/modules/auth';
 import {navigationRef} from '../../services/RootNavigation';
 import logo from '../../assets/logo.png';
-export default function LoginScreen({navigation}) {
+export default function ForgotPasswordScreen({navigation}) {
   const [email, setEmail] = useState(undefined);
   const [password, setPassword] = useState(undefined);
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const handleLogin = () => {
-    dispatch(Auth.loginRequest(email, password));
+    dispatch(Auth.confirmMailRequest(email));
   };
   return (
     <DismissKeyboard>
@@ -33,16 +32,9 @@ export default function LoginScreen({navigation}) {
           textContentType="emailAddress"
           autoCapitalize="none"
           placeholder="Email"
-          label="Email"
+          label="Confirme seu e-mail"
           keyboardType="email-address"
           onChangeText={(email) => setEmail(email)}
-        />
-        <TInput
-          value={password}
-          placeholder="Senha"
-          label="Senha"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
         />
 
         <ContainerButton>
@@ -50,16 +42,9 @@ export default function LoginScreen({navigation}) {
             onPress={() => handleLogin()}
             type="submit"
             style={{margin: 16}}>
-            Login
-          </TButton>
-          <TButton onPress={() => navigation.navigate('RegisterScreen')}>
-            Registrar
+            Enviar Solicitação
           </TButton>
         </ContainerButton>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('ForgotPasswordScreen')}>
-          <TitleEsqueceuSenha>Esqueci a senha</TitleEsqueceuSenha>
-        </TouchableOpacity>
       </Container>
     </DismissKeyboard>
   );
