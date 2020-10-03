@@ -91,7 +91,10 @@ export default function RegrasCreateScreen({navigation}) {
         <MaterialIcons
           name="menu"
           size={28}
-          style={{margin: 8, paddingRight: 10}}
+          style={{
+            margin: 8,
+            paddingRight: 10,
+          }}
           onPress={() => navigation.openDrawer()}
         />
       ),
@@ -100,12 +103,12 @@ export default function RegrasCreateScreen({navigation}) {
   return (
     <Container>
       <ContainerTitle>
-        <Image source={regras_icons} />
+        <Image source={regras_icons} />{' '}
         <InfoDescriptionContainer>
-          <Title>Informativos</Title>
-          <Description>Informativos do condomínio</Description>
-        </InfoDescriptionContainer>
-      </ContainerTitle>
+          <Title> Informativos </Title>{' '}
+          <Description> Informativos do condomínio </Description>{' '}
+        </InfoDescriptionContainer>{' '}
+      </ContainerTitle>{' '}
       <ScrollView>
         <Formik
           onSubmit={(values) => {
@@ -123,6 +126,7 @@ export default function RegrasCreateScreen({navigation}) {
           initialValues={{
             description: '',
           }}>
+          {' '}
           {(props) => (
             <>
               <StyledModalField
@@ -138,44 +142,45 @@ export default function RegrasCreateScreen({navigation}) {
                   })
                 }
                 data={pickerFilterData(condominiums.items, 'id', 'name')}
-              />
+              />{' '}
               <TInput
                 messageError={props.errors.name}
                 label="Nome"
-                placeholder="Regra"
+                placeholder="Informativos"
                 value={props.values.name}
                 onChangeText={props.handleChange('name')}
               />
-
               <TInput
                 messageError={props.errors.description}
                 label="Descrição"
                 placeholder="..."
                 value={props.values.description}
                 onChangeText={props.handleChange('description')}
-              />
+              />{' '}
               <UploadContainer>
                 <ButtonRoundUpload
                   onPress={() => {
                     handleSelectFile(props);
                   }}>
+                  {' '}
                   {!!props.values.file ? (
                     <TUpload>
-                      {_.last(props.values.file.name.split('/'))}
+                      {' '}
+                      {_.last(props.values.file.name.split('/'))}{' '}
                     </TUpload>
                   ) : (
-                    <TUpload>Selecionar arquivo</TUpload>
-                  )}
-                </ButtonRoundUpload>
-              </UploadContainer>
-              {props.errors.file && <TError>{props.errors.file}</TError>}
+                    <TUpload> Selecionar arquivo </TUpload>
+                  )}{' '}
+                </ButtonRoundUpload>{' '}
+              </UploadContainer>{' '}
+              {props.errors.file && <TError> {props.errors.file} </TError>}{' '}
               <TButton onPress={() => props.handleSubmit()} type="submit">
-                Cadastrar
-              </TButton>
+                Cadastrar{' '}
+              </TButton>{' '}
             </>
-          )}
-        </Formik>
-      </ScrollView>
+          )}{' '}
+        </Formik>{' '}
+      </ScrollView>{' '}
     </Container>
   );
 }

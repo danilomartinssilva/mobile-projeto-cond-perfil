@@ -21,6 +21,9 @@ import regulamentos_icon from '../../assets/icons/regulamento-ico.png';
 import reservas_icon from '../../assets/icons/reservas-ico.png';
 import usuario_icon from '../../assets/icons/usuario-ico.png';
 import barcode_icon from '../../assets/icons/barcode-ico.png';
+import caixa_entrada from '../../assets/icons/caixa-entrada-ico.png';
+import notifcacoes_icons from '../../assets/icons/notificacoes-ico.png';
+import sugestoes from '../../assets/icons/sugestoes-ico.png';
 
 export default function HomeScreen({navigation}) {
   useLayoutEffect(() => {
@@ -149,7 +152,7 @@ export default function HomeScreen({navigation}) {
           </ContainerItemMenuInfo>
         </ContainerMenu>
         <ContainerMenu>
-          <Image source={regulamentos_icon} />
+          <Image source={caixa_entrada} style={{width: 30, height: 30}} />
           <ContainerItemMenuInfo
             onPress={() => {
               navigation.navigate('PrivateNoticeStack', {
@@ -162,7 +165,7 @@ export default function HomeScreen({navigation}) {
         </ContainerMenu>
 
         <ContainerMenu>
-          <Image source={regulamentos_icon} />
+          <Image source={notifcacoes_icons} style={{width: 30, height: 30}} />
           <ContainerItemMenuInfo
             onPress={() => {
               navigation.navigate('NotificationStack', {
@@ -174,7 +177,7 @@ export default function HomeScreen({navigation}) {
           </ContainerItemMenuInfo>
         </ContainerMenu>
         <ContainerMenu>
-          <Image source={regulamentos_icon} />
+          <Image source={sugestoes} style={{width: 30, height: 30}} />
           <ContainerItemMenuInfo
             onPress={() => {
               navigation.navigate('SugestionStack', {

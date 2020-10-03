@@ -95,6 +95,13 @@ export default function AccountShowScreen({navigation}) {
           </Card>
           <Card>
             <ContainerInfo>
+              <TitleEventText>
+                Numero do apartamento: {profile.apartament_number}
+              </TitleEventText>
+            </ContainerInfo>
+          </Card>
+          <Card>
+            <ContainerInfo>
               <TitleEventText>Status: {profile.status}</TitleEventText>
             </ContainerInfo>
           </Card>
