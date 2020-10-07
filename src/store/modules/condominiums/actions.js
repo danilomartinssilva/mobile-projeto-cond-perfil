@@ -4,6 +4,25 @@ export function AddCondominiumtRequest(condominium) {
     condominium,
   };
 }
+export function updateCondomiminiumRequest(condominium) {
+  return {
+    type: '@condominium/UPDATE_REQUEST',
+    condominium,
+  };
+}
+export function updateCondomiminiumSucess(condominium) {
+  return {
+    type: '@condominium/UPDATE_SUCESS',
+    condominium,
+  };
+}
+export function updateCondomiminiumFailure(failed) {
+  return {
+    type: '@condominium/UPDATE_FAILURE',
+    failed,
+  };
+}
+
 export function AddCondominiumtSucess(condominium) {
   return {
     type: '@condominium/ADD_SUCCESS',

@@ -15,9 +15,11 @@ import {
 } from './styles';
 import {useSelector, useStore, useDispatch} from 'react-redux';
 import Condominiums from '../../../store/modules/condominiums';
+import {getProfile} from '../../../services/helper';
 
 export default function CondominiumsListScreen({navigation}) {
   const condominiums = useSelector((state) => state.condominiums);
+  const profile = useSelector((state) => state.profile);
   const store = useStore();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -58,8 +60,51 @@ export default function CondominiumsListScreen({navigation}) {
             </ContainerInfo>
             <OptionsContainer>
               <TouchableOpacity>
-                <Ionicons name="search" size={20} style={{margin: 4}} />
+                <Ionicons
+                  name="search"
+                  size={20}
+                  style={{margin: 4, color: 'white'}}
+                />
               </TouchableOpacity>
+              {getProfile(profile) === 'MASTER' && (
+                <TouchableOpacity
+                  onPress={() =>
+                    Alert.alert('Atas', 'O que deseja fazer?', [
+                      {
+                        text: 'Excluir',
+                        onPress: () =>
+                          Alert.alert(
+                            'Exclusão',
+                            'Lembre-se que a exclusão de condomínio, pode implicar no acesso de outros usuários vinculados ao condomínio excluído',
+                            [
+                              {
+                                text: 'Quero excluir',
+                                onPress: () =>
+                                  dispatch(
+                                    Condominiums.destroyCondominiumRequest(
+                                      item.id,
+                                    ),
+                                  ),
+                              },
+                              {
+                                text: 'Cancelar',
+                              },
+                            ],
+                          ),
+                      },
+
+                      {
+                        text: 'Cancelar',
+                      },
+                    ])
+                  }>
+                  <Ionicons
+                    name="md-settings"
+                    size={20}
+                    style={{margin: 4, color: 'white'}}
+                  />
+                </TouchableOpacity>
+              )}
             </OptionsContainer>
           </Card>
         )}

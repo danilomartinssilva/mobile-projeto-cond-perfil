@@ -14,6 +14,7 @@ import {
   Description,
   ContainerTitle,
   InfoDescriptionContainer,
+  ContainerBackground,
 } from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Formik} from 'formik';
@@ -90,69 +91,71 @@ export default function ConventionsCreateScreen({navigation}) {
   }, [navigation]);
   return (
     <Container>
-      <ScrollView>
-        <ContainerTitle>
-          <Image source={convencoes_icon} />
-          <InfoDescriptionContainer>
-            <Title>Convenções</Title>
-            <Description>Confira as convenções do seu condomínio</Description>
-          </InfoDescriptionContainer>
-        </ContainerTitle>
-        <Formik
-          onSubmit={(values) => {
-            handleUploadFile(values);
-          }}
-          validationSchema={Yup.object().shape({
-            name: Yup.string().required('O campo nome é obrigatório'),
-            file: Yup.string().required('O campo arquivo é obrigatório'),
+      <ContainerBackground>
+        <ScrollView>
+          <ContainerTitle>
+            <Image source={convencoes_icon} />
+            <InfoDescriptionContainer>
+              <Title>Convenções</Title>
+              <Description>Confira as convenções do seu condomínio</Description>
+            </InfoDescriptionContainer>
+          </ContainerTitle>
+          <Formik
+            onSubmit={(values) => {
+              handleUploadFile(values);
+            }}
+            validationSchema={Yup.object().shape({
+              name: Yup.string().required('O campo nome é obrigatório'),
+              file: Yup.string().required('O campo arquivo é obrigatório'),
 
-            description: Yup.string().required(
-              'O campo descrição é obrigatório',
-            ),
-          })}
-          validateOnChange={false}
-          initialValues={{
-            description: '',
-          }}>
-          {(props) => (
-            <>
-              <TInput
-                messageError={props.errors.name}
-                label="Nome"
-                placeholder="Convenção"
-                value={props.values.name}
-                onChangeText={props.handleChange('name')}
-              />
+              description: Yup.string().required(
+                'O campo descrição é obrigatório',
+              ),
+            })}
+            validateOnChange={false}
+            initialValues={{
+              description: '',
+            }}>
+            {(props) => (
+              <>
+                <TInput
+                  messageError={props.errors.name}
+                  label="Nome"
+                  placeholder="Convenção"
+                  value={props.values.name}
+                  onChangeText={props.handleChange('name')}
+                />
 
-              <TInput
-                messageError={props.errors.description}
-                label="Descrição"
-                placeholder="..."
-                value={props.values.description}
-                onChangeText={props.handleChange('description')}
-              />
-              <UploadContainer>
-                <ButtonRoundUpload
-                  onPress={() => {
-                    handleSelectFile(props);
-                  }}>
-                  {!!props.values.file ? (
-                    <TUpload>
-                      {_.last(props.values.file.name.split('/'))}
-                    </TUpload>
-                  ) : (
-                    <TUpload>Selecionar arquivo</TUpload>
-                  )}
-                </ButtonRoundUpload>
-              </UploadContainer>
-              {props.errors.file && <TError>{props.errors.file}</TError>}
-              <TButton onPress={() => props.handleSubmit()} type="submit">
-                Cadastrar
-              </TButton>
-            </>
-          )}
-        </Formik>
-      </ScrollView>
+                <TInput
+                  messageError={props.errors.description}
+                  label="Descrição"
+                  placeholder="..."
+                  value={props.values.description}
+                  onChangeText={props.handleChange('description')}
+                />
+                <UploadContainer>
+                  <ButtonRoundUpload
+                    onPress={() => {
+                      handleSelectFile(props);
+                    }}>
+                    {!!props.values.file ? (
+                      <TUpload>
+                        {_.last(props.values.file.name.split('/'))}
+                      </TUpload>
+                    ) : (
+                      <TUpload>Selecionar arquivo</TUpload>
+                    )}
+                  </ButtonRoundUpload>
+                </UploadContainer>
+                {props.errors.file && <TError>{props.errors.file}</TError>}
+                <TButton onPress={() => props.handleSubmit()} type="submit">
+                  Cadastrar
+                </TButton>
+              </>
+            )}
+          </Formik>
+        </ScrollView>
+      </ContainerBackground>
     </Container>
   );
 }

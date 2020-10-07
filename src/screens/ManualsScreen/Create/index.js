@@ -13,6 +13,7 @@ import {
   Description,
   ContainerTitle,
   InfoDescriptionContainer,
+  ContainerBackground,
 } from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Formik} from 'formik';
@@ -55,73 +56,75 @@ export default function ManualsCreateScreen({navigation}) {
   }, [navigation]);
   return (
     <Container>
-      <ScrollView>
-        <ContainerTitle>
-          <Image source={atas_icon} />
-          <InfoDescriptionContainer>
-            <Title>Manual do Condomínio</Title>
-            {/*     <Description>Adicione as Atas do condomínio</Description> */}
-          </InfoDescriptionContainer>
-        </ContainerTitle>
-        <Formik
-          onSubmit={(values) => {
-            dispatch(Manuals.addManualRequest(values));
-          }}
-          validationSchema={Yup.object().shape({
-            name: Yup.string().required('O campo nome é obrigatório'),
-            condominium_id: Yup.string().required(
-              'O campo condomínio é obrigatório',
-            ),
+      <ContainerBackground>
+        <ScrollView>
+          <ContainerTitle>
+            <Image source={atas_icon} />
+            <InfoDescriptionContainer>
+              <Title>Manual do Condomínio</Title>
+              {/*     <Description>Adicione as Atas do condomínio</Description> */}
+            </InfoDescriptionContainer>
+          </ContainerTitle>
+          <Formik
+            onSubmit={(values) => {
+              dispatch(Manuals.addManualRequest(values));
+            }}
+            validationSchema={Yup.object().shape({
+              name: Yup.string().required('O campo nome é obrigatório'),
+              condominium_id: Yup.string().required(
+                'O campo condomínio é obrigatório',
+              ),
 
-            description: Yup.string().required(
-              'O campo descrição é obrigatório',
-            ),
-          })}
-          validateOnChange={false}
-          initialValues={{
-            description: '',
-            title: '',
-          }}>
-          {(props) => (
-            <>
-              <StyledModalField
-                selectedValue={null}
-                label="Condomínio"
-                errors={props.errors.condominium_id}
-                placeholder="Selecione um condomínio"
-                title="Selecione um condomínio"
-                onChangeValue={(condominium_id) =>
-                  props.setValues({
-                    ...props.values,
-                    condominium_id: condominium_id,
-                  })
-                }
-                data={pickerFilterData(condominiums.items, 'id', 'name')}
-              />
+              description: Yup.string().required(
+                'O campo descrição é obrigatório',
+              ),
+            })}
+            validateOnChange={false}
+            initialValues={{
+              description: '',
+              title: '',
+            }}>
+            {(props) => (
+              <>
+                <StyledModalField
+                  selectedValue={null}
+                  label="Condomínio"
+                  errors={props.errors.condominium_id}
+                  placeholder="Selecione um condomínio"
+                  title="Selecione um condomínio"
+                  onChangeValue={(condominium_id) =>
+                    props.setValues({
+                      ...props.values,
+                      condominium_id: condominium_id,
+                    })
+                  }
+                  data={pickerFilterData(condominiums.items, 'id', 'name')}
+                />
 
-              <TInput
-                messageError={props.errors.name}
-                label="Titulo"
-                placeholder="Nome"
-                value={props.values.name}
-                onChangeText={props.handleChange('name')}
-              />
+                <TInput
+                  messageError={props.errors.name}
+                  label="Titulo"
+                  placeholder="Nome"
+                  value={props.values.name}
+                  onChangeText={props.handleChange('name')}
+                />
 
-              <TInput
-                messageError={props.errors.description}
-                label="Descrição"
-                placeholder="..."
-                value={props.values.description}
-                onChangeText={props.handleChange('description')}
-              />
+                <TInput
+                  messageError={props.errors.description}
+                  label="Descrição"
+                  placeholder="..."
+                  value={props.values.description}
+                  onChangeText={props.handleChange('description')}
+                />
 
-              <TButton onPress={() => props.handleSubmit()} type="submit">
-                Cadastrar
-              </TButton>
-            </>
-          )}
-        </Formik>
-      </ScrollView>
+                <TButton onPress={() => props.handleSubmit()} type="submit">
+                  Cadastrar
+                </TButton>
+              </>
+            )}
+          </Formik>
+        </ScrollView>
+      </ContainerBackground>
     </Container>
   );
 }

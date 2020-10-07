@@ -8,6 +8,7 @@ import {
   Separator,
   Title,
   Description,
+  ContainerBackground,
 } from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Formik} from 'formik';
@@ -38,39 +39,41 @@ export default function CondominiumsCreateScreen({navigation}) {
   }, [navigation]);
   return (
     <Container>
-      <Title>Condomínios</Title>
-      <Separator />
-      <Description>
-        Para cadastrar um condomínio preencha os campos abaixo
-      </Description>
-      <Separator />
-      <Formik
-        onSubmit={(values) => {
-          dispatch(Condominiums.AddCondominiumtRequest(values));
-        }}
-        validationSchema={Yup.object().shape({
-          name: Yup.string().required('O campo descrição é obrigatório'),
-        })}
-        validateOnChange={false}
-        initialValues={{
-          name: '',
-        }}>
-        {(props) => (
-          <>
-            <TInput
-              messageError={props.errors.name}
-              label="Descricao"
-              placeholder="Nome do Condominio"
-              value={props.values.name}
-              onChangeText={props.handleChange('name')}
-            />
+      <ContainerBackground>
+        <Title>Condomínios</Title>
+        <Separator />
+        <Description>
+          Para cadastrar um condomínio preencha os campos abaixo
+        </Description>
+        <Separator />
+        <Formik
+          onSubmit={(values) => {
+            dispatch(Condominiums.AddCondominiumtRequest(values));
+          }}
+          validationSchema={Yup.object().shape({
+            name: Yup.string().required('O campo descrição é obrigatório'),
+          })}
+          validateOnChange={false}
+          initialValues={{
+            name: '',
+          }}>
+          {(props) => (
+            <>
+              <TInput
+                messageError={props.errors.name}
+                label="Descricao"
+                placeholder="Nome do Condominio"
+                value={props.values.name}
+                onChangeText={props.handleChange('name')}
+              />
 
-            <TButton onPress={() => props.handleSubmit()} type="submit">
-              Cadastrar
-            </TButton>
-          </>
-        )}
-      </Formik>
+              <TButton onPress={() => props.handleSubmit()} type="submit">
+                Cadastrar
+              </TButton>
+            </>
+          )}
+        </Formik>
+      </ContainerBackground>
     </Container>
   );
 }

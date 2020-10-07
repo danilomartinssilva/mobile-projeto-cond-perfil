@@ -5,7 +5,7 @@ import ButtonForm from '../../components/ButtonForm';
 import InputForm from '../../components/InputForm';
 import {colors} from '../../theme';
 import {fonts} from '../../theme/fonts';
-
+import bg from '../../assets/bg_app.jpg';
 export const Container = styled.KeyboardAvoidingView.attrs({
   behavior: Platform.OS === 'ios' ? 'padding' : undefined,
   enabled: true,
@@ -15,6 +15,13 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   width: ${dimensions.width}px;
   justify-content: center;
   background-color: ${colors.primary};
+`;
+export const ContainerBackground = styled.ImageBackground.attrs({
+  source: bg,
+})`
+  flex: 1;
+  width: ${dimensions.width}px;
+  justify-content: center;
 `;
 export const Title = styled.Text`
   font-size: 18px;

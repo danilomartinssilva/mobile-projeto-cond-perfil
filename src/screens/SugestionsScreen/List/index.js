@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useEffect} from 'react'
+import React, {useLayoutEffect, useEffect} from 'react';
 import {
   View,
   Text,
@@ -6,13 +6,13 @@ import {
   TouchableOpacity,
   Alert,
   Image,
-} from 'react-native'
-import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import {dimensions, colors, spacing} from '../../../theme'
-import {format, parseISO} from 'date-fns'
-import {FAB} from 'react-native-paper'
-import {getProfile} from '../../../services/helper'
+} from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {dimensions, colors, spacing} from '../../../theme';
+import {format, parseISO} from 'date-fns';
+import {FAB} from 'react-native-paper';
+import {getProfile} from '../../../services/helper';
 
 import {
   Container,
@@ -25,44 +25,44 @@ import {
   InfoDescriptionContainer,
   Title,
   Description,
-} from './styles'
-import {useSelector, useStore, useDispatch} from 'react-redux'
-import Sugestions from '../../../store/modules/sugestions'
+} from './styles';
+import {useSelector, useStore, useDispatch} from 'react-redux';
+import Sugestions from '../../../store/modules/sugestions';
 
-export default function SugestionsListScreen ({navigation}) {
-  let sugestions = useSelector(state => state.sugestions)
-  const profile = useSelector(state => state.profile)
+export default function SugestionsListScreen({navigation}) {
+  let sugestions = useSelector((state) => state.sugestions);
+  const profile = useSelector((state) => state.profile);
   if (getProfile(profile) === 'MASTER') {
-    sugestions = sugestions.items
+    sugestions = sugestions.items;
   } else {
     sugestions =
       sugestions.items && sugestions.items.length
-        ? sugestions.items.filter(item => item.user_id === profile.data.id)
-        : []
+        ? sugestions.items.filter((item) => item.user_id === profile.data.id)
+        : [];
   }
-  const store = useStore()
-  const dispatch = useDispatch()
+  const store = useStore();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(Sugestions.loadSugestionRequest())
-  }, [])
+    dispatch(Sugestions.loadSugestionRequest());
+  }, []);
 
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'Sugestões/Reclamações',
       headerLeft: () => (
         <MaterialIcons
-          name='menu'
+          name="menu"
           size={28}
           style={{margin: 8, paddingRight: 10}}
           onPress={() => navigation.openDrawer()}
         />
       ),
-    })
-  }, [navigation])
-  function formatDate (date) {
-    let convertDate = format(parseISO(date), 'd-MM-yyyy')
-    return convertDate
+    });
+  }, [navigation]);
+  function formatDate(date) {
+    let convertDate = format(parseISO(date), 'd-MM-yyyy');
+    return convertDate;
   }
   return (
     <Container>
@@ -89,7 +89,11 @@ export default function SugestionsListScreen ({navigation}) {
                 onPress={() =>
                   navigation.navigate('SugestionShowScreen', {id: item.id})
                 }>
-                <Ionicons name='search' size={20} style={{margin: 4}} />
+                <Ionicons
+                  name="search"
+                  size={20}
+                  style={{margin: 4, color: 'white'}}
+                />
               </TouchableOpacity>
             </OptionsContainer>
           </Card>
@@ -104,8 +108,8 @@ export default function SugestionsListScreen ({navigation}) {
           bottom: 50,
         }}
         small
-        icon='plus'
+        icon="plus"
       />
     </Container>
-  )
+  );
 }

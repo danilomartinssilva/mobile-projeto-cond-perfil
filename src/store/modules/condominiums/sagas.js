@@ -9,7 +9,7 @@ export function* store({condominium}) {
 
     yield put({
       type: '@condominium/ADD_SUCCESS',
-      event: response.data,
+      condominium: response.data,
     });
 
     toast(response.message);
@@ -51,5 +51,5 @@ export function* list({event}) {
 export default all([
   takeLatest('@condominium/ADD_REQUEST', store),
   takeLatest('@condominium/LOAD_REQUEST', list),
-  takeLatest('@@condominium/DESTROY_REQUEST', destroy),
+  takeLatest('@condominium/DESTROY_REQUEST', destroy),
 ]);

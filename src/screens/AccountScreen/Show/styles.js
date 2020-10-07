@@ -2,8 +2,10 @@ import styled from 'styled-components/native';
 import {dimensions, colors, spacing} from '../../../theme';
 import {fonts} from '../../../theme/fonts';
 import ButtonForm from '../../../components/ButtonForm';
-
-export const Container = styled.View`
+import bg from '../../../assets/bg_app.jpg';
+export const Container = styled.ImageBackground.attrs({
+  source: bg,
+})`
   flex: 1;
   background-color: ${colors.primary};
 `;

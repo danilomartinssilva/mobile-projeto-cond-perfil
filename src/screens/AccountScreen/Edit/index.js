@@ -13,6 +13,7 @@ import {
   Description,
   ContainerTitle,
   InfoDescriptionContainer,
+  ContainerBackground,
 } from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Formik} from 'formik';
@@ -58,66 +59,68 @@ export default function AccountEditScreen({navigation}) {
 
   return (
     <Container>
-      <ScrollView>
-        <ContainerTitle>
-          {/*   <Image source={atas_icon} /> */}
-          <InfoDescriptionContainer>
-            <Title>Meus dados</Title>
-            <Description>Editar Perfil</Description>
-          </InfoDescriptionContainer>
-        </ContainerTitle>
-        <Formik
-          onSubmit={(values) => {
-            const data = {...values, cpf: values.cpf.replace(/[.-]/g, '')};
-            dispatch(Profile.updateRequest(data));
-          }}
-          validationSchema={Yup.object().shape({
-            name: Yup.string().required('O campo nome é obrigatório'),
-            email: Yup.string()
-              .required('O campo email é obrigatório')
-              .email('O campo email é inválido'),
+      <ContainerBackground>
+        <ScrollView>
+          <ContainerTitle>
+            {/*   <Image source={atas_icon} /> */}
+            <InfoDescriptionContainer>
+              <Title>Meus dados</Title>
+              <Description>Editar Perfil</Description>
+            </InfoDescriptionContainer>
+          </ContainerTitle>
+          <Formik
+            onSubmit={(values) => {
+              const data = {...values, cpf: values.cpf.replace(/[.-]/g, '')};
+              dispatch(Profile.updateRequest(data));
+            }}
+            validationSchema={Yup.object().shape({
+              name: Yup.string().required('O campo nome é obrigatório'),
+              email: Yup.string()
+                .required('O campo email é obrigatório')
+                .email('O campo email é inválido'),
 
-            cpf: Yup.string().required('O campo cpf é obrigatório'),
-          })}
-          validateOnChange={false}
-          initialValues={{
-            name: profile.data.name,
-            email: profile.data.email,
-            cpf: profile.data.cpf,
-          }}>
-          {(props) => (
-            <>
-              <TInput
-                messageError={props.errors.name}
-                label="Nome"
-                placeholder="Nome"
-                value={props.values.name}
-                onChangeText={props.handleChange('name')}
-              />
+              cpf: Yup.string().required('O campo cpf é obrigatório'),
+            })}
+            validateOnChange={false}
+            initialValues={{
+              name: profile.data.name,
+              email: profile.data.email,
+              cpf: profile.data.cpf,
+            }}>
+            {(props) => (
+              <>
+                <TInput
+                  messageError={props.errors.name}
+                  label="Nome"
+                  placeholder="Nome"
+                  value={props.values.name}
+                  onChangeText={props.handleChange('name')}
+                />
 
-              <InputFormMask
-                type={'cpf'}
-                messageError={props.errors.cpf}
-                value={props.values.cpf}
-                onChangeText={props.handleChange('cpf')}
-                label={'CPF *:'}
-                style={{marginHorizontal: 16}}
-              />
-              <TInput
-                messageError={props.errors.email}
-                label="Email"
-                placeholder="Email"
-                value={props.values.email}
-                onChangeText={props.handleChange('email')}
-              />
+                <InputFormMask
+                  type={'cpf'}
+                  messageError={props.errors.cpf}
+                  value={props.values.cpf}
+                  onChangeText={props.handleChange('cpf')}
+                  label={'CPF *:'}
+                  style={{marginHorizontal: 16}}
+                />
+                <TInput
+                  messageError={props.errors.email}
+                  label="Email"
+                  placeholder="Email"
+                  value={props.values.email}
+                  onChangeText={props.handleChange('email')}
+                />
 
-              <TButton onPress={() => props.handleSubmit()} type="submit">
-                Salvar
-              </TButton>
-            </>
-          )}
-        </Formik>
-      </ScrollView>
+                <TButton onPress={() => props.handleSubmit()} type="submit">
+                  Salvar
+                </TButton>
+              </>
+            )}
+          </Formik>
+        </ScrollView>
+      </ContainerBackground>
     </Container>
   );
 }

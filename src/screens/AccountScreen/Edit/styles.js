@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
 import {Platform} from 'react-native';
-import {colors} from '../../../theme';
+import {colors, dimensions} from '../../../theme';
 import InputForm from '../../../components/InputForm';
 import ButtonForm from '../../../components/ButtonForm';
 import {fonts} from '../../../theme/fonts';
-
+import bg from '../../../assets/bg_app.jpg';
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: true,
   behavior: Platform.OS === 'ios' ? 'padding' : undefined,
@@ -12,7 +12,13 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 })`
   flex: 1;
   background-color: ${colors.primary};
-  padding: 8px;
+`;
+export const ContainerBackground = styled.ImageBackground.attrs({
+  source: bg,
+})`
+  flex: 1;
+  width: ${dimensions.width}px;
+  justify-content: center;
 `;
 export const TInput = styled(InputForm)`
   margin-horizontal: 16px;

@@ -63,7 +63,7 @@ export default function RegrasListScreen({navigation}) {
       <ContainerTitle>
         <Image source={regras_icons} />
         <InfoDescriptionContainer>
-          <Title>Informativoss</Title>
+          <Title>Informativos</Title>
           <Description>Informativos do condomínio</Description>
         </InfoDescriptionContainer>
       </ContainerTitle>

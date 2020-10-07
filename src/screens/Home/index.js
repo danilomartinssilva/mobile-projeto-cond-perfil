@@ -1,5 +1,12 @@
 import React, {useLayoutEffect} from 'react';
-import {View, Text, ScrollView, Image} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import {
   Container,
   Title,
@@ -8,22 +15,22 @@ import {
   Separator,
   ContainerItemMenuInfo,
   ContainerMenu,
+  Button,
 } from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import logo from '../../assets/logo.png';
-import atas_icon from '../../assets/icons/atas-ico.png';
-import balancos_icon from '../../assets/icons/balancos-ico.png';
-import convencoes_icon from '../../assets/icons/convencoes-ico.png';
-import enquete_icon from '../../assets/icons/enquete-ico.png';
+import atas_icon from '../../assets/icons/atas.jpg';
+import balancos_icon from '../../assets/icons/balancos.jpg';
+import convencoes_icon from '../../assets/icons/convencoes.jpg';
+import enquete_icon from '../../assets/icons/enquete.jpg';
+import regras_icon from '../../assets/icons/informativos.jpg';
+import regulamentos_icon from '../../assets/icons/regulamento.jpg';
+import reservas_icon from '../../assets/icons/reservas.jpg';
+
+import caixa_entrada from '../../assets/icons/caixa-entrada.jpg';
+import notifcacoes_icons from '../../assets/icons/notificacoes.jpg';
+import sugestoes from '../../assets/icons/sugestoes.jpg';
 import home_icon from '../../assets/icons/home-ico.png';
-import regras_icon from '../../assets/icons/regras-ico.png';
-import regulamentos_icon from '../../assets/icons/regulamento-ico.png';
-import reservas_icon from '../../assets/icons/reservas-ico.png';
-import usuario_icon from '../../assets/icons/usuario-ico.png';
-import barcode_icon from '../../assets/icons/barcode-ico.png';
-import caixa_entrada from '../../assets/icons/caixa-entrada-ico.png';
-import notifcacoes_icons from '../../assets/icons/notificacoes-ico.png';
-import sugestoes from '../../assets/icons/sugestoes-ico.png';
 
 export default function HomeScreen({navigation}) {
   useLayoutEffect(() => {
@@ -41,164 +48,126 @@ export default function HomeScreen({navigation}) {
   }, [navigation]);
   return (
     <Container>
-      <ScrollView>
-        <ContainerMenu>
-          <Image source={atas_icon} />
-          <ContainerItemMenuInfo
-            onPress={() => navigation.navigate('AtasStack')}>
-            <Title>Atas</Title>
-            <Description>
-              Relação de atas de assembleia do seu condomínio
-            </Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={balancos_icon} />
-          <ContainerItemMenuInfo
-            onPress={() =>
-              navigation.navigate('BalancesStack', {
-                screen: 'BalancesListScreen',
-              })
-            }>
-            <Title>Balanços</Title>
-            <Description>
-              Confira abaixo os balances do seu condomínio.
-            </Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={barcode_icon} />
-
-          <ContainerItemMenuInfo
-            onPress={() =>
-              navigation.navigate('BoletosStack', {
-                screen: 'BoletosScreen',
-              })
-            }>
-            <Title>Boletos</Title>
-            <Description>Emissão de segunda via de boletos aqui</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={convencoes_icon} />
-          <ContainerItemMenuInfo
-            onPress={() =>
-              navigation.navigate('ConventionsStack', {
-                screen: 'ConventionsListScreen',
-              })
-            }>
-            <Title>Convenções</Title>
-            <Description>Confira as convenções do seu condomínio</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={reservas_icon} />
-          <ContainerItemMenuInfo
-            onPress={() =>
-              navigation.navigate('EventosStack', {
-                screen: 'EventosStack',
-              })
-            }>
-            <Title>Reservas</Title>
-            <Description>Reserva para utilização de áreas comuns</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={regras_icon} />
-          <ContainerItemMenuInfo
-            onPress={() =>
-              navigation.navigate('RegrasStack', {
-                screen: 'RegrasListScreen',
-              })
-            }>
-            <Title>Informativos</Title>
-            <Description>Informativos de todo o condomínio</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={regulamentos_icon} />
-          <ContainerItemMenuInfo
-            onPress={() => {
-              navigation.navigate('RegulamentsStack', {
-                screen: 'RegulamentsListScreen',
-              });
-            }}>
-            <Title>Regulamentos</Title>
-            <Description>Normas e regulamentos de condomínio</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={enquete_icon} />
-          <ContainerItemMenuInfo
-            onPress={() => {
-              navigation.navigate('SurveyStack', {
-                screen: 'SurveysListScreen',
-              });
-            }}>
-            <Title>Enquete</Title>
-            <Description>Dados de cadastro</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={usuario_icon} />
-          <ContainerItemMenuInfo
-            onPress={() =>
-              navigation.navigate('AccountStack', {
-                screen: 'AccountShowScreen',
-              })
-            }>
-            <Title>Minha conta</Title>
-            <Description>Dados de cadastro</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={caixa_entrada} style={{width: 30, height: 30}} />
-          <ContainerItemMenuInfo
-            onPress={() => {
-              navigation.navigate('PrivateNoticeStack', {
-                screen: 'PrivateNoticeListScreen',
-              });
-            }}>
-            <Title>Caixa de Entrada</Title>
-            <Description>Minha caixa de entrada</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-
-        <ContainerMenu>
-          <Image source={notifcacoes_icons} style={{width: 30, height: 30}} />
-          <ContainerItemMenuInfo
-            onPress={() => {
-              navigation.navigate('NotificationStack', {
-                screen: 'NotificationsListScreen',
-              });
-            }}>
-            <Title>Notificações</Title>
-            <Description>Notificações</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={sugestoes} style={{width: 30, height: 30}} />
-          <ContainerItemMenuInfo
-            onPress={() => {
-              navigation.navigate('SugestionStack', {
-                screen: 'SugestionsListScreen',
-              });
-            }}>
-            <Title>Sugestões</Title>
-            <Description>Sugestões e Reclamações</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-        <ContainerMenu>
-          <Image source={regulamentos_icon} />
-          <ContainerItemMenuInfo
-            onPress={() => {
-              navigation.navigate('ManualsStack');
-            }}>
-            <Title>Manual</Title>
-            <Description>Manual do Condomínio</Description>
-          </ContainerItemMenuInfo>
-        </ContainerMenu>
-      </ScrollView>
+      <Button
+        onPress={() =>
+          navigation.navigate('AtasStack', {
+            screen: 'AtasListScreen',
+          })
+        }>
+        <Image
+          source={atas_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() =>
+          navigation.navigate('BalancesStack', {
+            screen: 'BalancesListScreen',
+          })
+        }>
+        <Image
+          source={balancos_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() =>
+          navigation.navigate('ConventionsStack', {
+            screen: 'ConventionsListScreen',
+          })
+        }>
+        <Image
+          source={convencoes_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() => {
+          navigation.navigate('SurveyStack', {
+            screen: 'SurveysListScreen',
+          });
+        }}>
+        <Image
+          source={enquete_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() =>
+          navigation.navigate('RegrasStack', {
+            screen: 'RegrasListScreen',
+          })
+        }>
+        <Image
+          source={regras_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() => {
+          navigation.navigate('RegulamentsStack', {
+            screen: 'RegulamentsListScreen',
+          });
+        }}>
+        <Image
+          source={regulamentos_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() => {
+          navigation.navigate('PrivateNoticeStack', {
+            screen: 'PrivateNoticeListScreen',
+          });
+        }}>
+        <Image
+          source={caixa_entrada}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() => {
+          navigation.navigate('SugestionStack', {
+            screen: 'SugestionsListScreen',
+          });
+        }}>
+        <Image
+          source={sugestoes}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() => {
+          navigation.navigate('NotificationStack', {
+            screen: 'NotificationsListScreen',
+          });
+        }}>
+        <Image
+          source={notifcacoes_icons}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() =>
+          navigation.navigate('EventosStack', {
+            screen: 'EventosStack',
+          })
+        }>
+        <Image
+          source={reservas_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
     </Container>
   );
 }

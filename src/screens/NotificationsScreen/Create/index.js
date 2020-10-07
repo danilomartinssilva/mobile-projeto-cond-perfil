@@ -14,6 +14,7 @@ import {
   Description,
   ContainerTitle,
   InfoDescriptionContainer,
+  ContainerBackground,
 } from './styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Formik} from 'formik';
@@ -51,73 +52,75 @@ export default function NotificationsCreateScreen({navigation}) {
 
   return (
     <Container>
-      <ScrollView>
-        <ContainerTitle>
-          <Image source={convencoes_icon} />
-          <InfoDescriptionContainer>
-            <Title>Mensagens</Title>
-            <Description>
-              Criar uma nova mensagem para um usuário do condomínio
-            </Description>
-          </InfoDescriptionContainer>
-        </ContainerTitle>
-        <Formik
-          onSubmit={(values) => {
-            dispatch(Notifications.addNotificationRequest(values));
-          }}
-          validationSchema={Yup.object().shape({
-            title: Yup.string().required('O campo título é obrigatório'),
-            condominium_id: Yup.string().required(
-              'O campo selecao do condomínio é obrigatório',
-            ),
+      <ContainerBackground>
+        <ScrollView>
+          <ContainerTitle>
+            <Image source={convencoes_icon} />
+            <InfoDescriptionContainer>
+              <Title>Mensagens</Title>
+              <Description>
+                Criar uma nova mensagem para um usuário do condomínio
+              </Description>
+            </InfoDescriptionContainer>
+          </ContainerTitle>
+          <Formik
+            onSubmit={(values) => {
+              dispatch(Notifications.addNotificationRequest(values));
+            }}
+            validationSchema={Yup.object().shape({
+              title: Yup.string().required('O campo título é obrigatório'),
+              condominium_id: Yup.string().required(
+                'O campo selecao do condomínio é obrigatório',
+              ),
 
-            description: Yup.string().required(
-              'O campo descrição é obrigatório',
-            ),
-          })}
-          validateOnChange={false}
-          initialValues={{
-            description: '',
-          }}>
-          {(props) => (
-            <>
-              <TInput
-                messageError={props.errors.title}
-                label="Título"
-                placeholder="Titulo"
-                value={props.values.title}
-                onChangeText={props.handleChange('title')}
-              />
+              description: Yup.string().required(
+                'O campo descrição é obrigatório',
+              ),
+            })}
+            validateOnChange={false}
+            initialValues={{
+              description: '',
+            }}>
+            {(props) => (
+              <>
+                <TInput
+                  messageError={props.errors.title}
+                  label="Título"
+                  placeholder="Titulo"
+                  value={props.values.title}
+                  onChangeText={props.handleChange('title')}
+                />
 
-              <TInput
-                messageError={props.errors.description}
-                label="Descrição"
-                placeholder="..."
-                value={props.values.description}
-                onChangeText={props.handleChange('description')}
-              />
-              <StyledModalField
-                selectedValue={null}
-                label="Condomínio"
-                errors={props.errors.condominium_id}
-                placeholder="Selecione um condomínio"
-                title="Selecione um condomínio"
-                onChangeValue={(condominium_id) =>
-                  props.setValues({
-                    ...props.values,
-                    condominium_id: condominium_id,
-                  })
-                }
-                data={pickerFilterData(condominiums.items, 'id', 'name')}
-              />
+                <TInput
+                  messageError={props.errors.description}
+                  label="Descrição"
+                  placeholder="..."
+                  value={props.values.description}
+                  onChangeText={props.handleChange('description')}
+                />
+                <StyledModalField
+                  selectedValue={null}
+                  label="Condomínio"
+                  errors={props.errors.condominium_id}
+                  placeholder="Selecione um condomínio"
+                  title="Selecione um condomínio"
+                  onChangeValue={(condominium_id) =>
+                    props.setValues({
+                      ...props.values,
+                      condominium_id: condominium_id,
+                    })
+                  }
+                  data={pickerFilterData(condominiums.items, 'id', 'name')}
+                />
 
-              <TButton onPress={() => props.handleSubmit()} type="submit">
-                Cadastrar
-              </TButton>
-            </>
-          )}
-        </Formik>
-      </ScrollView>
+                <TButton onPress={() => props.handleSubmit()} type="submit">
+                  Cadastrar
+                </TButton>
+              </>
+            )}
+          </Formik>
+        </ScrollView>
+      </ContainerBackground>
     </Container>
   );
 }

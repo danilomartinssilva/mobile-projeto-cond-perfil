@@ -1,10 +1,20 @@
 import styled from 'styled-components/native';
 import {colors, dimensions} from '../../theme';
 import {fonts} from '../../theme/fonts';
+import bg from '../../assets/bg_app.jpg';
 
-export const Container = styled.View`
+export const Container = styled.ImageBackground.attrs({
+  source: bg,
+})`
   flex: 1;
   background-color: ${colors.primary};
+
+  justify-content: flex-start;
+  padding-left: 16px;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
 `;
 
 export const Logo = styled.Image.attrs({
@@ -46,12 +56,13 @@ export const Separator = styled.View`
   background-color: ${colors.white};
   margin: 20px;
 `;
-export const ContainerMenu = styled.View`
-  flex-direction: row;
-  align-self: stretch;
-  height: 70px;
-  margin: 16px;
+
+export const Button = styled.TouchableOpacity`
+  height: 100px;
+
+  width: ${dimensions.width / 3.5}px;
+
+  margin: 4px;
   align-items: center;
-  border-bottom-width: 1px;
-  border-color: ${colors.white};
+  justify-content: center;
 `;

@@ -1,15 +1,17 @@
 import styled from 'styled-components/native';
 import {dimensions, colors, spacing} from '../../../theme';
 import {fonts} from '../../../theme/fonts';
-
-export const Container = styled.View`
+import bg from '../../../assets/bg_app.jpg';
+export const Container = styled.ImageBackground.attrs({
+  source: bg,
+})`
   flex: 1;
   background-color: ${colors.primary};
-  padding: 8px;
 `;
 
 export const Card = styled.TouchableOpacity`
-  width: ${dimensions.width}px;
+  align-self: stretch;
+
   height: 120px;
   border-bottom-width: 0.5px;
   border-color: ${colors.gray};
@@ -19,6 +21,7 @@ export const Card = styled.TouchableOpacity`
 export const ContainerInfo = styled.View`
   flex-direction: column;
   margin: ${spacing.xs}px;
+  flex-wrap: wrap;
 `;
 export const TitleEventText = styled.Text`
   font-size: 15px;
@@ -30,8 +33,8 @@ export const TitleEventText = styled.Text`
 export const InfoEventText = styled.Text`
   font-size: 12px;
   margin: 4px;
-  color: ${colors.white};
   font-family: ${fonts.regular};
+  color: ${colors.white};
 `;
 export const OptionsContainer = styled.View`
   width: ${dimensions.width / 5}px;
@@ -43,7 +46,7 @@ export const OptionsContainer = styled.View`
 
 export const ContainerTitle = styled.View`
   flex-direction: row;
-  height: 60px;
+  height: 70px;
   align-self: stretch;
   border-bottom-width: 1px;
   border-color: white;
@@ -56,11 +59,11 @@ export const InfoDescriptionContainer = styled.View`
 `;
 export const Title = styled.Text`
   font-size: 21px;
-  color: white;
   font-family: ${fonts.bold};
+  color: white;
 `;
 export const Description = styled.Text`
   font-size: 15px;
-  color: white;
   font-family: ${fonts.regular};
+  color: white;
 `;
