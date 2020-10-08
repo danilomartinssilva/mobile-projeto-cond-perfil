@@ -86,6 +86,33 @@ export default function SugestionsListScreen({navigation}) {
             </ContainerInfo>
             <OptionsContainer>
               <TouchableOpacity
+                onPress={() => {
+                  Alert.alert('Sugestões', 'O que deseja fazer?', [
+                    {
+                      text: 'Excluir',
+                      onPress: () =>
+                        dispatch(Sugestions.destroySugestionRequest(item.id)),
+                    },
+                    {
+                      text: 'Editar',
+                      onPress: () => {
+                        navigation.navigate('SugestionEditScreen', {
+                          sugestion: item,
+                        });
+                      },
+                    },
+                    {
+                      text: 'Cancelar',
+                    },
+                  ]);
+                }}>
+                <Ionicons
+                  name="settings"
+                  size={20}
+                  style={{margin: 4, color: 'white'}}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
                 onPress={() =>
                   navigation.navigate('SugestionShowScreen', {id: item.id})
                 }>

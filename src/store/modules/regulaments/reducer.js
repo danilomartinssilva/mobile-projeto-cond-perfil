@@ -20,7 +20,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         break;
       }
       case '@regulaments/UPDATE_SUCESS': {
-        const {id, ...rest} = action.regra;
+        const {id, ...rest} = action.regulament;
         draft.items = state.items.map((item) =>
           item.id === id ? {...item, ...rest} : item,
         );

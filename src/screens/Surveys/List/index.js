@@ -52,129 +52,6 @@ export default function SurveysListScreen({navigation}) {
       ),
     });
   }, [navigation]);
-  function formatDate(date) {
-    let convertDate = format(parseISO(date), 'd-MM-yyyy');
-    return convertDate;
-  }
-  function renderStatusItem(item) {
-    if (item.status === 'waiting') {
-      return (
-        <TouchableOpacity
-          onPress={() => {
-            Alert.alert('Aprovacao de evento', 'Deseja aprovar este evento', [
-              {
-                text: 'Sim, aprovar',
-                onPress: () => {
-                  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'approved',
-                    }),
-                  );
-                },
-              },
-              {
-                text: 'Nao, alterar',
-                onPress: () => {},
-              },
-              {
-                text: 'Cancelar Evento',
-                onPress: () => {
-                  /*     dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'cancelled',
-                    }),
-                  ) */
-                },
-              },
-            ]);
-          }}>
-          <FeatherIcon
-            name="clock"
-            size={20}
-            style={{margin: 4, color: colors.white}}
-          />
-        </TouchableOpacity>
-      );
-    } else if (item.status === 'approved') {
-      return (
-        <TouchableOpacity
-          onPress={() => {
-            Alert.alert('Cancelar Evento', 'Deseja cancelar este evento', [
-              {
-                text: 'Sim, cancelar',
-                onPress: () => {
-                  /*  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'cancelled',
-                    }),
-                  ) */
-                },
-              },
-              {
-                text: 'Nao, alterar',
-                onPress: () => {},
-              },
-              {
-                text: 'Cancelar Evento',
-                onPress: () => {
-                  /*  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'cancelled',
-                    }),
-                  ) */
-                },
-              },
-            ]);
-          }}>
-          <FeatherIcon
-            name="check-circle"
-            size={20}
-            style={{margin: 4, color: colors.white}}
-          />
-        </TouchableOpacity>
-      );
-    } else {
-      return (
-        <TouchableOpacity
-          onPress={() => {
-            Alert.alert('Aprovar Evento', 'Deseja aprovar este evento', [
-              {
-                text: 'Sim, cancelar',
-                onPress: () => {
-                  /*  dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'approved',
-                    }),
-                  ) */
-                },
-              },
-              {
-                text: 'Nao, alterar',
-                onPress: () => {},
-              },
-              {
-                text: 'Aprovar Evento',
-                onPress: () => {
-                  /*   dispatch(
-                    Events.updateEventRequest({
-                      id: item.id,
-                      status: 'cancelled',
-                    }),
-                  ) */
-                },
-              },
-            ]);
-          }}>
-          <FeatherIcon name="x-circle" size={20} style={{margin: 4}} />
-        </TouchableOpacity>
-      );
-    }
-  }
 
   return (
     <Container>
@@ -205,6 +82,36 @@ export default function SurveysListScreen({navigation}) {
                   size={20}
                   style={{margin: 4, color: colors.white}}
                 />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  Alert.alert('Enquete', 'O que deseja fazer?', [
+                    {
+                      text: 'Excluir',
+                      onPress: () =>
+                        dispatch(Surveys.destroySurveyRequest(item.id)),
+                    },
+                    {
+                      text: 'Editar',
+                      onPress: () => {
+                        dispatch(Surveys.showSurveyRequest(item.id));
+                        navigation.navigate('SurveysUpdateScreen', {
+                          id: item.id,
+                        });
+                      },
+                    },
+                    {
+                      text: 'Cancelar',
+                    },
+                  ]);
+                }}>
+                {getProfile(profile) === 'MASTER' && (
+                  <Ionicons
+                    name="settings"
+                    size={20}
+                    style={{margin: 4, color: colors.white}}
+                  />
+                )}
               </TouchableOpacity>
             </OptionsContainer>
           </Card>

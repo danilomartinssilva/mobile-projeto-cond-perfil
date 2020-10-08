@@ -68,24 +68,13 @@ export default function SurveysCreateScreen({navigation}) {
               const questions = [];
               questions.push({question: values.alternative_1});
               questions.push({question: values.alternative_2});
-              if (
-                String(values.alternative_3).trim() &&
-                String(values.alternative_3).length >= 2
-              ) {
-                questions.push({question: values.alternative_3});
-              }
-              if (
-                String(values.alternative_4).trim() &&
-                String(values.alternative_4).length >= 2
-              ) {
-                questions.push({question: values.alternative_4});
-              }
-              if (
-                String(values.alternative_5).trim() &&
-                String(values.alternative_5).length >= 2
-              ) {
-                questions.push({question: values.alternative_5});
-              }
+
+              questions.push({question: values.alternative_3});
+
+              questions.push({question: values.alternative_4});
+
+              questions.push({question: values.alternative_5});
+
               dispatch(
                 Surveys.addSurveyRequest({
                   header: values.header,
@@ -161,7 +150,7 @@ export default function SurveysCreateScreen({navigation}) {
                   onChangeText={props.handleChange('alternative_4')}
                 />
                 <TInput
-                  messageError={props.errors.alternative_3}
+                  messageError={props.errors.alternative_5}
                   label=" Alternativa 5"
                   placeholder="Alternativa 5"
                   value={props.values.alternative_5}

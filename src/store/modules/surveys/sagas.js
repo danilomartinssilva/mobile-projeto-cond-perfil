@@ -47,6 +47,7 @@ export function* update({survey}) {
       type: '@surveys/UPDATE_SUCESS',
       survey: response.data,
     });
+    goBack();
   } catch (failed) {
     yield put({type: '@surveys/UPDATE_FAILURE', failed});
     const message = responder.failed(failed);

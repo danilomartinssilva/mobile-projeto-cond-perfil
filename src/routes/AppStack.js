@@ -48,6 +48,9 @@ import ManualsCreateScreen from '../screens/ManualsScreen/Create';
 import ManualsListScreen from '../screens/ManualsScreen/List';
 import ManualsShowScreen from '../screens/ManualsScreen/Show';
 import ManualsEditScreen from '../screens/ManualsScreen/Edit';
+import SurveysUpdateScreen from '../screens/Surveys/Update';
+import RegulamentsEditScreen from '../screens/RegulamentsScreen/Edit';
+import SugestionEditScreen from '../screens/SugestionsScreen/Edit';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -65,6 +68,10 @@ const SugestionStack = () => {
       <Stack.Screen
         component={SugestionShowScreen}
         name="SugestionShowScreen"
+      />
+      <Stack.Screen
+        component={SugestionEditScreen}
+        name="SugestionEditScreen"
       />
     </Stack.Navigator>
   );
@@ -123,6 +130,7 @@ const SurveyStack = () => (
     <Stack.Screen component={SurveysCreateScreen} name="SurveysCreateScreen" />
     <Stack.Screen component={SurveysListScreen} name="SurveysListScreen" />
     <Stack.Screen component={SurveyShowScreen} name="SurveyShowScreen" />
+    <Stack.Screen component={SurveysUpdateScreen} name="SurveysUpdateScreen" />
   </Stack.Navigator>
 );
 
@@ -164,6 +172,10 @@ const RegulamentsStack = () => (
     <Stack.Screen
       component={RegulamentosShowScreen}
       name="RegulamentosShowScreen"
+    />
+    <Stack.Screen
+      component={RegulamentsEditScreen}
+      name="RegulamentsEditScreen"
     />
   </Stack.Navigator>
 );

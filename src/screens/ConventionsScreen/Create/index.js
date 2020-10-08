@@ -33,11 +33,17 @@ import {getDate, format, parseISO} from 'date-fns';
 import api from '../../../services/api';
 import Axios from 'axios';
 import convencoes_icon from '../../../assets/icons/convencoes-ico.png';
+import StyledModalField from '../../../components/StyledModalField';
+import Condominiums from '../../../store/modules/condominiums';
+
+import {pickerFilterData} from '../../../services/helper';
 export default function ConventionsCreateScreen({navigation}) {
   const dispatch = useDispatch();
   const {token} = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile);
   const files = useSelector((state) => state.files);
+  const condominiums = useSelector((state) => state.condominiums);
+
   async function handleSelectFile(props) {
     const file = await DocumentPicker.getDocumentAsync({
       type: 'application/pdf',
@@ -72,9 +78,7 @@ export default function ConventionsCreateScreen({navigation}) {
           condominium_id: condominium_id,
         }),
       );
-    } catch (err) {
-      if (__DEV__) console.tron.log(err);
-    }
+    } catch (err) {}
   }
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -111,6 +115,9 @@ export default function ConventionsCreateScreen({navigation}) {
               description: Yup.string().required(
                 'O campo descrição é obrigatório',
               ),
+              condominium_id: Yup.string().required(
+                'O campo de condomínio é obrigatório',
+              ),
             })}
             validateOnChange={false}
             initialValues={{
@@ -132,6 +139,20 @@ export default function ConventionsCreateScreen({navigation}) {
                   placeholder="..."
                   value={props.values.description}
                   onChangeText={props.handleChange('description')}
+                />
+                <StyledModalField
+                  selectedValue={null}
+                  label="Condomínio"
+                  errors={props.errors.condominium_id}
+                  placeholder="Selecione um condomínio"
+                  title="Selecione um condomínio"
+                  onChangeValue={(condominium_id) =>
+                    props.setValues({
+                      ...props.values,
+                      condominium_id: condominium_id,
+                    })
+                  }
+                  data={pickerFilterData(condominiums.items, 'id', 'name')}
                 />
                 <UploadContainer>
                   <ButtonRoundUpload

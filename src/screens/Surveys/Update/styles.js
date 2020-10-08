@@ -12,6 +12,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   keyboardVerticalOffset: 34,
 })`
   flex: 1;
+  background-color: ${colors.primary};
 `;
 export const ContainerBackground = styled.ImageBackground.attrs({
   source: bg,

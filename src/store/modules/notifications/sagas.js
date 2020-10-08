@@ -13,7 +13,6 @@ export function* store({notification}) {
       notification: response.data,
     });
 
-    toast(response.message);
     goBack();
   } catch (failed) {
     yield put({type: '@notifications/ADD_FAILURE', failed});
@@ -34,6 +33,7 @@ export function* update({notification}) {
       type: '@notifications/UPDATE_SUCESS',
       notification: response.data,
     });
+    goBack();
   } catch (failed) {
     yield put({type: '@notifications/UPDATE_FAILURE', failed});
     const message = responder.failed(failed);

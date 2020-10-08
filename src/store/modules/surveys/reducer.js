@@ -45,6 +45,7 @@ export default function reducer(state = INITIAL_STATE, action) {
       }
       case '@surveys/SHOW_SUCESS': {
         draft.detail = action.survey;
+        draft.loading = false;
         break;
       }
 

@@ -22,18 +22,19 @@ export function* store({regulament}) {
   }
 }
 
-export function* update({regualment}) {
+export function* update({regulament}) {
   try {
     const response = yield call(
       api.put,
-      'regualment/' + regualment.id,
-      regualment,
+      'regulaments/' + regulament.id,
+      regulament,
     );
 
     yield put({
       type: '@regulaments/UPDATE_SUCESS',
-      convention: response.data,
+      regulament: response.data,
     });
+    goBack();
   } catch (failed) {
     yield put({type: '@regulaments/UPDATE_FAILURE', failed});
     const message = responder.failed(failed);

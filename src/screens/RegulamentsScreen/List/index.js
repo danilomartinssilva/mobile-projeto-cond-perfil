@@ -89,9 +89,39 @@ export default function RegulamentsListScreen({navigation}) {
                 <Ionicons
                   name="document-outline"
                   size={20}
-                  style={{margin: 4}}
+                  style={{margin: 4, color: 'white'}}
                 />
               </TouchableOpacity>
+              {getProfile(profile) === 'MASTER' && (
+                <TouchableOpacity
+                  onPress={() => {
+                    Alert.alert('Regulamentos', 'O que deseja fazer?', [
+                      {
+                        text: 'Excluir',
+                        onPress: () =>
+                          dispatch(
+                            Regulamentos.destroyRegulamentRequest(item.id),
+                          ),
+                      },
+                      {
+                        text: 'Editar',
+                        onPress: () =>
+                          navigation.navigate('RegulamentsEditScreen', {
+                            regulament: item,
+                          }),
+                      },
+                      {
+                        text: 'Cancelar',
+                      },
+                    ]);
+                  }}>
+                  <Ionicons
+                    name="settings-outline"
+                    size={20}
+                    style={{margin: 4, color: 'white'}}
+                  />
+                </TouchableOpacity>
+              )}
             </OptionsContainer>
           </Card>
         )}

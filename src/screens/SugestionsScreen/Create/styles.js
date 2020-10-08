@@ -19,7 +19,6 @@ export const ContainerBackground = styled.ImageBackground.attrs({
 })`
   flex: 1;
   width: ${dimensions.width}px;
-  justify-content: center;
 `;
 export const TInput = styled(InputForm)`
   margin-horizontal: 16px;

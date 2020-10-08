@@ -145,7 +145,7 @@ export default function AtasCreateScreen({navigation}) {
                 <TInput
                   messageError={props.errors.name}
                   label="Nome"
-                  placeholder="Regulamento"
+                  placeholder="Ata"
                   value={props.values.name}
                   onChangeText={props.handleChange('name')}
                 />
