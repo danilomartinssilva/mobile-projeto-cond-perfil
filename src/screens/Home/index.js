@@ -26,11 +26,13 @@ import enquete_icon from '../../assets/icons/enquete.jpg';
 import regras_icon from '../../assets/icons/informativos.jpg';
 import regulamentos_icon from '../../assets/icons/regulamento.jpg';
 import reservas_icon from '../../assets/icons/reservas.jpg';
-
+import boletos_icon from '../../assets/icons/boletos.jpg';
 import caixa_entrada from '../../assets/icons/caixa-entrada.jpg';
 import notifcacoes_icons from '../../assets/icons/notificacoes.jpg';
 import sugestoes from '../../assets/icons/sugestoes.jpg';
 import home_icon from '../../assets/icons/home-ico.png';
+import minhaconta_icon from '../../assets/icons/minhaconta.jpg';
+import manual_icon from '../../assets/icons/manual.jpg';
 
 export default function HomeScreen({navigation}) {
   useLayoutEffect(() => {
@@ -56,6 +58,18 @@ export default function HomeScreen({navigation}) {
         }>
         <Image
           source={atas_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() =>
+          navigation.navigate('BoletosStack', {
+            screen: 'BoletosScreen',
+          })
+        }>
+        <Image
+          source={boletos_icon}
           style={{width: '100%', height: 100}}
           resizeMode="contain"
         />
@@ -164,6 +178,30 @@ export default function HomeScreen({navigation}) {
         }>
         <Image
           source={reservas_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() =>
+          navigation.navigate('ManualsStack', {
+            screen: 'ManualsListScreen',
+          })
+        }>
+        <Image
+          source={manual_icon}
+          style={{width: '100%', height: 100}}
+          resizeMode="contain"
+        />
+      </Button>
+      <Button
+        onPress={() =>
+          navigation.navigate('AccountStack', {
+            screen: 'AccountStack',
+          })
+        }>
+        <Image
+          source={minhaconta_icon}
           style={{width: '100%', height: 100}}
           resizeMode="contain"
         />

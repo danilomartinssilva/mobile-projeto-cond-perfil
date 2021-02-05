@@ -65,7 +65,7 @@ export default function AtasListScreen ({navigation}) {
         <Image source={atas_icon} />
         <InfoDescriptionContainer>
           <Title>Atas</Title>
-          <Description>Relação das assembleias de seu condomínio</Description>
+          <Description>Relação de Atas</Description>
         </InfoDescriptionContainer>
       </ContainerTitle>
       <FlatList

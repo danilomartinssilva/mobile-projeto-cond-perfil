@@ -1,5 +1,7 @@
 import React, {forwardRef} from 'react';
 import {View} from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import {
   Container,
   TextInput,
@@ -9,12 +11,20 @@ import {
   Label,
 } from './styles';
 
-function InputForm({style, label, messageError, ...rest}) {
+function InputForm({style, label, messageError, icon, onPressIcon, ...rest}) {
   return (
     <Container style={style}>
       {label && <Label>{label}</Label>}
       <ContainerInput>
         <TextInput {...rest} />
+        {icon && (
+          <Ionicons
+            onPress={onPressIcon}
+            name={icon}
+            style={{margin: 6}}
+            size={20}
+          />
+        )}
       </ContainerInput>
 
       {messageError && (

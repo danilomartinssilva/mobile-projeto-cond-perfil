@@ -10,9 +10,9 @@ export const Container = styled.ImageBackground.attrs({
 `;
 
 export const Card = styled.TouchableOpacity`
-  height: 120px;
   align-self: stretch;
-  margin: 8px;
+
+  height: 120px;
   border-bottom-width: 0.5px;
   border-color: ${colors.gray};
   flex-direction: row;
@@ -20,8 +20,8 @@ export const Card = styled.TouchableOpacity`
 `;
 export const ContainerInfo = styled.View`
   flex-direction: column;
-
-  flex: 1;
+  margin: ${spacing.xs}px;
+  flex-wrap: wrap;
 `;
 export const TitleEventText = styled.Text`
   font-size: 15px;
@@ -33,11 +33,11 @@ export const TitleEventText = styled.Text`
 export const InfoEventText = styled.Text`
   font-size: 12px;
   margin: 4px;
-  color: ${colors.white};
   font-family: ${fonts.regular};
+  color: ${colors.white};
 `;
 export const OptionsContainer = styled.View`
-  width: ${dimensions.width / 7}px;
+  width: ${dimensions.width / 5}px;
   align-items: center;
   justify-content: center;
 
@@ -46,7 +46,7 @@ export const OptionsContainer = styled.View`
 
 export const ContainerTitle = styled.View`
   flex-direction: row;
-  height: 60px;
+  height: 70px;
   align-self: stretch;
   border-bottom-width: 1px;
   border-color: white;
@@ -59,11 +59,11 @@ export const InfoDescriptionContainer = styled.View`
 `;
 export const Title = styled.Text`
   font-size: 21px;
-  color: white;
   font-family: ${fonts.bold};
+  color: ${colors.blue};
 `;
 export const Description = styled.Text`
   font-size: 15px;
-  color: white;
   font-family: ${fonts.regular};
+  color: ${colors.blue};
 `;

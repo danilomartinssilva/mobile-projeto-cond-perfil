@@ -295,9 +295,9 @@ function AppStack() {
     <Drawer.Navigator
       initialRouteName="HomeStack"
       drawerContent={(props) => <DrawerContent {...props} />}>
+      <Drawer.Screen name="HomeStack" component={HomeStack} />
       <Drawer.Screen name="RegrasStack" component={RegrasStack} />
       <Drawer.Screen name="AccountStack" component={AccountStack} />
-      <Drawer.Screen name="HomeStack" component={HomeStack} />
       <Drawer.Screen name="SurveyStack" component={SurveyStack} />
       <Drawer.Screen name="BalancesStack" component={BalancesStack} />
       <Drawer.Screen name="ConventionsStack" component={ConventionsStack} />

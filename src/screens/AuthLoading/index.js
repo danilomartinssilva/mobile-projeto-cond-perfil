@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {View, Text, Image} from 'react-native';
-import bggif from '../../assets/br.gif';
+/* import bggif from '../../assets/br.gif'; */
+import bgImage from '../../assets/fundo-perfil.jpg';
 import {dimensions} from '../../theme';
 import {useStore} from 'react-redux';
 export default function AuthLoading({navigation}) {
@@ -13,7 +14,7 @@ export default function AuthLoading({navigation}) {
       } else {
         navigation.navigate('AuthStack');
       }
-    }, 8000);
+    }, 3000);
   }, []);
 
   return (
@@ -24,6 +25,19 @@ export default function AuthLoading({navigation}) {
         alignItems: 'center',
       }}>
       <Image
+        source={bgImage}
+        resizeMode="cover"
+        style={{
+          height: dimensions.height,
+          width: dimensions.width,
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+        }}
+      />
+      {/*  <Image
         source={bggif}
         resizeMode="contain"
         style={{
@@ -35,7 +49,7 @@ export default function AuthLoading({navigation}) {
           bottom: 0,
           right: 0,
         }}
-      />
+      /> */}
     </View>
   );
 }

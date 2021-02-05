@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useEffect} from 'react';
+import React, {useLayoutEffect, useEffect} from 'react'
 import {
   View,
   Text,
@@ -6,13 +6,13 @@ import {
   TouchableOpacity,
   Alert,
   Image,
-} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import {dimensions, colors, spacing} from '../../../theme';
-import {format, parseISO} from 'date-fns';
-import {FAB} from 'react-native-paper';
+} from 'react-native'
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import FeatherIcon from 'react-native-vector-icons/Feather'
+import {dimensions, colors, spacing} from '../../../theme'
+import {format, parseISO} from 'date-fns'
+import {FAB} from 'react-native-paper'
 import {
   Container,
   Card,
@@ -24,38 +24,38 @@ import {
   InfoDescriptionContainer,
   Title,
   Description,
-} from './styles';
-import {useSelector, useStore, useDispatch} from 'react-redux';
-import Regras from '../../../store/modules/regras';
-import {getProfile} from '../../../services/helper';
-import regras_icons from '../../../assets/icons/regras-ico.png';
+} from './styles'
+import {useSelector, useStore, useDispatch} from 'react-redux'
+import Regras from '../../../store/modules/regras'
+import {getProfile} from '../../../services/helper'
+import regras_icons from '../../../assets/icons/regras-ico.png'
 
-export default function RegrasListScreen({navigation}) {
-  const regras = useSelector((state) => state.regras);
-  const profile = useSelector((state) => state.profile);
-  const store = useStore();
-  const dispatch = useDispatch();
+export default function RegrasListScreen ({navigation}) {
+  const regras = useSelector(state => state.regras)
+  const profile = useSelector(state => state.profile)
+  const store = useStore()
+  const dispatch = useDispatch()
   useEffect(() => {
     getProfile(profile) === 'MASTER'
       ? dispatch(Regras.getAllRequest())
-      : dispatch(Regras.loadRegraRequest());
-  }, []);
+      : dispatch(Regras.loadRegraRequest())
+  }, [])
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'Informativos do Condomínio',
       headerLeft: () => (
         <MaterialIcons
-          name="menu"
+          name='menu'
           size={28}
           style={{margin: 8, paddingRight: 10}}
           onPress={() => navigation.openDrawer()}
         />
       ),
-    });
-  }, [navigation]);
-  function formatDate(date) {
-    let convertDate = format(parseISO(date), 'd-MM-yyyy');
-    return convertDate;
+    })
+  }, [navigation])
+  function formatDate (date) {
+    let convertDate = format(parseISO(date), 'd-MM-yyyy')
+    return convertDate
   }
 
   return (
@@ -87,16 +87,16 @@ export default function RegrasListScreen({navigation}) {
                   })
                 }>
                 <Ionicons
-                  name="document-outline"
+                  name='document-outline'
                   size={20}
                   style={{margin: 4, color: 'white'}}
                 />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() =>
-                  Alert.alert('Regras', 'O que deseja fazer?', [
+                  Alert.alert('Informativos', 'O que deseja fazer?', [
                     {
-                      text: 'Excluir Regra',
+                      text: 'Excluir Informativo',
                       onPress: () =>
                         dispatch(Regras.destroyRegraRequest(item.id)),
                     },
@@ -106,7 +106,7 @@ export default function RegrasListScreen({navigation}) {
                   ])
                 }>
                 <Ionicons
-                  name="md-settings"
+                  name='md-settings'
                   size={20}
                   style={{margin: 4, color: 'white'}}
                 />
@@ -125,9 +125,9 @@ export default function RegrasListScreen({navigation}) {
             bottom: 50,
           }}
           small
-          icon="plus"
+          icon='plus'
         />
       )}
     </Container>
-  );
+  )
 }

@@ -21,7 +21,7 @@ export function* login({payload}) {
       });
 
       RootNavigation.navigate('AppStack', {
-        screen: 'HomeStack',
+        screen: 'HomeScreen',
       });
     }
   } catch (failed) {
@@ -65,18 +65,25 @@ export function setAccessToken({payload}) {
 }
 export function* register({profile}) {
   try {
-    const response = yield call(api.post, 'users', profile);
-    if (__DEV__) console.tron.log('Response', response);
+    yield call(api.post, 'users', profile);
+
     toaster('Cadastrado com sucesso');
     RootNavigation.goBack();
   } catch (err) {
-    const message = err.response.data[0].message;
-
     yield put({
       type: '@AUTH/registerFailure',
       error: err,
     });
-    toaster(message);
+
+    if (
+      err &&
+      err.reponse &&
+      err.response.data.length &&
+      err.response.data[0].message
+    ) {
+      const message = err.response.data[0].message;
+      toaster(message);
+    }
   }
 }
 export function* logout() {

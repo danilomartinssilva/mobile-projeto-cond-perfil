@@ -13,6 +13,7 @@ export const Container = styled.TouchableOpacity`
   align-items: center;
   border-color: ${colors.gray};
   border-width: ${(props) => (props.type !== 'submit' ? `${0.8}px` : `1px`)};
+  border-radius: 8px;
 `;
 
 export const Title = styled.Text`

@@ -27,14 +27,14 @@ export const TitleEventText = styled.Text`
   font-size: 15px;
   font-weight: bold;
   margin: 4px;
-  color: ${colors.white};
+  color: ${colors.blue};
   font-family: ${fonts.bold};
 `;
 export const InfoEventText = styled.Text`
   font-size: 12px;
   margin: 4px;
   font-family: ${fonts.regular};
-  color: ${colors.white};
+  color: ${colors.blue};
 `;
 export const OptionsContainer = styled.View`
   width: ${dimensions.width / 5}px;
@@ -60,10 +60,10 @@ export const InfoDescriptionContainer = styled.View`
 export const Title = styled.Text`
   font-size: 21px;
   font-family: ${fonts.bold};
-  color: white;
+  color: ${colors.blue};
 `;
 export const Description = styled.Text`
   font-size: 15px;
   font-family: ${fonts.regular};
-  color: white;
+  color: ${colors.blue};
 `;

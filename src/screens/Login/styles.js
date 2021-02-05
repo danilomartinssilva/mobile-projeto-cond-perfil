@@ -37,7 +37,8 @@ export const TitleEsqueceuSenha = styled.Text`
   margin-top: 16px;
 
   color: ${colors.white};
-  text-decoration: underline white;
+  text-decoration: white;
+  font-weight: bold;
   align-self: center;
   font-family: ${fonts.light};
 `;

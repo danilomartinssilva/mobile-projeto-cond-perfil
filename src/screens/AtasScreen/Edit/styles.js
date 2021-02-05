@@ -5,6 +5,7 @@ import InputForm from '../../../components/InputForm';
 import ButtonForm from '../../../components/ButtonForm';
 import {fonts} from '../../../theme/fonts';
 import bg from '../../../assets/bg_app.jpg';
+
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: true,
   behavior: Platform.OS === 'ios' ? 'padding' : undefined,
@@ -18,7 +19,6 @@ export const ContainerBackground = styled.ImageBackground.attrs({
 })`
   flex: 1;
   width: ${dimensions.width}px;
-  justify-content: center;
 `;
 export const TInput = styled(InputForm)`
   margin-horizontal: 16px;
@@ -76,11 +76,11 @@ export const InfoDescriptionContainer = styled.View`
 `;
 export const Title = styled.Text`
   font-size: 21px;
-  color: white;
+  color: ${colors.blue};
   font-family: ${fonts.bold};
 `;
 export const Description = styled.Text`
   font-size: 15px;
-  color: white;
+  color: ${colors.blue};
   font-family: ${fonts.regular};
 `;

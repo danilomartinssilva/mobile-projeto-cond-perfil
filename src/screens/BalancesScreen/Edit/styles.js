@@ -13,14 +13,12 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 })`
   flex: 1;
   background-color: ${colors.primary};
-  padding: 8px;
 `;
 export const ContainerBackground = styled.ImageBackground.attrs({
   source: bg,
 })`
   flex: 1;
   width: ${dimensions.width}px;
-  justify-content: center;
 `;
 export const TInput = styled(InputForm)`
   margin-horizontal: 16px;
@@ -78,11 +76,11 @@ export const InfoDescriptionContainer = styled.View`
 `;
 export const Title = styled.Text`
   font-size: 21px;
-  color: white;
+  color: ${colors.blue};
   font-family: ${fonts.bold};
 `;
 export const Description = styled.Text`
   font-size: 15px;
-  color: white;
+  color: ${colors.blue};
   font-family: ${fonts.regular};
 `;

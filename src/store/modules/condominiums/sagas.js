@@ -12,7 +12,6 @@ export function* store({condominium}) {
       condominium: response.data,
     });
 
-    toast(response.message);
     goBack();
   } catch (failed) {
     yield put({type: '@condominium/ADD_FAILURE', failed});

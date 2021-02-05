@@ -23,7 +23,7 @@ export const ContainerBackground = styled.ImageBackground.attrs({
   flex: 1;
   width: ${dimensions.width}px;
   justify-content: center;
-  padding-top: 80px;
+  padding-top: 20px;
   background-color: ${colors.primary};
 `;
 export const Title = styled.Text`

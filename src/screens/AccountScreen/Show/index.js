@@ -36,7 +36,7 @@ export default function AccountShowScreen({navigation}) {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Realize sua votação',
+      title: 'Alterar dados',
       headerLeft: () => (
         <MaterialIcons
           name="menu"

@@ -13,7 +13,7 @@ export function* store({balance}) {
       balance: response.data,
     });
 
-    toast(response.message);
+    toast('Balanço adicionado com sucesso');
     goBack();
   } catch (failed) {
     yield put({type: '@balances/ADD_FAILURE', failed});

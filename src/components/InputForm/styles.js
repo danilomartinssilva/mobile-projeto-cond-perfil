@@ -36,7 +36,7 @@ export const ErroMessage = styled.View`
 export const Label = styled.Text`
   font-size: 16px;
   margin-bottom: 4px;
-  color: ${colors.white};
+  color: ${colors.blue};
 `;
 
 export const DescriptionError = styled.Text`

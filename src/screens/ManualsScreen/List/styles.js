@@ -1,11 +1,13 @@
-import styled from 'styled-components/native';
-import {dimensions, colors, spacing} from '../../../theme';
-import {fonts} from '../../../theme/fonts';
-
-export const Container = styled.View`
+import styled from 'styled-components/native'
+import {dimensions, colors, spacing} from '../../../theme'
+import {fonts} from '../../../theme/fonts'
+import bg from '../../../assets/bg_app.jpg'
+export const Container = styled.ImageBackground.attrs({
+  source: bg,
+})`
   flex: 1;
   background-color: ${colors.primary};
-`;
+`
 
 export const Card = styled.TouchableOpacity`
   align-self: stretch;
@@ -15,32 +17,32 @@ export const Card = styled.TouchableOpacity`
   border-color: ${colors.gray};
   flex-direction: row;
   justify-content: space-between;
-`;
+`
 export const ContainerInfo = styled.View`
   flex-direction: column;
   margin: ${spacing.xs}px;
   flex-wrap: wrap;
-`;
+`
 export const TitleEventText = styled.Text`
   font-size: 15px;
   font-weight: bold;
   margin: 4px;
-  color: ${colors.white};
+  color: ${colors.blue};
   font-family: ${fonts.bold};
-`;
+`
 export const InfoEventText = styled.Text`
   font-size: 12px;
   margin: 4px;
   font-family: ${fonts.regular};
-  color: ${colors.white};
-`;
+  color: ${colors.blue};
+`
 export const OptionsContainer = styled.View`
   width: ${dimensions.width / 5}px;
   align-items: center;
   justify-content: center;
 
   flex-direction: row;
-`;
+`
 
 export const ContainerTitle = styled.View`
   flex-direction: row;
@@ -50,18 +52,18 @@ export const ContainerTitle = styled.View`
   border-color: white;
   align-items: center;
   padding: 8px;
-`;
+`
 export const InfoDescriptionContainer = styled.View`
   flex-direction: column;
   margin: 8px;
-`;
+`
 export const Title = styled.Text`
   font-size: 21px;
   font-family: ${fonts.bold};
-  color: white;
-`;
+  color: ${colors.blue};
+`
 export const Description = styled.Text`
   font-size: 15px;
   font-family: ${fonts.regular};
-  color: white;
-`;
+  color: ${colors.blue};
+`
