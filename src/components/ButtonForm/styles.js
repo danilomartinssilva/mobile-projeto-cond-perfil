@@ -9,6 +9,7 @@ export const Container = styled.TouchableOpacity`
     props.type === 'submit' ? `${colors.primary}` : `${colors.white}`};
   align-self: stretch;
   justify-content: center;
+  flex-direction: row;
 
   align-items: center;
   border-color: ${colors.gray};

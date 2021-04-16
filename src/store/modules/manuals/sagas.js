@@ -1,8 +1,8 @@
-import {all, call, put, takeLatest, select} from 'redux-saga/effects'
+import { all, call, put, takeLatest } from 'redux-saga/effects'
 import api from '../../../services/api'
-import toast from '../../../services/toast'
 import responder from '../../../services/responder'
-import {goBack} from '../../../services/RootNavigation'
+import { goBack } from '../../../services/RootNavigation'
+import toast from '../../../services/toast'
 
 export function * store ({manual}) {
   try {
@@ -10,7 +10,7 @@ export function * store ({manual}) {
 
     yield put({
       type: '@manuals/ADD_SUCCESS',
-      notification: response.data,
+      manual: response.data,
     })
 
     toast(response.message)

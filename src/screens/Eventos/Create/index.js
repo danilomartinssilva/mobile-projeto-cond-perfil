@@ -1,30 +1,36 @@
-import React, {useLayoutEffect} from 'react';
-import {View, Text, Image} from 'react-native';
-import {
-  Container,
-  TInput,
-  TButton,
-  TError,
-  Title,
-  Description,
-  Separator,
-  ContainerTitle,
-  InfoDescriptionContainer,
-  ContainerBackground,
-} from './styles';
+import { format } from 'date-fns';
+import { Formik } from 'formik';
+import React, { useLayoutEffect } from 'react';
+import { Image } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Formik} from 'formik';
-import Events from '../../../store/modules/eventos';
+import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
 import reservas_icon from '../../../assets/icons/reservas-ico.png';
-
 import DatePicker, {
   formatDate,
-  parseDate,
+  parseDate
 } from '../../../components/DatePicker';
-import {values} from 'lodash';
-import * as Yup from 'yup';
-import {useDispatch} from 'react-redux';
-import {getDate, format, parseISO} from 'date-fns';
+import Events from '../../../store/modules/eventos';
+import {
+  Container,
+
+
+
+
+
+
+
+
+  ContainerBackground, ContainerTitle, Description,
+
+
+  InfoDescriptionContainer, TButton,
+  TError, TInput,
+
+
+  Title
+} from './styles';
+
 
 export default function EventosCreateScreen({navigation}) {
   const dispatch = useDispatch();
@@ -78,7 +84,7 @@ export default function EventosCreateScreen({navigation}) {
           }}>
           {(props) => (
             <>
-              <Text>{JSON.stringify(values)}</Text>
+           
               <TInput
                 messageError={props.errors.description}
                 label="Descricao"

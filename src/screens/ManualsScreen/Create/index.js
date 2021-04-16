@@ -1,35 +1,30 @@
-import React, {useLayoutEffect, useEffect} from 'react';
-import {View, Text, ScrollView, Image} from 'react-native';
+import * as DocumentPicker from 'expo-document-picker';
+import { Formik } from 'formik';
+import _ from 'lodash';
+import React, { useEffect, useLayoutEffect } from 'react';
+import { Image, ScrollView } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
+import atas_icon from '../../../assets/icons/atas-ico.png';
+import StyledModalField from '../../../components/StyledModalField';
+import api from '../../../services/api';
+import { pickerFilterData } from '../../../services/helper';
+import Condominiums from '../../../store/modules/condominiums';
+import Manuals from '../../../store/modules/manuals';
 import {
-  Container,
-  TInput,
-  TButton,
-  TError,
-  UploadContainer,
   ButtonRoundUpload,
-  TUploadFile,
-  TUpload,
-  Title,
-  Description,
+  Container,
+  ContainerBackground,
   ContainerTitle,
   InfoDescriptionContainer,
-  ContainerBackground,
+  TButton,
+  TError,
+  TInput,
+  Title,
+  TUpload,
+  UploadContainer
 } from './styles';
-import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Formik} from 'formik';
-import atas_icon from '../../../assets/icons/atas-ico.png';
-import Manuals from '../../../store/modules/manuals';
-
-import * as DocumentPicker from 'expo-document-picker';
-
-import * as Yup from 'yup';
-import {useDispatch, useSelector} from 'react-redux';
-import {getDate, format, parseISO} from 'date-fns';
-import Condominiums from '../../../store/modules/condominiums';
-import api from '../../../services/api';
-import Axios from 'axios';
-import StyledModalField from '../../../components/StyledModalField';
-import {pickerFilterData} from '../../../services/helper';
 
 export default function ManualsCreateScreen({navigation}) {
   const dispatch = useDispatch();
@@ -40,6 +35,49 @@ export default function ManualsCreateScreen({navigation}) {
     Condominiums.loadCondominiumRequest();
   }, []);
   const condominiums = useSelector((state) => state.condominiums);
+
+  async function handleSelectFile(props) {
+    const file = await DocumentPicker.getDocumentAsync({
+      type: 'application/pdf',
+      copyToCacheDirectory: true,
+    });
+    if(file){
+
+      props.setFieldValue('file', file);
+    }
+  }
+  async function handleUploadFile({file, name, description, condominium_id}) {
+    try {
+      const data = {
+        ...file,
+        uri: file.uri,
+        type: 'application/pdf',
+      };
+      const formData = new FormData();
+      formData.append('file', data, 'arquivo.pdf');
+      const response = await api({
+        url: 'files',
+        method: 'POST',
+        data: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;',
+        },
+      });
+
+      dispatch(
+        Manuals.addManualRequest({
+          file_id: response.data.id,
+          description,
+          name,
+          condominium_id,
+        }),
+      );
+    } catch (err) {
+      if (__DEV__) {
+        console.log(err);
+      }
+    }
+  }
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -67,10 +105,11 @@ export default function ManualsCreateScreen({navigation}) {
           </ContainerTitle>
           <Formik
             onSubmit={(values) => {
-              dispatch(Manuals.addManualRequest(values));
+              handleUploadFile(values);
             }}
             validationSchema={Yup.object().shape({
               name: Yup.string().required('O campo nome é obrigatório'),
+              file: Yup.string().required('O campo arquivo é obrigatório'),
               condominium_id: Yup.string().required(
                 'O campo condomínio é obrigatório',
               ),
@@ -116,6 +155,21 @@ export default function ManualsCreateScreen({navigation}) {
                   value={props.values.description}
                   onChangeText={props.handleChange('description')}
                 />
+                <UploadContainer>
+                  <ButtonRoundUpload
+                    onPress={() => {
+                      handleSelectFile(props);
+                    }}>
+                    {props && props.values && props.values.file && props.values.file.name  ? (
+                      <TUpload>
+                        {_.last(props.values.file.name.split('/'))}
+                      </TUpload>
+                    ) : (
+                      <TUpload>Selecionar arquivo</TUpload>
+                    )}
+                  </ButtonRoundUpload>
+                </UploadContainer>
+                {props.errors.file && <TError>{props.errors.file}</TError>}
 
                 <TButton onPress={() => props.handleSubmit()} type="submit">
                   Cadastrar

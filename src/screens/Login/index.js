@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {View, Text, TouchableOpacity, Animated} from 'react-native';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
+import {View, Text, TouchableOpacity, Animated, Linking} from 'react-native';
 
 import {
   Container,
@@ -29,7 +29,10 @@ export default function LoginScreen({navigation}) {
   const handleLogin = () => {
     dispatch(Auth.loginRequest(email, password));
   };
-
+  const urlSupport = 'https://www.perfilempresarial.com.br/contato/';
+  const handlePress = useCallback(async () => {
+    await Linking.openURL(urlSupport);
+  });
   return (
     <DismissKeyboard>
       <Container>
@@ -69,13 +72,22 @@ export default function LoginScreen({navigation}) {
             <TButton
               onPress={() => handleLogin()}
               type="submit"
-              style={{margin: 16}}>
+              style={{margin: 8}}>
               Login
             </TButton>
             <TButton
               type="submit"
+              style={{margin: 8}}
               onPress={() => navigation.navigate('RegisterScreen')}>
               Registrar
+            </TButton>
+            <TButton
+              iconColor={'white'}
+              icon="chatbox-outline"
+              type="submit"
+              style={{margin: 8}}
+              onPress={() => handlePress()}>
+              Fale Conosco
             </TButton>
           </ContainerButton>
         </ContainerBackground>

@@ -1,29 +1,11 @@
-import React, {useLayoutEffect, useEffect, useState} from 'react';
-import {View, Text, FlatList, TouchableOpacity, Alert} from 'react-native';
+import { format, parseISO } from 'date-fns';
+import React, { useEffect, useLayoutEffect } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import {dimensions, colors, spacing} from '../../../theme';
-import {format, parseISO} from 'date-fns';
 import PDFView from 'react-native-view-pdf';
-
-import {FAB} from 'react-native-paper';
-import {
-  Container,
-  Card,
-  ContainerInfo,
-  TitleEventText,
-  InfoEventText,
-  OptionsContainer,
-  ContainerTitle,
-  InfoDescriptionContainer,
-  Title,
-} from './styles';
-import {useSelector, useStore, useDispatch} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Manuals from '../../../store/modules/manuals';
-import {getProfile} from '../../../services/helper';
-import api from '../../../services/api';
-import WebView from 'react-native-webview';
+import { Container } from './styles';
+
 
 export default function ManualsShowScreen({navigation, route}) {
   const manuals = useSelector((state) => state.manuals);
@@ -53,21 +35,16 @@ export default function ManualsShowScreen({navigation, route}) {
 
   return (
     <Container>
-      {!!manuals.detail && (
+      {!!manuals.detail && !!manuals.detail.file &&  (
         <>
-          <ContainerTitle>
-            <InfoDescriptionContainer>
-              <Title>Manuais</Title>
-            </InfoDescriptionContainer>
-          </ContainerTitle>
-          <Card>
-            <ContainerInfo>
-              <TitleEventText>Nome: {manuals.detail.name}</TitleEventText>
-              <TitleEventText>
-                Descricao: {manuals.detail.description}
-              </TitleEventText>
-            </ContainerInfo>
-          </Card>
+          <PDFView
+          fadeInDuration={250.0}
+          style={{flex: 1}}
+          resource={manuals.detail.file.url}
+          resourceType={'url'}
+          onLoad={() => console.log(`PDF rendered from file`)}
+          onError={(error) => console.log('Cannot render PDF', error)}
+        />
         </>
       )}
     </Container>
